@@ -12,7 +12,7 @@
     "test": "NODE_ENV=test mocha",
     "test:watch": "npm run test -- --watch --reporter mocha-multi --reporter-options spec=-,mocha-osx-reporter=-"
   },
-  "keywords":[
+  "keywords": [
     "zooid",
     "zooid-app",
     "react",
