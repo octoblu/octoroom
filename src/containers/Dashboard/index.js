@@ -38,8 +38,8 @@ class Dashboard extends React.Component {
 
     return (
       <View column className={styles.Dashboard}>
-        <View auto className={styles.state}>
-          <h1>Welcome to the FUTURE.</h1>
+        <View auto column className={styles.state}>
+          <div>Welcome to the FUTURE.</div>
         </View>
 
         <View auto row className={styles.footer}>

@@ -1,20 +1,8 @@
 .App {
   min-height: 100%;
-
-  background: #213752;
-  background: linear-gradient(230deg,#a24bcf,#4b79cf,#4bc5cf);
-  background-size: 300% 300%;
-
-  color: #FEFEFE;
-  font-size: 16px;
-
   justify-content: center;
   align-items: center;
-  font-size: 56px;
-
-  -webkit-animation: AnimationName 8s ease infinite;
-  -moz-animation: AnimationName 8s ease infinite;
-  animation: AnimationName 8s ease infinite;
+  background: #333;
 }
 
 

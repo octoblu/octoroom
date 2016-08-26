@@ -2,11 +2,39 @@
   justify-content: space-between;
   align-items: center !important;
   text-align: center;
+
+  background: #1D3F93;
+  color: #FEFEFE;
 }
 
 .state {
   justify-content: center !important;
   align-items: center !important;
+  align-self: center;
+  border-radius: 6px;
+  font-size: 100px;
+  font-family: 'citrixsans-bold', sans-serif;
+}
+
+.banner {
+  /*background: #FFF;*/
+  color: #FEFEFE;
+  font-size: 72px;
+}
+
+.welcome {
+  composes: banner;
+}
+
+.toThe {
+  composes: banner;
+  font-size: 72px;
+}
+
+.future {
+  composes: banner;
+  font-size: 72px;
+  text-transform: uppercase;
 }
 
 .footer {
