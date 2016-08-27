@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react'
 import View from 'react-flexbox'
 
-import CitrixLogo from './citrix-logo-reverse.png'
+import DeviceFirehose from '../../firehoses/device-firehose'
+import { getCredentials } from '../../services/credentials-service'
+import Welcome from '../../components/Welcome'
 
+import CitrixLogo from './citrix-logo-reverse.png'
 import styles from './styles.css'
 
 const propTypes = {}
@@ -10,24 +13,41 @@ const defaultProps = {}
 
 class Dashboard extends React.Component {
   state = {
+    error: null,
     genisys: null,
   }
 
   constructor(props) {
     super(props)
 
-    this.conn = meshblu.createConnection({
-      uuid: 'f9931a75-b621-41c8-b9f7-4136d5feeb46',
-      token: '222d2e105722a12187b38290a36d4bfd5421632d',
-    })
+    const credentials = getCredentials()
+
+    console.log('credentials', credentials);
+
+    this.deviceFirehose = new DeviceFirehose(credentials)
+    this.deviceFirehose.connect(this.handleError)
+  }
+
+  handleError = (error) => {
+    if (!error) return
+    this.setState({ error })
   }
 
   componentDidMount() {
-    this.conn.on('ready', (data) => {
-      this.conn.on('config', ({ genisys }) => {
-        this.setState({ genisys })
-      })
-    })
+    const deviceUUID = 'f9513c4d-4d5f-4e93-b632-472ab1ea0c92'
+
+    this.deviceFirehose.on(`device:${deviceUUID}`, this.onDevice)
+    // this.conn.on('ready', (data) => {
+    //   this.conn.subscribe({uuid: 'f9513c4d-4d5f-4e93-b632-472ab1ea0c92', type: ['configure.sent']})
+    //   this.conn.on('config', ({genisys}) => {
+    //     console.log("Configure Event Received: ", {genisys});
+    //     this.setState({ genisys })
+    //   })
+    // })
+  }
+
+  onDevice = (device) => {
+    console.log('onDevice', device);
   }
 
   render() {
@@ -38,9 +58,7 @@ class Dashboard extends React.Component {
 
     return (
       <View column className={styles.Dashboard}>
-        <View auto column className={styles.state}>
-          <div>Welcome to the FUTURE.</div>
-        </View>
+        <Welcome />
 
         <View auto row className={styles.footer}>
           <div>Powered by Citrix Octoblu.</div>

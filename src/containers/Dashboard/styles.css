@@ -7,15 +7,6 @@
   color: #FEFEFE;
 }
 
-.state {
-  justify-content: center !important;
-  align-items: center !important;
-  align-self: center;
-  border-radius: 6px;
-  font-size: 100px;
-  font-family: 'citrixsans-bold', sans-serif;
-}
-
 .banner {
   /*background: #FFF;*/
   color: #FEFEFE;

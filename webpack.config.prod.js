@@ -81,6 +81,10 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.coffee$/,
+        loader: "coffee-loader"
+      },
+      {
         test: /\.js$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'src')

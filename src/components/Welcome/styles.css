@@ -1,0 +1,12 @@
+.welcome {
+  justify-content: center !important;
+  align-items: center !important;
+  align-self: center;
+  border-radius: 6px;
+  font-size: 100px;
+  font-family: 'citrixsans-bold', sans-serif;
+}
+
+.speechContainer button {
+  display: none;
+}

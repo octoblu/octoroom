@@ -27,20 +27,25 @@ module.exports = {
     }
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-    },
-    {
-      test:   /\.css$/,
-      loader: "style-loader!css-loader!postcss-loader"
-    },
-    {
-      test:   /\.json$/,
-      loader: "json-loader"
-    }
-  ]
+    loaders: [
+      {
+        test: /\.coffee$/,
+        loader: "coffee-loader"
+      },
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        include: path.join(__dirname, 'src')
+      },
+      {
+        test:   /\.css$/,
+        loader: "style-loader!css-loader!postcss-loader"
+      },
+      {
+        test:   /\.json$/,
+        loader: "json-loader"
+      }
+    ]
   },
   postcss: function () {
     return [ autoprefixer ];
