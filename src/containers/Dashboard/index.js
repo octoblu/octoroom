@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React, { PropTypes } from 'react'
 import View from 'react-flexbox'
+import MeshbluHttp from 'browser-meshblu-http'
 
 import RoomState from '../../components/RoomState/'
 import DeviceFirehose from '../../firehoses/device-firehose'
@@ -20,7 +21,11 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props)
 
-    this.deviceFirehose = new DeviceFirehose(getCredentials())
+    const credentials = getCredentials()
+
+    this.meshblu = new MeshbluHttp(credentials)
+
+    this.deviceFirehose = new DeviceFirehose(credentials)
     this.deviceFirehose.connect(this.handleConnectionError)
   }
 
@@ -31,6 +36,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     const deviceUUID = getCredentials().uuid
+    this.meshblu.update(deviceUUID, {online: true }, () => {})
     this.deviceFirehose.on(`device:${deviceUUID}`, this.onDevice)
   }
 
