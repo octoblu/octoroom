@@ -36,7 +36,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     const deviceUUID = getCredentials().uuid
-    this.meshblu.update(deviceUUID, {online: true }, () => {})
+    this.meshblu.update(deviceUUID, { online: true }, _.noop)
     this.deviceFirehose.on(`device:${deviceUUID}`, this.onDevice)
   }
 
