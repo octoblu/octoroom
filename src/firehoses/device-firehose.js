@@ -4,7 +4,7 @@ import Firehose from 'meshblu-firehose-socket.io/src/firehose-socket-io.coffee'
 import moment from 'moment'
 import EventEmitter2 from 'EventEmitter2'
 
-import {FIREHOSE_CONFIG} from '../config/constants'
+import {FIREHOSE_CONFIG} from 'config'
 // import uuid from 'uuid'
 
 export default class DeviceFirehose extends EventEmitter2 {
@@ -42,11 +42,10 @@ export default class DeviceFirehose extends EventEmitter2 {
   }
 
   _onMessage = (message) => {
-    // const updatedAt = _.get(message, 'data.updatedAt')
-    // if (this._isStale(message)) return
-    // this._updateLastUpdatedAt(message)
+    if (this._isStale(message)) return
 
     const device = this._parseDevice(message)
+    this._updateLastUpdatedAt(message)
     this.emit(`device:${device.uuid}`, device)
   }
 

@@ -8,7 +8,7 @@ import styles from './styles.css'
 const propTypes = {}
 const defaultProps = {}
 
-const Welcome = () => {
+const Empty = () => {
   return (
     <View auto column className={styles.welcome}>
       <div>Welcome to the FUTURE!</div>
@@ -18,7 +18,7 @@ const Welcome = () => {
   )
 }
 
-Welcome.propTypes    = propTypes
-Welcome.defaultProps = defaultProps
+Empty.propTypes    = propTypes
+Empty.defaultProps = defaultProps
 
-export default Welcome
+export default Empty

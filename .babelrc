@@ -5,7 +5,9 @@
       "plugins": [
         [
           "babel-plugin-webpack-alias",
-          { "config": "webpack.config.test.js" }
+          {
+            "config": "webpack.config.test.js"
+          }
         ]
       ]
     }
