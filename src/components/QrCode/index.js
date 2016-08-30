@@ -1,18 +1,27 @@
 import React, { PropTypes } from 'react'
-import QRCode from 'qrcode-react'
+import QRCode from 'rc-qrcode'
 
-const propTypes = {}
-const defaultProps = {}
+import styles from './styles.css'
 
-const QrCode = () => {
+const propTypes = {
+  url: PropTypes.string,
+}
+const defaultProps = {
+  url: 'www.octoblu.com',
+}
+
+const QrCode = ({ url }) => {
   return (
-    <QRCode
-      value="http://app.octoblu.com"
-      logo="https://www.citrix.com/blogs/wp-content/uploads/2015/01/300x300spiral.png"
-      bgColor="#FFFFFF"
-      fgColor="#000000"
-      size={250}
-    />
+    <div className={[styles.bottomRight]}>
+      <QRCode
+        renderer="auto"
+        content={url}
+        scale="5"
+        margin="10"
+        background="white"
+        foreground="black"
+      />
+    </div>
   )
 }
 

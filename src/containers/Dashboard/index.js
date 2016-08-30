@@ -8,7 +8,6 @@ import RoomState from '../../components/RoomState/'
 import DeviceFirehose from '../../firehoses/device-firehose'
 import { getCredentials } from '../../services/credentials-service'
 import Room from '../../models/room'
-import QrCode from '../../components/QrCode'
 
 import styles from './styles.css'
 
@@ -84,7 +83,6 @@ class Dashboard extends React.Component {
           peopleInRoom={peopleInRoom}
           speechText={speechText}
         />
-        <QrCode />
 
         <View auto row className={styles.footer}>
           <div>Powered by Citrix Octoblu.</div>
