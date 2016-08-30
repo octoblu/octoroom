@@ -27,8 +27,6 @@ const defaultProps = {
 const RoomState = ({ booked, peopleInRoom, inSkype, speechText }) => {
   if (_.isEmpty(peopleInRoom)) return <Empty />
 
-  console.log('Speech Text', speechText);
-
   return (
     <div>
       {booked ? <Booked /> : null}
