@@ -1,33 +1,44 @@
 import _ from 'lodash'
 import React, { PropTypes } from 'react'
+import Speech from 'react-speech'
 
 import Booked from '../Booked/'
 import Empty from '../Empty/'
 import Occupied from '../Occupied/'
 import SkypeInSession from '../SkypeInSession/'
+import Spit from '../Spit/'
+
+import styles from './styles.css'
 
 const propTypes = {
-  genisys: PropTypes.object,
+  booked: PropTypes.bool,
+  peopleInRoom: PropTypes.array,
+  inSkype: PropTypes.bool,
+  speechText: PropTypes.string,
 }
 
 const defaultProps = {
-  genisys: null,
+  booked: false,
+  peopleInRoom: [],
+  inSkype: false,
+  speechText: '',
 }
 
-const RoomState = ({ genisys }) => {
-  if (_.isEmpty(genisys)) return null
-
-  console.log('genisys', genisys)
-
-  const { booked, peopleInRoom, inSkype } = genisys
-
+const RoomState = ({ booked, peopleInRoom, inSkype, speechText }) => {
   if (_.isEmpty(peopleInRoom)) return <Empty />
+
+  console.log('Speech Text', speechText);
 
   return (
     <div>
       {booked ? <Booked /> : null}
-      {!_.isEmpty(peopleInRoom) ? <Occupied /> : null}
+      {!_.isEmpty(peopleInRoom) ? <Occupied peopleInRoom={peopleInRoom} /> : null}
       {inSkype ? <SkypeInSession /> : null}
+
+
+      <div className={styles.speechContainer}>
+        <Spit autoPlay text={speechText} />
+      </div>
     </div>
   )
 }

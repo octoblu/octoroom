@@ -4,7 +4,7 @@ var path              = require('path');
 var webpack           = require('webpack');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval',
   entry: [
     // Include WebpackDevServer client. It connects to WebpackDevServer via
     // sockets and waits for recompile notifications. When WebpackDevServer

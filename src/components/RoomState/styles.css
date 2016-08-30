@@ -1,0 +1,9 @@
+
+.speechContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.speechContainer button {
+  display: none;
+}

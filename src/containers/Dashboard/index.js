@@ -1,11 +1,13 @@
+import MeshbluHttp from 'browser-meshblu-http'
 import _ from 'lodash'
 import React, { PropTypes } from 'react'
 import View from 'react-flexbox'
-import MeshbluHttp from 'browser-meshblu-http'
+import Speech from 'react-speech'
 
 import RoomState from '../../components/RoomState/'
 import DeviceFirehose from '../../firehoses/device-firehose'
 import { getCredentials } from '../../services/credentials-service'
+import Room from '../../models/room'
 
 import styles from './styles.css'
 
@@ -15,7 +17,10 @@ const defaultProps = {}
 class Dashboard extends React.Component {
   state = {
     error: null,
-    genisys: null,
+    booked: false,
+    inSkype: false,
+    peopleInRoom: [],
+    speechText: '',
   }
 
   constructor(props) {
@@ -23,10 +28,13 @@ class Dashboard extends React.Component {
 
     const credentials = getCredentials()
 
+    this.room = new Room([])
     this.meshblu = new MeshbluHttp(credentials)
 
     this.deviceFirehose = new DeviceFirehose(credentials)
     this.deviceFirehose.connect(this.handleConnectionError)
+
+    this.speechText = ''
   }
 
   handleConnectionError = (error) => {
@@ -41,15 +49,40 @@ class Dashboard extends React.Component {
   }
 
   onDevice = (device) => {
-    const { genisys } = device
+    console.log('GENISYS', device.genisys);
+    const { booked, inSkype, peopleInRoom } = device.genisys
+    // const { setOccupants, getLatestOccupants } = this.room
+// 
+    const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
+    this.room.setOccupants(peopleInRoom)
 
-    this.setState({ genisys })
+    this.setState({
+      peopleInRoom,
+      booked,
+      inSkype,
+      speechText,
+    })
+  }
+
+  getSpeechText(latestOccupants) {
+    if (_.isEmpty(latestOccupants)) return ''
+    if (latestOccupants.length === 1) return `Welcome ${latestOccupants[0].name || 'Guest'}`
+
+    return 'Welcome Guests!'
   }
 
   render() {
+    if (!this.room) return null
+    const { booked, inSkype, peopleInRoom, speechText } = this.state
+
     return (
       <View column className={styles.Dashboard}>
-        <RoomState genisys={this.state.genisys}/>
+        <RoomState
+          booked={booked}
+          inSkype={inSkype}
+          peopleInRoom={peopleInRoom}
+          speechText={speechText}
+        />
 
         <View auto row className={styles.footer}>
           <div>Powered by Citrix Octoblu.</div>
