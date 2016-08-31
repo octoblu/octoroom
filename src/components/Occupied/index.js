@@ -1,8 +1,14 @@
 import _ from 'lodash'
+import pluralize from 'pluralize'
 import React, { PropTypes } from 'react'
+import Flexbox from 'react-flexbox'
 import Heading from 'zooid-heading'
 import List, { ListItem } from 'zooid-list'
-import pluralize from 'pluralize'
+
+import RandomBot from '../RandomBot/'
+import OccupantList from '../OccupantList/'
+
+import styles from './styles.css'
 
 const propTypes = {
   peopleInRoom: PropTypes.array,
@@ -15,18 +21,10 @@ const defaultProps = {
 const Occupied = ({ peopleInRoom }) => {
   if (_.isEmpty(peopleInRoom)) return null
 
-  const people = _.map(peopleInRoom, ({ name, userUuid }) => {
-    return <ListItem key={userUuid}>{name || 'Guest'} </ListItem>
-  })
-
   return (
-    <div>
-      <Heading>
-        Occupied - {pluralize('Person', peopleInRoom.length, true)}
-      </Heading>
-
-      <List>{people}</List>
-    </div>
+    <Flexbox column className={styles.root}>
+      <OccupantList occupants={peopleInRoom} />
+    </Flexbox>
   )
 }
 

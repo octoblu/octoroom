@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { PropTypes } from 'react'
-import Speech from 'react-speech'
+import Flexbox from 'react-flexbox'
 
 import Booked from '../Booked/'
 import Empty from '../Empty/'
@@ -28,16 +28,18 @@ const RoomState = ({ booked, peopleInRoom, inSkype, speechText }) => {
   if (_.isEmpty(peopleInRoom)) return <Empty />
 
   return (
-    <div>
-      {booked ? <Booked /> : null}
+    <Flexbox className={styles.root} auto column>
       {!_.isEmpty(peopleInRoom) ? <Occupied peopleInRoom={peopleInRoom} /> : null}
-      {inSkype ? <SkypeInSession /> : null}
 
+      <Flexbox row className={styles.roomIndicator}>
+        <Booked isBooked={booked} />
+        <SkypeInSession inSession={inSkype}  />
+      </Flexbox>
 
       <div className={styles.speechContainer}>
         <Spit autoPlay text={speechText} />
       </div>
-    </div>
+    </Flexbox>
   )
 }
 

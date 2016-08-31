@@ -1,20 +1,25 @@
 import React, { PropTypes } from 'react'
-import View from 'react-flexbox'
-import QrCode from '../QrCode/'
+import Flexbox from 'react-flexbox'
+
 
 import styles from './styles.css'
 
-const propTypes = {}
-const defaultProps = {}
+const propTypes = {
+  clientUrl: PropTypes.string,
+}
 
-const Empty = () => {
+const defaultProps = {
+  clientUrl: 'https://bit.ly/ctxroom',
+}
+
+const Empty = ({ clientUrl }) => {
   return (
-    <View auto column className={styles.welcome}>
-      <div>Welcome to the OctoRoom</div>
+    <Flexbox auto column className={styles.welcome}>
 
-      <QrCode url="www.google.com" />
-
-    </View>
+    <div>Welcome!</div>
+     To join the room, go to
+      <a href={clientUrl}>{clientUrl}</a>
+    </Flexbox>
   )
 }
 

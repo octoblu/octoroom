@@ -1,14 +1,15 @@
 import MeshbluHttp from 'browser-meshblu-http'
 import _ from 'lodash'
 import React, { PropTypes } from 'react'
-import View from 'react-flexbox'
+import Flexbox from 'react-flexbox'
 import Speech from 'react-speech'
+import Heading from 'zooid-heading'
 
 import RoomState from '../../components/RoomState/'
+import QRCode from '../../components/QrCode/'
 import DeviceFirehose from '../../firehoses/device-firehose'
 import { getCredentials } from '../../services/credentials-service'
 import Room from '../../models/room'
-
 import styles from './styles.css'
 
 const propTypes = {}
@@ -21,6 +22,7 @@ class Dashboard extends React.Component {
     inSkype: false,
     peopleInRoom: [],
     speechText: '',
+    clientUrl: '',
   }
 
   constructor(props) {
@@ -50,16 +52,17 @@ class Dashboard extends React.Component {
 
   onDevice = (device) => {
     console.log('GENISYS', device.genisys);
-    const { booked, inSkype, peopleInRoom } = device.genisys
+    const { booked, inSkype, peopleInRoom, clientUrl } = device.genisys
     // const { setOccupants, getLatestOccupants } = this.room
 //
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
     this.room.setOccupants(peopleInRoom)
 
     this.setState({
-      peopleInRoom,
+      clientUrl,
       booked,
       inSkype,
+      peopleInRoom,
       speechText,
     })
   }
@@ -73,10 +76,21 @@ class Dashboard extends React.Component {
 
   render() {
     if (!this.room) return null
-    const { booked, inSkype, peopleInRoom, speechText } = this.state
+
+    const { booked, inSkype, peopleInRoom, speechText, clientUrl } = this.state
 
     return (
-      <View column className={styles.Dashboard}>
+      <Flexbox column className={styles.Dashboard}>
+        <Flexbox auto className={styles.header}>
+          <img
+            src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
+            alt="Octoblu"
+            className={styles.octobluLogo}
+          />
+
+        <div className={styles.headerText}>Citrix Smart Conference Room</div>
+      </Flexbox>
+
         <RoomState
           booked={booked}
           inSkype={inSkype}
@@ -84,11 +98,8 @@ class Dashboard extends React.Component {
           speechText={speechText}
         />
 
-        <View auto row className={styles.footer}>
-          <div>Powered by Citrix Octoblu.</div>
-          <img src="" alt="Citrix" className={styles.citrixLogo}/>
-        </View>
-      </View>
+        <QRCode url={clientUrl}/>
+      </Flexbox>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import View from 'react-flexbox'
+import Flexbox from 'react-flexbox'
 
 import styles from './styles.css'
 
@@ -12,9 +12,9 @@ const defaultProps = {}
 class App extends React.Component {
   render() {
     return (
-      <View className={styles.App}>
+      <Flexbox className={styles.App}>
         {this.props.children}
-      </View>
+      </Flexbox>
     )
   }
 }
