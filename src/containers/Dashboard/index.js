@@ -5,8 +5,11 @@ import Flexbox from 'react-flexbox'
 import Speech from 'react-speech'
 import Heading from 'zooid-heading'
 
+import Booked from '../../components/Booked/'
+import JoinRoom from '../../components/JoinRoom/'
+import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
-import QRCode from '../../components/QrCode/'
+import SkypeInSession from '../../components/SkypeInSession/'
 import DeviceFirehose from '../../firehoses/device-firehose'
 import { getCredentials } from '../../services/credentials-service'
 import Room from '../../models/room'
@@ -17,12 +20,13 @@ const defaultProps = {}
 
 class Dashboard extends React.Component {
   state = {
-    error: null,
     booked: false,
+    clientUrl: '',
+    error: null,
     inSkype: false,
+    name: '',
     peopleInRoom: [],
     speechText: '',
-    clientUrl: '',
   }
 
   constructor(props) {
@@ -46,22 +50,25 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     const deviceUUID = getCredentials().uuid
+
     this.meshblu.update(deviceUUID, { online: true }, _.noop)
     this.deviceFirehose.on(`device:${deviceUUID}`, this.onDevice)
   }
 
   onDevice = (device) => {
     console.log('GENISYS', device.genisys);
-    const { booked, inSkype, peopleInRoom, clientUrl } = device.genisys
-    // const { setOccupants, getLatestOccupants } = this.room
-//
+
+    const { name, genisys } = device
+    const { booked, inSkype, peopleInRoom, clientUrl } = genisys
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
+
     this.room.setOccupants(peopleInRoom)
 
     this.setState({
-      clientUrl,
       booked,
+      clientUrl,
       inSkype,
+      name,
       peopleInRoom,
       speechText,
     })
@@ -77,7 +84,14 @@ class Dashboard extends React.Component {
   render() {
     if (!this.room) return null
 
-    const { booked, inSkype, peopleInRoom, speechText, clientUrl } = this.state
+    const {
+      booked,
+      clientUrl,
+      inSkype,
+      name,
+      peopleInRoom,
+      speechText,
+    } = this.state
 
     return (
       <Flexbox column className={styles.Dashboard}>
@@ -88,8 +102,8 @@ class Dashboard extends React.Component {
             className={styles.octobluLogo}
           />
 
-        <div className={styles.headerText}>Citrix Smart Conference Room</div>
-      </Flexbox>
+          <div className={styles.headerText}>Citrix Smart Conference Room</div>
+        </Flexbox>
 
         <RoomState
           booked={booked}
@@ -98,7 +112,12 @@ class Dashboard extends React.Component {
           speechText={speechText}
         />
 
-        <QRCode url={clientUrl}/>
+        <JoinRoom clientUrl={clientUrl}/>
+
+        <div className={styles.footer}>
+          <SkypeInSession inSession={inSkype} />
+          <RoomInfo name={name} clientUrl={clientUrl} />
+        </div>
       </Flexbox>
     )
   }

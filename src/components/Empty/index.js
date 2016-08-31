@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import Flexbox from 'react-flexbox'
-
+import Heading from '../Heading/'
 
 import styles from './styles.css'
 
@@ -9,16 +9,14 @@ const propTypes = {
 }
 
 const defaultProps = {
-  clientUrl: 'https://bit.ly/ctxroom',
+  clientUrl: 'bit.ly/ctxroom',
 }
 
 const Empty = ({ clientUrl }) => {
   return (
     <Flexbox auto column className={styles.welcome}>
-
-    <div>Welcome!</div>
-     To join the room, go to
-      <a href={clientUrl}>{clientUrl}</a>
+      <Heading>Welcome!</Heading>
+      <div className={styles.body}></div>
     </Flexbox>
   )
 }

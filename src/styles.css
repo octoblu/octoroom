@@ -7,6 +7,13 @@ body {
   font-family: 'citrixsans-light', sans-serif;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 .font-regular {
   font-family: 'citrixsans-regular', sans-serif;

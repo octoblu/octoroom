@@ -2,14 +2,15 @@ import React, { PropTypes } from 'react'
 import styles from './styles.css'
 
 const propTypes = {
-  isBooked: PropTypes.bool
+  isBooked: PropTypes.bool,
 }
+
 const defaultProps = {
-  isBooked: false
+  isBooked: false,
 }
 
 const Booked = ({ isBooked }) => {
-  const bookingStatus = isBooked ? 'Booked' : 'Available'
+  const bookingStatus = isBooked ? 'B' : 'A'
   return <div className={styles.root}>{bookingStatus}</div>
 }
 

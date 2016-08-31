@@ -1,6 +1,5 @@
 .root {
   width: 100%;
-  max-width: 1800px;
   align-items: center !important;
 }
 
@@ -17,5 +16,7 @@
 .roomIndicator{
   width: 100%;
   justify-content: flex-start !important;
-
+  position: fixed;
+  bottom: 60px;
+  left: 10px;
 }

@@ -2,9 +2,9 @@ import _ from 'lodash'
 import pluralize from 'pluralize'
 import React, { PropTypes } from 'react'
 import Flexbox from 'react-flexbox'
-import Heading from 'zooid-heading'
 import List, { ListItem } from 'zooid-list'
 
+import Heading from '../Heading/'
 import RandomBot from '../RandomBot/'
 import OccupantList from '../OccupantList/'
 

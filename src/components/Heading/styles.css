@@ -1,0 +1,11 @@
+.root {
+  color: #FFF;
+  font-family: 'citrixsans-bold', sans-serif;
+  font-size: 144px;
+  line-height: 1.25;
+  text-align: left;
+  align-self: flex-start;
+  background: rgba(0,0,0,0.5);
+  padding: 0.2em 0.5em;
+  margin-bottom: 0.2em;
+}

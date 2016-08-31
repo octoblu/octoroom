@@ -7,6 +7,7 @@
 }
 
 .root > * {
-  font-size: 36px;
+  font-family: 'citrixsans-semibold', sans-serif;
+  font-size: 64px;
   line-height: 1.5;
 }

@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: rgba(255,255,255, 0.5);
+  font-size: 36px;
+  text-align: right;
+}
+
+.metadata {
+  margin-right: 16px;
+}

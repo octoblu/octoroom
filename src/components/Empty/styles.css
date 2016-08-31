@@ -1,8 +1,15 @@
 .welcome {
-  justify-content: center !important;
-  align-items: center !important;
-  align-self: center;
-  border-radius: 6px;
-  font-size: 40px;
-  font-family: 'citrixsans-bold', sans-serif;
+  font-size: 64px;
+  font-family: 'citrixsans-semibold', sans-serif;
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.body {
+  margin: 0 auto;
+  width: 80%;
+}
+.welcome a {
+  color: #FFF
 }

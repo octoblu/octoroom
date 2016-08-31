@@ -2,10 +2,9 @@ import _ from 'lodash'
 import React, { PropTypes } from 'react'
 import Flexbox from 'react-flexbox'
 
-import Booked from '../Booked/'
 import Empty from '../Empty/'
+import Heading from '../Heading/'
 import Occupied from '../Occupied/'
-import SkypeInSession from '../SkypeInSession/'
 import Spit from '../Spit/'
 
 import styles from './styles.css'
@@ -26,15 +25,13 @@ const defaultProps = {
 
 const RoomState = ({ booked, peopleInRoom, inSkype, speechText }) => {
   if (_.isEmpty(peopleInRoom)) return <Empty />
-
+  
   return (
     <Flexbox className={styles.root} auto column>
-      {!_.isEmpty(peopleInRoom) ? <Occupied peopleInRoom={peopleInRoom} /> : null}
+      {(booked) && <Heading>Room Booked</Heading>}
+      {(!booked) && <Heading>Room Available</Heading>}
 
-      <Flexbox row className={styles.roomIndicator}>
-        <Booked isBooked={booked} />
-        <SkypeInSession inSession={inSkype}  />
-      </Flexbox>
+      <Occupied peopleInRoom={peopleInRoom} />
 
       <div className={styles.speechContainer}>
         <Spit autoPlay text={speechText} />
