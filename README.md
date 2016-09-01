@@ -1,4 +1,4 @@
-# octoroom-kiosk
+# octoroom
 
 [![Build Status](https://travis-ci.org/octoblu/octoroom-kiosk.svg?branch=master)](https://travis-ci.org/octoblu/octoroom-kiosk)
 [![npm version](https://badge.fury.io/js/octoroom-kiosk.svg)](http://badge.fury.io/js/octoroom-kiosk)
@@ -7,7 +7,7 @@
 
 ## Install
 ```
-npm install --save octoroom-kiosk
+npm install --save octoroom
 ```
 
 ## Props
@@ -18,5 +18,5 @@ npm install --save octoroom-kiosk
 
 ## Example
 ```js
-import OctoroomKiosk from 'octoroom-kiosk'
+import OctoroomKiosk from 'octoroom'
 ```

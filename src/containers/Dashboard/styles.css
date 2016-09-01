@@ -37,7 +37,7 @@
   background: rgba(0,0,0,0.7);
   height: 52px;
   width: 100%;
-  justify-content: flex-start !important;
+  justify-content: space-between !important;
   align-items: center !important;
   padding: 0 24px;
 }
