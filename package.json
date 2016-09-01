@@ -19,15 +19,15 @@
     "babel",
     "webpack"
   ],
-  "homepage": "https://github.com/octoblu/octoroom-kiosk",
-  "bugs": "https://github.com/octoblu/octoroom-kiosk/issues",
+  "homepage": "https://github.com/octoblu/octoroom",
+  "bugs": "https://github.com/octoblu/octoroom/issues",
   "author": {
     "name": "Octoblu Inc",
     "url": "https://github.com/octoblu"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/octoblu/octoroom-kiosk.git"
+    "url": "https://github.com/octoblu/octoroom.git"
   },
   "license": "MIT",
   "dependencies": {

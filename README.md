@@ -1,8 +1,8 @@
 # octoroom
 
-[![Build Status](https://travis-ci.org/octoblu/octoroom-kiosk.svg?branch=master)](https://travis-ci.org/octoblu/octoroom-kiosk)
-[![npm version](https://badge.fury.io/js/octoroom-kiosk.svg)](http://badge.fury.io/js/octoroom-kiosk)
-[![Code Climate](https://codeclimate.com/github/octoblu/octoroom-kiosk.png)](https://codeclimate.com/github/octoblu/octoroom-kiosk)
+[![Build Status](https://travis-ci.org/octoblu/octoroom.svg?branch=master)](https://travis-ci.org/octoblu/octoroom)
+[![npm version](https://badge.fury.io/js/octoroom.svg)](http://badge.fury.io/js/octoroom)
+[![Code Climate](https://codeclimate.com/github/octoblu/octoroom.png)](https://codeclimate.com/github/octoblu/octoroom)
 [![Slack Status](http://community-slack.octoblu.com/badge.svg)](http://community-slack.octoblu.com)
 
 ## Install
