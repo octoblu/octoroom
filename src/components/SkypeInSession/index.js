@@ -10,7 +10,7 @@ const defaultProps = {
 }
 
 const SkypeInSession = ({ inSession }) => {
-  const skypeColor = inSession ? 'blue' : 'gray'
+  const skypeColor = inSession ? 'blue' : 'white'
 
   return (
     <img
