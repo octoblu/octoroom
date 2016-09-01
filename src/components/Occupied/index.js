@@ -1,11 +1,7 @@
 import _ from 'lodash'
-import pluralize from 'pluralize'
 import React, { PropTypes } from 'react'
 import Flexbox from 'react-flexbox'
-import List, { ListItem } from 'zooid-list'
 
-import Heading from '../Heading/'
-import RandomBot from '../RandomBot/'
 import OccupantList from '../OccupantList/'
 
 import styles from './styles.css'

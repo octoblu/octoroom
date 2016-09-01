@@ -1,9 +1,8 @@
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import React from 'react'
-import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
-import { mount, shallow } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import Occupied from './'
 
@@ -23,7 +22,7 @@ describe('<Occupied />', () => {
       const peopleInRoom = [{
         uuid: '6c149fd3-8013-426a-866c-6dcd99ecceb6',
         name: 'Dr Strange',
-        activity: '669f806c-4c97-4d9a-b791-0c525c82ba0d'
+        activity: '669f806c-4c97-4d9a-b791-0c525c82ba0d',
       }]
       const sut = shallow(<Occupied peopleInRoom={peopleInRoom} />)
       expect(sut).to.not.be.empty

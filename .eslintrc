@@ -1,21 +1,39 @@
 {
-  "extends": "airbnb",
-  "rules": {
-    "arrow-body-style": 0,
-    "func-names": 0,
-    "no-multi-spaces": 0,
-    "no-unused-expressions": 0,
-    "prefer-arrow-callback": 0,
-    "semi": [2, "never"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/jsx-no-bind": 0,
-    "react/prefer-stateless-function": 0,
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
-  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "react"
+  ],
   "parserOptions": {
     "ecmaVersion": 6,
+    "sourceType": "module",
     "ecmaFeatures": {
+      "jsx": true,
       "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    no-console: 1
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended"
+  ],
+  "settings": {
+    "import/ignore": [
+      "node_modules",
+      "\\.(json|css|jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$",
+    ],
+    "import/extensions": [".js"],
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".json"]
+      },
+      "webpack": {
+        "config": "webpack.config.dev.js"
+      }
     }
   },
   "env": {
@@ -23,7 +41,6 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "jest": true,
     "node": true
   }
 }

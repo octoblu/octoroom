@@ -15,6 +15,7 @@ const SkypeInSession = ({ inSession }) => {
   return (
     <img
       src={`//cdn.octoblu.com/images/skype-${skypeColor}.png`}
+      alt="Skype"
       className={styles.root}
     />
   )

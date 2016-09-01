@@ -2,8 +2,6 @@ import _ from 'lodash'
 import React, { PropTypes } from 'react'
 import Flexbox from 'react-flexbox'
 
-import OccupantListItem from '../OccupantListItem/'
-
 import styles from './styles.css'
 
 const propTypes = {
@@ -15,7 +13,7 @@ const defaultProps = {
 }
 
 const OccupantList = ({ occupants }) => {
-  const people = _.map(occupants, (occupant) => <div>{occupant.name || 'Guest'}</div>)
+  const people = _.map(occupants, (occupant) => <div key={occupant.userUuid}>{occupant.name || 'Guest'}</div>)
 
   return <Flexbox column className={styles.root}>{people}</Flexbox>
 }

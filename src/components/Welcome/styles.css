@@ -1,4 +1,4 @@
-.welcome {
+.root {
   font-size: 64px;
   font-family: 'citrixsans-semibold', sans-serif;
   text-align: left;
@@ -6,10 +6,11 @@
   margin: 0 auto;
 }
 
+.root a {
+  color: #FFF
+}
+
 .body {
   margin: 0 auto;
   width: 80%;
-}
-.welcome a {
-  color: #FFF
 }

@@ -12,7 +12,7 @@ const defaultProps = {
   location: 'Tempe, Arizona',
 }
 
-const RoomInfo = ({ name, location, clientUrl }) => {
+const RoomInfo = ({ name, location }) => {
   return (
     <div className={styles.root}>
       <div className={styles.metadata}>

@@ -2,7 +2,6 @@ import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { shallow } from 'enzyme'
 import React from 'react'
-import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
 
 import NotFound from './'

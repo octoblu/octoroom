@@ -28,7 +28,7 @@ class Spit extends React.Component {
 
   render() {
     if (this.props.autoPlay) this.speak()
-    
+
     return null
   }
 }

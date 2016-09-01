@@ -1,33 +1,21 @@
 import MeshbluHttp from 'browser-meshblu-http'
 import _ from 'lodash'
-import React, { PropTypes } from 'react'
+import React from 'react'
 import Flexbox from 'react-flexbox'
-import Speech from 'react-speech'
-import Heading from 'zooid-heading'
 
-import Booked from '../../components/Booked/'
 import JoinRoom from '../../components/JoinRoom/'
 import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
 import SkypeInSession from '../../components/SkypeInSession/'
-import DeviceFirehose from '../../firehoses/device-firehose'
+
+import DeviceFirehose from '../../services/device-firehose'
 import { getCredentials } from '../../services/credentials-service'
+
 import Room from '../../models/room'
+
 import styles from './styles.css'
 
-const propTypes = {}
-const defaultProps = {}
-
 class Dashboard extends React.Component {
-  state = {
-    booked: false,
-    clientUrl: '',
-    error: null,
-    inSkype: false,
-    name: '',
-    peopleInRoom: [],
-    speechText: '',
-  }
 
   constructor(props) {
     super(props)
@@ -39,6 +27,16 @@ class Dashboard extends React.Component {
 
     this.deviceFirehose = new DeviceFirehose(credentials)
     this.deviceFirehose.connect(this.handleConnectionError)
+
+    this.state = {
+      booked: false,
+      clientUrl: '',
+      error: null,
+      inSkype: false,
+      name: '',
+      peopleInRoom: [],
+      speechText: '',
+    }
 
     this.speechText = ''
   }
@@ -113,7 +111,6 @@ class Dashboard extends React.Component {
 
         <RoomState
           booked={booked}
-          inSkype={inSkype}
           peopleInRoom={peopleInRoom}
           speechText={speechText}
         />
@@ -128,8 +125,5 @@ class Dashboard extends React.Component {
     )
   }
 }
-
-Dashboard.propTypes    = propTypes
-Dashboard.defaultProps = defaultProps
 
 export default Dashboard
