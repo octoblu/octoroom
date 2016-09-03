@@ -3,6 +3,7 @@ import _ from 'lodash'
 import React from 'react'
 import Flexbox from 'react-flexbox'
 
+import BookingIndicator from '../../components/BookingIndicator/'
 import JoinRoom from '../../components/JoinRoom/'
 import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
