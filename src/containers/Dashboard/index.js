@@ -32,6 +32,7 @@ class Dashboard extends React.Component {
       clientUrl: '',
       error: null,
       inSkype: false,
+      meetings: null,
       name: '',
       peopleInRoom: [],
       speechText: '',
@@ -56,7 +57,7 @@ class Dashboard extends React.Component {
     console.log('GENISYS', device.genisys);
 
     const { name, genisys } = device
-    const { booked, inSkype, peopleInRoom, clientUrl } = genisys
+    const { booked, inSkype, meetings, peopleInRoom, clientUrl } = genisys
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
     this.room.setOccupants(peopleInRoom)
@@ -65,6 +66,7 @@ class Dashboard extends React.Component {
       booked,
       clientUrl,
       inSkype,
+      meetings,
       name,
       peopleInRoom,
       speechText,
@@ -85,6 +87,7 @@ class Dashboard extends React.Component {
       booked,
       clientUrl,
       inSkype,
+      meetings,
       name,
       peopleInRoom,
       speechText,
@@ -98,7 +101,7 @@ class Dashboard extends React.Component {
               src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
               alt="Octoblu"
               className={styles.octobluLogo}
-              />
+            />
 
             <div className={styles.headerText}>Citrix Smart Conference Room</div>
           </Flexbox>
@@ -112,6 +115,7 @@ class Dashboard extends React.Component {
           booked={booked}
           peopleInRoom={peopleInRoom}
           speechText={speechText}
+          meetings={meetings}
         />
 
         <JoinRoom clientUrl={clientUrl}/>

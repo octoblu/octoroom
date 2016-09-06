@@ -7,19 +7,11 @@ import { mount } from 'enzyme'
 import RoomState from './'
 
 import Heading from '../Heading/'
-import Welcome from '../Welcome/'
 
 chai.use(chaiEnzyme())
 chai.use(sinonChai)
 
 describe('<RoomState />', () => {
-  describe('when peopleInRoom prop is empty', () => {
-    it('should render <Welcome />', () => {
-      const sut = mount(<RoomState />)
-      expect(sut).to.contain(<Welcome />)
-    })
-  })
-
   describe('when peopleInRoom prop is specified and not empty', () => {
     describe('when booked property is truthy', () => {
       it('should render <Booked />', () => {

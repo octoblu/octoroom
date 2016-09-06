@@ -11,18 +11,20 @@ import styles from './styles.css'
 
 const propTypes = {
   booked: PropTypes.bool,
+  meetings: PropTypes.object,
   peopleInRoom: PropTypes.array,
   speechText: PropTypes.string,
 }
 
 const defaultProps = {
   booked: false,
+  meetings: null,
   peopleInRoom: [],
   speechText: '',
 }
 
-const RoomState = ({ booked, peopleInRoom, speechText }) => {
-  if (_.isEmpty(peopleInRoom)) return <Welcome />
+const RoomState = ({ booked, meetings, peopleInRoom, speechText }) => {
+  if (_.isEmpty(peopleInRoom)) return <Welcome meetings={meetings} />
 
   return (
     <Flexbox className={styles.root} auto column>

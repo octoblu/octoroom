@@ -11,8 +11,10 @@ chai.use(chaiEnzyme())
 chai.use(sinonChai)
 
 describe('<BookingIndicator />', () => {
-  it('should render nothing', () => {
-    const sut = shallow(<BookingIndicator />)
-    expect(sut).to.not.be.empty
+  describe('when nextBooking is null', () => {
+    it('should render nothing', () => {
+      const sut = shallow(<BookingIndicator bookings={[]} />)
+      expect(sut).to.be.empty
+    })
   })
 })

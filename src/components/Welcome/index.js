@@ -8,13 +8,14 @@ import styles from './styles.css'
 
 const propTypes = {
   room: PropTypes.object,
+  meetings: PropTypes.object,
 }
 
-const Welcome = () => {
+const Welcome = ({ meetings }) => {
   return (
     <Flexbox auto column className={styles.root}>
       <Heading>Welcome!</Heading>
-      <BookingIndicator />
+      <BookingIndicator meetings={meetings} />
     </Flexbox>
   )
 }
