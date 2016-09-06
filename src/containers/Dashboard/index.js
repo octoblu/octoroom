@@ -3,7 +3,6 @@ import _ from 'lodash'
 import React from 'react'
 import Flexbox from 'react-flexbox'
 
-import BookingIndicator from '../../components/BookingIndicator/'
 import JoinRoom from '../../components/JoinRoom/'
 import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
@@ -17,7 +16,6 @@ import Room from '../../models/room'
 import styles from './styles.css'
 
 class Dashboard extends React.Component {
-
   constructor(props) {
     super(props)
 

@@ -13,6 +13,6 @@ chai.use(sinonChai)
 describe('<BookingIndicator />', () => {
   it('should render nothing', () => {
     const sut = shallow(<BookingIndicator />)
-    expect(sut).to.be.empty
+    expect(sut).to.not.be.empty
   })
 })
