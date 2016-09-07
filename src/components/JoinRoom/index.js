@@ -11,11 +11,6 @@ const defaultProps = {}
 const JoinRoom = ({ clientUrl }) => {
   return (
     <div className={styles.root}>
-      <div className={styles.joinText}>
-        <div>Join the Room</div>
-        <div><a href={clientUrl}>{clientUrl}</a></div>
-      </div>
-
       <QRCode
         renderer="auto"
         content={clientUrl}

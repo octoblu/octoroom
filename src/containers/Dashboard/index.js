@@ -96,18 +96,14 @@ class Dashboard extends React.Component {
     return (
       <Flexbox column className={styles.Dashboard}>
         <Flexbox auto className={styles.header}>
-          <Flexbox auto row>
-            <img
-              src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
-              alt="Octoblu"
-              className={styles.octobluLogo}
-            />
-
-            <div className={styles.headerText}>Citrix Smart Conference Room</div>
-          </Flexbox>
+          <img
+            src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
+            alt="Octoblu"
+            className={styles.octobluLogo}
+          />
 
           <div>
-            Join the Room <a href={clientUrl}>{clientUrl}</a>
+            Join the Room <em>{clientUrl}</em>
           </div>
         </Flexbox>
 

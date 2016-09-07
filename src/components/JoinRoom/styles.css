@@ -1,22 +1,8 @@
 .root {
   position: fixed;
   top: 64px;
-  right: 36px;
+  right: 24px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
-
-.joinText {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-  text-align: right;
-  margin-right: 24px;
-  font-size: 36px;
-  color: #FFF;
-}
-
-.joinText a {
-  color: #FFF;
 }

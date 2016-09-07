@@ -11,10 +11,10 @@ const propTypes = {
   meetings: PropTypes.object,
 }
 
-const Welcome = ({ roomName, meetings }) => {
+const Welcome = ({ meetings }) => {
   return (
     <Flexbox auto column className={styles.root}>
-      <Heading>{roomName}</Heading>
+      <Heading>Available!</Heading>
       <BookingIndicator meetings={meetings} />
     </Flexbox>
   )
