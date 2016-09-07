@@ -19,7 +19,7 @@ const RoomInfo = ({ name, location }) => {
       <div className={styles.metadata}>
         <div><strong>{name}</strong></div>
         <div>{location}</div>
-        <div>{moment().format('h:mm:ss a')}</div>
+        <div>{moment().format('h:mm a')}</div>
       </div>
     </div>
   )
