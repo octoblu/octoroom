@@ -26,6 +26,22 @@ describe('getNextMeeting()', () => {
     })
   })
 
+  describe('when given a single meeting with startTime later than today', () => {
+    const meetings = {
+      '42839fb8-c129-44fb-88f8-c31164717335' : {
+        attendees: [],
+        startTime: moment().utc().add(1, 'day').format(),
+        endTime: moment().utc().add(2, 'days').format(),
+        location:"Conf. Octoblu (Tempe)",
+        subject: "Tomorrows meeting",
+      },
+    }
+
+    it('should return null', () => {
+      expect(getNextMeeting(meetings)).to.equal(null)
+    })
+  })
+
   describe('when given a single meeting with a startTime in the future', () => {
     const meetings = {
       '42839fb8-c129-44fb-88f8-c31164717335' : {

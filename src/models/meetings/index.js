@@ -4,7 +4,9 @@ import moment from 'moment'
 const getNextMeeting = (meetings) => {
   if(_.isEmpty(meetings)) return null
 
-  const futureMeetings =  _.filter(meetings, ({startTime}) => moment().isBefore(startTime))
+  const futureMeetings =  _.filter(meetings, ({startTime}) => {
+    return moment(startTime).isAfter(moment()) && moment().isSame(startTime, 'day')
+  })
 
   if(_.isEmpty(futureMeetings)) return null
 
