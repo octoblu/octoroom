@@ -42,8 +42,12 @@ class Dashboard extends React.Component {
   }
 
   handleConnectionError = (error) => {
-    if (!error) return
-    this.setState({ error })
+    if (error) {
+      this.setState({ error })
+      return
+    }
+
+    console.log('handleConnection:noError');
   }
 
   componentDidMount() {

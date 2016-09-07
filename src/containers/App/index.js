@@ -12,7 +12,7 @@ const defaultProps = {}
 class App extends React.Component {
   render() {
     return (
-      <Flexbox className={styles.App}>
+      <Flexbox className={styles.root}>
         {this.props.children}
       </Flexbox>
     )
