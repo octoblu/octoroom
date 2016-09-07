@@ -23,7 +23,7 @@ const BookingIndicator = ({ meetings }) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.next}>Next: {nextMeeting.subject} at {moment(nextMeeting.startTime).format('h:mm a')}</div>
+      <div className={styles.next}>Next: {nextMeeting.subject}  at {moment(nextMeeting.startTime).format('h:mm a')}</div>
     </div>
   )
 }
