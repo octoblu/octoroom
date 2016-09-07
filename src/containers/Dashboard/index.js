@@ -112,6 +112,7 @@ class Dashboard extends React.Component {
         </Flexbox>
 
         <RoomState
+          roomName={name}
           booked={booked}
           peopleInRoom={peopleInRoom}
           speechText={speechText}

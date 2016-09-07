@@ -7,14 +7,14 @@ import BookingIndicator from'../BookingIndicator/'
 import styles from './styles.css'
 
 const propTypes = {
-  room: PropTypes.object,
+  roomName: PropTypes.string,
   meetings: PropTypes.object,
 }
 
-const Welcome = ({ meetings }) => {
+const Welcome = ({ roomName, meetings }) => {
   return (
     <Flexbox auto column className={styles.root}>
-      <Heading>Welcome!</Heading>
+      <Heading>{roomName}</Heading>
       <BookingIndicator meetings={meetings} />
     </Flexbox>
   )

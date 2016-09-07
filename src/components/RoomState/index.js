@@ -10,6 +10,7 @@ import Spit from '../Spit/'
 import styles from './styles.css'
 
 const propTypes = {
+  roomName: PropTypes.string,
   booked: PropTypes.bool,
   meetings: PropTypes.object,
   peopleInRoom: PropTypes.array,
@@ -21,10 +22,11 @@ const defaultProps = {
   meetings: null,
   peopleInRoom: [],
   speechText: '',
+  roomName: ''
 }
 
-const RoomState = ({ booked, meetings, peopleInRoom, speechText }) => {
-  if (_.isEmpty(peopleInRoom)) return <Welcome meetings={meetings} />
+const RoomState = ({ booked, meetings, peopleInRoom, speechText, roomName }) => {
+  if (_.isEmpty(peopleInRoom)) return <Welcome roomName={roomName} meetings={meetings} />
 
   return (
     <Flexbox className={styles.root} auto column>
