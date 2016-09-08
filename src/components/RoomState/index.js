@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React, { PropTypes } from 'react'
 import Flexbox from 'react-flexbox'
 
@@ -22,16 +21,14 @@ const defaultProps = {
   meetings: null,
   peopleInRoom: [],
   speechText: '',
-  roomName: ''
+  roomName: '',
 }
 
 const RoomState = ({ booked, meetings, peopleInRoom, speechText, roomName }) => {
-  if (_.isEmpty(peopleInRoom)) return <Welcome roomName={roomName} meetings={meetings} />
-
   return (
     <Flexbox className={styles.root} auto column>
-      {(booked) && <Heading>Room Booked</Heading>}
-      {(!booked) && <Heading>Room Available</Heading>}
+      {(booked) && <Heading>Booked</Heading>}
+      {(!booked) && <Welcome roomName={roomName} meetings={meetings} />}
 
       <Occupied peopleInRoom={peopleInRoom} />
 

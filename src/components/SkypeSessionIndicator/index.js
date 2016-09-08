@@ -9,7 +9,7 @@ const defaultProps = {
   inSession: false,
 }
 
-const SkypeInSession = ({ inSession }) => {
+const SkypeSessionIndicator = ({ inSession }) => {
   const skypeColor = inSession ? 'blue' : 'white'
 
   return (
@@ -21,7 +21,7 @@ const SkypeInSession = ({ inSession }) => {
   )
 }
 
-SkypeInSession.propTypes    = propTypes
-SkypeInSession.defaultProps = defaultProps
+SkypeSessionIndicator.propTypes    = propTypes
+SkypeSessionIndicator.defaultProps = defaultProps
 
-export default SkypeInSession
+export default SkypeSessionIndicator

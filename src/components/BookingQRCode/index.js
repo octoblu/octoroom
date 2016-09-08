@@ -8,7 +8,7 @@ const propTypes = {
 
 const defaultProps = {}
 
-const JoinRoom = ({ clientUrl }) => {
+const BookingQRCode = ({ clientUrl }) => {
   return (
     <div className={styles.root}>
       <QRCode
@@ -23,7 +23,7 @@ const JoinRoom = ({ clientUrl }) => {
   )
 }
 
-JoinRoom.propTypes    = propTypes
-JoinRoom.defaultProps = defaultProps
+BookingQRCode.propTypes    = propTypes
+BookingQRCode.defaultProps = defaultProps
 
-export default JoinRoom
+export default BookingQRCode

@@ -3,10 +3,10 @@ import _ from 'lodash'
 import React from 'react'
 import Flexbox from 'react-flexbox'
 
-import JoinRoom from '../../components/JoinRoom/'
+import BookingQRCode from '../../components/BookingQRCode/'
 import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
-import SkypeInSession from '../../components/SkypeInSession/'
+import SkypeSessionIndicator from '../../components/SkypeSessionIndicator/'
 
 import DeviceFirehose from '../../services/device-firehose'
 import { getCredentials } from '../../services/credentials-service'
@@ -15,15 +15,14 @@ import Room from '../../models/room'
 
 import styles from './styles.css'
 
-class Dashboard extends React.Component {
+export default class RoomContainer extends React.Component {
   constructor(props) {
     super(props)
 
     const credentials = getCredentials()
 
-    this.room = new Room([])
-    this.meshblu = new MeshbluHttp(credentials)
-
+    this.room           = new Room([])
+    this.meshblu        = new MeshbluHttp(credentials)
     this.deviceFirehose = new DeviceFirehose(credentials)
     this.deviceFirehose.connect(this.handleConnectionError)
 
@@ -98,7 +97,7 @@ class Dashboard extends React.Component {
     } = this.state
 
     return (
-      <Flexbox column className={styles.Dashboard}>
+      <Flexbox column className={styles.root}>
         <Flexbox auto className={styles.header}>
           <img
             src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
@@ -107,7 +106,7 @@ class Dashboard extends React.Component {
           />
 
           <div>
-            Join the Room <em>{clientUrl}</em>
+            Join the Room <strong>{clientUrl}</strong>
           </div>
         </Flexbox>
 
@@ -119,15 +118,13 @@ class Dashboard extends React.Component {
           meetings={meetings}
         />
 
-        <JoinRoom clientUrl={clientUrl}/>
+        <BookingQRCode clientUrl={clientUrl}/>
 
         <div className={styles.footer}>
-          <SkypeInSession inSession={inSkype} />
+          <SkypeSessionIndicator inSession={inSkype} />
           <RoomInfo name={name} clientUrl={clientUrl} />
         </div>
       </Flexbox>
     )
   }
 }
-
-export default Dashboard

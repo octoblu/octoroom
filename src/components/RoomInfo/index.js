@@ -13,13 +13,12 @@ const defaultProps = {
   location: 'Tempe, Arizona',
 }
 
-const RoomInfo = ({ name, location }) => {
+const RoomInfo = ({ name }) => {
   return (
     <div className={styles.root}>
       <div className={styles.metadata}>
-        <div><strong>{name}</strong></div>
-        <div>{location}</div>
         <div>{moment().format('h:mm a')}</div>
+        <div><strong>{name}</strong></div>
       </div>
     </div>
   )
