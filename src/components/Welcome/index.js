@@ -14,7 +14,7 @@ const propTypes = {
 const Welcome = ({ meetings }) => {
   return (
     <Flexbox auto column className={styles.root}>
-      <Heading>Available!</Heading>
+      <Heading>Available</Heading>
       <BookingIndicator meetings={meetings} />
     </Flexbox>
   )

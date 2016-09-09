@@ -29,9 +29,7 @@ const RoomState = ({ booked, meetings, peopleInRoom, speechText, roomName }) => 
     <Flexbox className={styles.root} auto column>
       {(booked) && <Heading>Booked</Heading>}
       {(!booked) && <Welcome roomName={roomName} meetings={meetings} />}
-
-      <Occupied peopleInRoom={peopleInRoom} />
-
+      
       <div className={styles.speechContainer}>
         <Spit autoPlay text={speechText} />
       </div>
