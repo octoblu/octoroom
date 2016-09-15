@@ -60,12 +60,13 @@ export default class RoomContainer extends React.Component {
     console.log('GENISYS', device.genisys);
 
     const { name, genisys } = device
-    const { booked, inSkype, meetings, peopleInRoom, clientUrl } = genisys
+    const { backgroundImageUrl, booked, inSkype, meetings, peopleInRoom, clientUrl } = genisys
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
     this.room.setOccupants(peopleInRoom)
 
     this.setState({
+      backgroundImageUrl,
       booked,
       clientUrl,
       inSkype,
@@ -96,8 +97,10 @@ export default class RoomContainer extends React.Component {
       speechText,
     } = this.state
 
+    const backgroundImageUrl = _.get(this.state, 'backgroundImageUrl', 'https://cdn.octoblu.com/images/iceland.jpg')
+
     return (
-      <Flexbox column className={styles.root}>
+      <div className={styles.root} style={{backgroundImage: `url(${backgroundImageUrl})`}}>
         <Flexbox auto className={styles.header}>
           <img
             src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
@@ -124,7 +127,7 @@ export default class RoomContainer extends React.Component {
           <SkypeSessionIndicator inSession={inSkype} />
           <RoomInfo name={name} clientUrl={clientUrl} />
         </div>
-      </Flexbox>
+      </div>
     )
   }
 }
