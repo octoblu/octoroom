@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  flex: auto;
   color: rgba(255,255,255,1);
   font-size: 36px;
   text-align: right;

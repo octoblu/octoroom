@@ -19,7 +19,7 @@ const BookingIndicator = ({ meetings }) => {
 
   if (_.isEmpty(nextMeeting)) return null
 
-  const formattedStartTime = moment(nextMeeting.startTime).format('h:mm a')
+  const formattedStartTime = moment(nextMeeting.startTime).format('h:mm')
 
   return (
     <div className={styles.root}>
