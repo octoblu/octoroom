@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
-import Flexbox from 'react-flexbox'
 
 import Welcome from '../Welcome/'
 import Heading from '../Heading/'
 import Occupied from '../Occupied/'
 import Spit from '../Spit/'
+import BookedHeader from '../BookedHeader'
 
 import styles from './styles.css'
 
@@ -26,14 +26,14 @@ const defaultProps = {
 
 const RoomState = ({ booked, meetings, peopleInRoom, speechText, roomName }) => {
   return (
-    <Flexbox className={styles.root} auto column>
-      {(booked) && <Heading>Booked</Heading>}
+    <div className={styles.root}>
+      {(booked) && <BookedHeader meetings={meetings}/>}
       {(!booked) && <Welcome roomName={roomName} meetings={meetings} />}
-      
+
       <div className={styles.speechContainer}>
         <Spit autoPlay text={speechText} />
       </div>
-    </Flexbox>
+    </div>
   )
 }
 

@@ -1,5 +1,5 @@
-import moment from 'moment'
 import _ from 'lodash'
+import moment from 'moment'
 import React, { PropTypes } from 'react'
 
 import { getNextMeeting } from '../../models/meetings/'
@@ -19,11 +19,11 @@ const BookingIndicator = ({ meetings }) => {
 
   if (_.isEmpty(nextMeeting)) return null
 
-  console.log('nextMeeting', nextMeeting);
+  const formattedStartTime = moment(nextMeeting.startTime).format('h:mm a')
 
   return (
     <div className={styles.root}>
-      <div className={styles.next}>Next: {nextMeeting.subject}  at {moment(nextMeeting.startTime).format('h:mm a')}</div>
+      <div className={styles.next}>Next: {nextMeeting.subject}  at {formattedStartTime}</div>
     </div>
   )
 }
