@@ -17,16 +17,17 @@ const getCurrentMeeting = (meetings) => {
 }
 
 const getNextMeeting = (meetings) => {
-  if(_.isEmpty(meetings)) return null
-
   const futureMeetings =  _.filter(meetings, ({startTime}) => {
-    return moment(startTime).isAfter(moment()) && moment().isSame(startTime, 'day')
+    const now = moment()
+
+    if (moment(startTime).isBefore(now)) return false
+    if (!now.isSame(startTime, 'day')) return false
+    return true
   })
 
-  if(_.isEmpty(futureMeetings)) return null
+  const sortedMeetings = _.sortBy(futureMeetings, 'startTime')
 
-  const sortedMeetings = _.sortBy(futureMeetings, ({startTime}) => moment(startTime))
-
+  if(_.isEmpty(sortedMeetings)) return null
   return _.first(sortedMeetings)
 }
 

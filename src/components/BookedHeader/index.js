@@ -14,15 +14,14 @@ const defaultProps = {}
 
 const BookedHeader = ({ meetings }) => {
   const currentMeeting = getCurrentMeeting(meetings)
-  if (_.isEmpty(currentMeeting)) return <Heading>Booked</Heading>
 
   const subject = _.get(currentMeeting, 'subject')
   const endTime = _.get(currentMeeting, 'endTime')
 
-  const formattedEndTime = moment(endTime).format('h:mm a')
+  const formattedEndTime = endTime ? ` until ${moment(endTime).format('h:mm a')}` : null
 
   return <div className={styles.root}>
-    <Heading>Booked until {formattedEndTime}</Heading>
+    <Heading>Booked{formattedEndTime}</Heading>
     <div className={styles.current}>{subject}</div>
   </div>
 }
