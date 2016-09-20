@@ -18,7 +18,7 @@ const BookedHeader = ({ meetings }) => {
   const subject = _.get(currentMeeting, 'subject')
   const endTime = _.get(currentMeeting, 'endTime')
 
-  const formattedEndTime = endTime ? ` until ${moment(endTime).format('h:mm a')}` : null
+  const formattedEndTime = endTime ? ` until ${moment(endTime).format('h:mm')}` : null
 
   return <div className={styles.root}>
     <Heading>Booked{formattedEndTime}</Heading>

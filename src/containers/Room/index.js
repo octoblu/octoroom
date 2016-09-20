@@ -124,7 +124,6 @@ export default class RoomContainer extends React.Component {
         <BookingQRCode clientUrl={clientUrl}/>
 
         <div className={styles.footer}>
-          <SkypeSessionIndicator inSession={inSkype} />
           <RoomInfo name={name} clientUrl={clientUrl} />
         </div>
       </div>
