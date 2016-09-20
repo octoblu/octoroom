@@ -31,6 +31,7 @@ export default class RoomContainer extends React.Component {
       clientUrl: '',
       error: null,
       inSkype: false,
+      location: '',
       meetings: null,
       name: '',
       peopleInRoom: [],
@@ -42,11 +43,12 @@ export default class RoomContainer extends React.Component {
 
   handleConnectionError = (error) => {
     if (error) {
+      console.error('Firehose Connection Error', error)
       this.setState({ error })
       return
     }
 
-    console.log('handleConnection:noError');
+    console.log('Firehose: Connected')
   }
 
   componentDidMount() {
@@ -60,7 +62,8 @@ export default class RoomContainer extends React.Component {
     console.log('GENISYS', device.genisys);
 
     const { name, genisys } = device
-    const { backgroundImageUrl, booked, inSkype, meetings, peopleInRoom, clientUrl } = genisys
+    const { booked, inSkype, meetings, options, peopleInRoom } = genisys
+    const { backgroundImageUrl, clientUrl, location } = options
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
     this.room.setOccupants(peopleInRoom)
@@ -70,6 +73,7 @@ export default class RoomContainer extends React.Component {
       booked,
       clientUrl,
       inSkype,
+      location,
       meetings,
       name,
       peopleInRoom,
@@ -90,7 +94,7 @@ export default class RoomContainer extends React.Component {
     const {
       booked,
       clientUrl,
-      inSkype,
+      location,
       meetings,
       name,
       peopleInRoom,
@@ -114,17 +118,21 @@ export default class RoomContainer extends React.Component {
         </Flexbox>
 
         <RoomState
-          roomName={name}
           booked={booked}
-          peopleInRoom={peopleInRoom}
-          speechText={speechText}
           meetings={meetings}
+          peopleInRoom={peopleInRoom}
+          roomName={name}
+          speechText={speechText}
         />
 
         <BookingQRCode clientUrl={clientUrl}/>
 
         <div className={styles.footer}>
-          <RoomInfo name={name} clientUrl={clientUrl} />
+          <RoomInfo
+            clientUrl={clientUrl}
+            location={location}
+            name={name}
+          />
         </div>
       </div>
     )
