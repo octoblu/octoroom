@@ -3,10 +3,10 @@ import _ from 'lodash'
 import React from 'react'
 import Flexbox from 'react-flexbox'
 
+import BackgroundVideo from '../../components/BackgroundVideo/'
 import BookingQRCode from '../../components/BookingQRCode/'
 import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
-import SkypeSessionIndicator from '../../components/SkypeSessionIndicator/'
 
 import DeviceFirehose from '../../services/device-firehose'
 import { getCredentials } from '../../services/credentials-service'
@@ -63,13 +63,14 @@ export default class RoomContainer extends React.Component {
 
     const { name, genisys } = device
     const { booked, inSkype, meetings, options, peopleInRoom } = genisys
-    const { backgroundImageUrl, clientUrl, location } = options
+    const { backgroundImageUrl, backgroundVideoUrl,clientUrl, location } = options
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
     this.room.setOccupants(peopleInRoom)
 
     this.setState({
       backgroundImageUrl,
+      backgroundVideoUrl,
       booked,
       clientUrl,
       inSkype,
@@ -102,9 +103,11 @@ export default class RoomContainer extends React.Component {
     } = this.state
 
     const backgroundImageUrl = _.get(this.state, 'backgroundImageUrl', 'https://cdn.octoblu.com/images/iceland.jpg')
+    const backgroundVideoUrl = _.get(this.state, 'backgroundVideoUrl')
 
     return (
-      <div className={styles.root} style={{backgroundImage: `url(${backgroundImageUrl})`}}>
+      <div className={styles.root}>
+        <BackgroundVideo imageUrl={backgroundImageUrl} videoUrl={backgroundVideoUrl} />
         <Flexbox auto className={styles.header}>
           <img
             src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
