@@ -19,10 +19,11 @@ const BookedHeader = ({ meetings }) => {
   const endTime = _.get(currentMeeting, 'endTime')
 
   const formattedEndTime = endTime ? ` until ${moment(endTime).format('h:mm')}` : null
+  const subHeader = subject ? <div className={styles.current}>{subject}</div> : null
 
   return <div className={styles.root}>
     <Heading>Booked{formattedEndTime}</Heading>
-    <div className={styles.current}>{subject}</div>
+    {subHeader}
   </div>
 }
 
