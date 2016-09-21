@@ -15,7 +15,7 @@ const BackgroundVideo = ({ imageUrl, videoUrl }) => {
 
   return (
     <div key={videoUrl} className={styles.wrapper}>
-      <video className={styles.video} poster={imageUrl} autoPlay={true} loop>
+      <video className={styles.video} poster={imageUrl} autoPlay loop muted>
         <source src={videoUrl} type="video/mp4" />
       </video>
     </div>
