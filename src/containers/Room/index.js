@@ -36,9 +36,11 @@ export default class RoomContainer extends React.Component {
       name: '',
       peopleInRoom: [],
       speechText: '',
+      notificationText: '',
     }
 
     this.speechText = ''
+    this.notificationText = ''
   }
 
   handleConnectionError = (error) => {
@@ -62,7 +64,7 @@ export default class RoomContainer extends React.Component {
     console.log('GENISYS', device.genisys);
 
     const { name, genisys } = device
-    const { booked, inSkype, meetings, options, peopleInRoom } = genisys
+    const { booked, inSkype, meetings, options, peopleInRoom, notificationText } = genisys
     const { backgroundImageUrl, backgroundVideoUrl,clientUrl, location } = options
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
@@ -79,6 +81,7 @@ export default class RoomContainer extends React.Component {
       name,
       peopleInRoom,
       speechText,
+      notificationText,
     })
   }
 
@@ -100,6 +103,7 @@ export default class RoomContainer extends React.Component {
       name,
       peopleInRoom,
       speechText,
+      notificationText,
     } = this.state
 
     const backgroundImageUrl = _.get(this.state, 'backgroundImageUrl', 'https://cdn.octoblu.com/images/iceland.jpg')
@@ -126,6 +130,7 @@ export default class RoomContainer extends React.Component {
           peopleInRoom={peopleInRoom}
           roomName={name}
           speechText={speechText}
+          notificationText={notificationText}
         />
 
         <BookingQRCode clientUrl={clientUrl}/>

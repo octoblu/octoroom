@@ -15,7 +15,6 @@ function safeParse(str) {
 
 export function getCredentials() {
   const credentials = safeParse(window.localStorage.getItem('credentials'))
-
   if (!_.isEmpty(credentials)) return credentials
 
   return _.cloneDeep(DEFAULT_CREDENTIALS)
