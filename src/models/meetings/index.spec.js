@@ -1,66 +1,8 @@
 import { expect } from 'chai'
 import moment from 'moment'
-import { getCurrentMeeting, getNextMeeting } from './'
+import { getNextMeeting } from './'
 
 describe('Meeting Model', () => {
-  describe('getCurrentMeeting()', () => {
-    describe('when given an empty list of meetings', () => {
-      it('should return null', () => {
-        const meetings = {}
-        expect(getCurrentMeeting(meetings)).to.equal(null)
-      })
-    })
-
-    describe('when given single meeting going on right now', () => {
-      it('should return the meeting', () => {
-        const meetings = {
-          '9dad28e8-bfb8-47ef-9b0f-e752e6f69ce0': {
-            subject: 'Business, Business',
-            startTime: moment().utc().subtract(15, 'minutes').format(),
-            endTime:   moment().utc().add(15, 'minutes').format(),
-          }
-        }
-        expect(getCurrentMeeting(meetings)).to.equal(meetings['9dad28e8-bfb8-47ef-9b0f-e752e6f69ce0'])
-      })
-    })
-
-    describe('when given two meetings, one in the past, one happening right now', () => {
-      it('should return the meeting', () => {
-        const meetings = {
-          '01b2431e-d41a-4cfa-88cb-a8d572bbbcbc': {
-            subject: 'Business, Business',
-            startTime: moment().utc().subtract(60, 'minutes').format(),
-            endTime:   moment().utc().subtract(30, 'minutes').format(),
-          },
-          'e04fb886-3341-4352-82ff-434722325856': {
-            subject: 'Moar Business',
-            startTime: moment().utc().subtract(15, 'minutes').format(),
-            endTime:   moment().utc().add(15, 'minutes').format(),
-          }
-        }
-        expect(getCurrentMeeting(meetings)).to.equal(meetings['e04fb886-3341-4352-82ff-434722325856'])
-      })
-    })
-
-    describe('when given two meetings, one in the past, one in the future', () => {
-      it('should return null', () => {
-        const meetings = {
-          '01b2431e-d41a-4cfa-88cb-a8d572bbbcbc': {
-            subject: 'Business, Business',
-            startTime: moment().utc().subtract(60, 'minutes').format(),
-            endTime:   moment().utc().subtract(30, 'minutes').format(),
-          },
-          'e04fb886-3341-4352-82ff-434722325856': {
-            subject: 'Business, Business',
-            startTime: moment().utc().add(15, 'minutes').format(),
-            endTime:   moment().utc().add(30, 'minutes').format(),
-          }
-        }
-        expect(getCurrentMeeting(meetings)).to.equal(null)
-      })
-    })
-  })
-
   describe('getNextMeeting()', () => {
     describe('when padding in an empty list of meetings', () => {
       it('should return null', () => {

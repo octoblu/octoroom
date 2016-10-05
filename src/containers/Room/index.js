@@ -1,19 +1,22 @@
-import MeshbluHttp from 'browser-meshblu-http'
+import debug from 'debug'
 import _ from 'lodash'
-import React from 'react'
 import Flexbox from 'react-flexbox'
+import MeshbluHttp from 'browser-meshblu-http'
+import React from 'react'
 
 import BackgroundVideo from '../../components/BackgroundVideo/'
 import BookingQRCode from '../../components/BookingQRCode/'
 import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
 
-import DeviceFirehose from '../../services/device-firehose'
 import { getCredentials } from '../../services/credentials-service'
+import DeviceFirehose from '../../services/device-firehose'
 
 import Room from '../../models/room'
 
 import styles from './styles.css'
+
+const log = debug('container:room')
 
 export default class RoomContainer extends React.Component {
   constructor(props) {
@@ -27,7 +30,7 @@ export default class RoomContainer extends React.Component {
     this.deviceFirehose.connect(this.handleConnectionError)
 
     this.state = {
-      booked: false,
+      currentMeeting: null,
       clientUrl: '',
       error: null,
       inSkype: false,
@@ -41,16 +44,17 @@ export default class RoomContainer extends React.Component {
 
     this.speechText = ''
     this.notificationText = ''
+
   }
 
   handleConnectionError = (error) => {
     if (error) {
-      console.error('Firehose Connection Error', error)
+      log('Firehose Connection Error', error)
       this.setState({ error })
       return
     }
 
-    console.log('Firehose: Connected')
+    log('Firehose: Connected')
   }
 
   componentDidMount() {
@@ -61,10 +65,10 @@ export default class RoomContainer extends React.Component {
   }
 
   onDevice = (device) => {
-    console.log('GENISYS', device.genisys);
+    log('GENISYS', device.genisys);
 
     const { name, genisys } = device
-    const { booked, inSkype, meetings, options, peopleInRoom, notificationText } = genisys
+    const { currentMeeting, inSkype, meetings, options, peopleInRoom, notificationText } = genisys
     const { backgroundImageUrl, backgroundVideoUrl,clientUrl, location } = options
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
@@ -73,8 +77,8 @@ export default class RoomContainer extends React.Component {
     this.setState({
       backgroundImageUrl,
       backgroundVideoUrl,
-      booked,
       clientUrl,
+      currentMeeting,
       inSkype,
       location,
       meetings,
@@ -96,12 +100,11 @@ export default class RoomContainer extends React.Component {
     if (!this.room) return null
 
     const {
-      booked,
       clientUrl,
+      currentMeeting,
       location,
       meetings,
       name,
-      peopleInRoom,
       speechText,
       notificationText,
     } = this.state
@@ -125,10 +128,8 @@ export default class RoomContainer extends React.Component {
         </Flexbox>
 
         <RoomState
-          booked={booked}
+          currentMeeting={currentMeeting}
           meetings={meetings}
-          peopleInRoom={peopleInRoom}
-          roomName={name}
           speechText={speechText}
           notificationText={notificationText}
         />

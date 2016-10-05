@@ -14,7 +14,7 @@ const defaultProps = {
   meetings: {}
 }
 
-const BookingIndicator = ({ meetings }) => {
+const UpcomingMeetingIndicator = ({ meetings }) => {
   const nextMeeting = getNextMeeting(meetings)
 
   if (_.isEmpty(nextMeeting)) return null
@@ -28,7 +28,7 @@ const BookingIndicator = ({ meetings }) => {
   )
 }
 
-BookingIndicator.propTypes    = propTypes
-BookingIndicator.defaultProps = defaultProps
+UpcomingMeetingIndicator.propTypes    = propTypes
+UpcomingMeetingIndicator.defaultProps = defaultProps
 
-export default BookingIndicator
+export default UpcomingMeetingIndicator

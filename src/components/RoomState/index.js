@@ -1,36 +1,31 @@
+import _ from 'lodash'
 import React, { PropTypes } from 'react'
 
-import Welcome from '../Welcome/'
-import Heading from '../Heading/'
-import Occupied from '../Occupied/'
+import CurrentMeetingIndicator from '../CurrentMeetingIndicator'
 import Spit from '../Spit/'
-import BookedHeader from '../BookedHeader'
+import Welcome from '../Welcome/'
 
 import styles from './styles.css'
 
 const propTypes = {
-  roomName: PropTypes.string,
-  booked: PropTypes.bool,
+  currentMeeting: PropTypes.object,
   meetings: PropTypes.object,
-  peopleInRoom: PropTypes.array,
-  speechText: PropTypes.string,
   notificationText: PropTypes.string,
+  speechText: PropTypes.string,
 }
 
 const defaultProps = {
-  booked: false,
+  currentMeeting: null,
   meetings: null,
-  peopleInRoom: [],
-  speechText: '',
   notificationText: '',
-  roomName: '',
+  speechText: '',
 }
 
-const RoomState = ({ booked, meetings, peopleInRoom, speechText, notificationText, roomName }) => {
+const RoomState = ({ currentMeeting, meetings, notificationText, speechText }) => {
   return (
     <div className={styles.root}>
-      {(booked) && <BookedHeader meetings={meetings}/>}
-      {(!booked) && <Welcome roomName={roomName} meetings={meetings} />}
+      {(_.isEmpty(currentMeeting)) && <Welcome meetings={meetings} />}
+      <CurrentMeetingIndicator currentMeeting={currentMeeting} />
 
       <div className={styles.speechContainer}>
         <Spit autoPlay text={speechText} />
