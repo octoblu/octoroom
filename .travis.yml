@@ -1,25 +1,35 @@
 language: node_js
 node_js:
-- '5'
+  - '5'
 branches:
   only:
-  - "/^v[0-9]/"
+    - '/^v[0-9]/'
 env:
-  global: CDN=https://octoroom-static.octoblu.com
+  global: 'CDN=https://octoroom-static.octoblu.com'
 after_success:
-- npm run build
-- export PKG_VERSION="$(node -e 'console.log(require("./package.json").version)')"
-- if [ -z "$PKG_VERSION" ]; then echo 'Missing PKG_VERSION env' && exit 1; fi
-- mkdir -p dpl_assets/v$PKG_VERSION
-- cp -r dist/* dpl_assets/v$PKG_VERSION
+  - npm run build
+  - >-
+    export PKG_VERSION="$(node -e
+    'console.log(require("./package.json").version)')"
+  - 'if [ -z "$PKG_VERSION" ]; then echo ''Missing PKG_VERSION env'' && exit 1; fi'
+  - mkdir -p dpl_assets/v$PKG_VERSION
+  - cp -r dist/* dpl_assets/v$PKG_VERSION
+  - npm run coverage
+  - 'npm run mocha:json'
+  - 'bash <(curl -s https://codecov.io/bash)'
+  - 'bash <(curl -s https://codecov.octoblu.com/bash)'
 deploy:
   - provider: s3
     access_key_id: AKIAJU3UCEPAB64BWU7A
     secret_access_key:
-      secure: uTMwdYKh2+lsFOl1hTaKz+lexEUsOwo/U30Dhb3hWfDlvmVRwJWP1oXhrUkpwxB2WXrSR3Lri+f5pdHUd8WOhRv19zfFIEdxMZlwyU+iQlbGldxOZmyYxBp+qRM54By0aUvAB35qrfC+7kZudsL1vo+7TzNCbJ2x8rhvTuy0R6+cMQb3sPT6lMV0ng0H6tXRH0X9lwtaus+9e5NRs6GHEVuWPcrK7p1nRGBY3Lpq6CqRj9m8IHiCJNe/7J6piWTKk3BWM9gR1x0RJ0iJ+Arcs8Apbon28oSR2NFbJamesxOAc6qzgF9wa8wZqdEiYjgCHhHi33JcM45k8o12BX0MjliGSKUaLVtsWZGCHn8ZcK+JSmk4jKK9C+ovHRzjKEciJlxILzE8Gprn6ntcCS4OlbnFG10uOYebhLKzlhVccQegBjvbUIBSkKiMA3CtD9qBxU8agKX0V0GRrc/BokG/MqA4LslyWIxHG+izbEd1wyHcaI0Q1RLY7x3RY2wjPlnlcEFFuReHQ0uElzBgtC3w4d7QAK5vnKpNX06L2FXgMoBGz0iR6OxzKubQHKEZsW+1PaKU0G8AR96IhD+Ihof8wkpAp2+GNoNeRL9qd4cLq/WrXoIKvxQ8zdIG8qtiVHq0qAZaW5ayLSarAJ3p1I0+5Zb2IfZ5Ntl+BxIdM/pMnW0=
+      secure: >-
+        uTMwdYKh2+lsFOl1hTaKz+lexEUsOwo/U30Dhb3hWfDlvmVRwJWP1oXhrUkpwxB2WXrSR3Lri+f5pdHUd8WOhRv19zfFIEdxMZlwyU+iQlbGldxOZmyYxBp+qRM54By0aUvAB35qrfC+7kZudsL1vo+7TzNCbJ2x8rhvTuy0R6+cMQb3sPT6lMV0ng0H6tXRH0X9lwtaus+9e5NRs6GHEVuWPcrK7p1nRGBY3Lpq6CqRj9m8IHiCJNe/7J6piWTKk3BWM9gR1x0RJ0iJ+Arcs8Apbon28oSR2NFbJamesxOAc6qzgF9wa8wZqdEiYjgCHhHi33JcM45k8o12BX0MjliGSKUaLVtsWZGCHn8ZcK+JSmk4jKK9C+ovHRzjKEciJlxILzE8Gprn6ntcCS4OlbnFG10uOYebhLKzlhVccQegBjvbUIBSkKiMA3CtD9qBxU8agKX0V0GRrc/BokG/MqA4LslyWIxHG+izbEd1wyHcaI0Q1RLY7x3RY2wjPlnlcEFFuReHQ0uElzBgtC3w4d7QAK5vnKpNX06L2FXgMoBGz0iR6OxzKubQHKEZsW+1PaKU0G8AR96IhD+Ihof8wkpAp2+GNoNeRL9qd4cLq/WrXoIKvxQ8zdIG8qtiVHq0qAZaW5ayLSarAJ3p1I0+5Zb2IfZ5Ntl+BxIdM/pMnW0=
     bucket: octoroom-static.octoblu.com
     local_dir: dpl_assets
     skip_cleanup: true
     region: us-west-2
-    on:
+    'on':
       tags: true
+notifications:
+  webhooks:
+    - 'https://beekeeper.octoblu.com/webhooks/travis:ci'
