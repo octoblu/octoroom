@@ -57,35 +57,5 @@ describe('Meeting Model', () => {
         expect(getNextMeeting(meetings)).to.deep.equal(meetings['42839fb8-c129-44fb-88f8-c31164717335'])
       })
     })
-
-    describe('when given a meetings', () => {
-      const meetings = {
-        '54df2733-f044-48e0-b87c-c7c652afaf7f' : {
-          attendees: [],
-          startTime: moment().utc().add(30, 'minutes').format(),
-          endTime: moment().utc().add(60, 'minutes').format(),
-          location:"Conf. Octoblu (Tempe)",
-          subject: "Future Meeting 2",
-        },
-        '42839fb8-c129-44fb-88f8-c31164717335' : {
-          attendees: [],
-          startTime: moment().utc().subtract(1, 'hour').format(),
-          endTime: moment().utc().subtract(15, 'minutes').format(),
-          location:"Conf. Octoblu (Tempe)",
-          subject: "Meeting from the past",
-        },
-        '7ebe6ee4-96cf-4cdd-9247-04faf1b5b8cc' : {
-          attendees: [],
-          startTime: moment().utc().add(15, 'minutes').format(),
-          endTime: moment().utc().add(30, 'minutes').format(),
-          location:"Conf. Octoblu (Tempe)",
-          subject: "Future Meeting 1",
-        },
-      }
-
-      it('should return the first meeting with a startTime in the future', () => {
-        expect(getNextMeeting(meetings)).to.deep.equal(meetings['7ebe6ee4-96cf-4cdd-9247-04faf1b5b8cc'])
-      })
-    })
   })
 })
