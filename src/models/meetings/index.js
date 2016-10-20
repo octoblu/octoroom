@@ -2,9 +2,10 @@ import _ from 'lodash'
 import moment from 'moment'
 
 const getNextMeeting = (meetings) => {
-  const futureMeetings =  _.filter(meetings, ({startTime}) => {
+  const futureMeetings =  _.filter(meetings, ({startTime, ended}) => {
     const now = moment()
 
+    if (ended) return false
     if (moment(startTime).isBefore(now)) return false
     if (!now.isSame(startTime, 'day')) return false
     return true
