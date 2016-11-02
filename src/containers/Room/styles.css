@@ -56,13 +56,15 @@
 }
 
 .octobluLogo {
-  width: 76px;
-  height: 28px;
+  width: 126px;
+  height: 26px;
+  margin-left: 16px;
+  margin-bottom: 3px;
 }
 
 .citrixLogo {
-  width: 5%;
-  height: 5%;
+  width: 76px;
+  height: 28px;
 }
 
 .footer {

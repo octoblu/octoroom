@@ -116,11 +116,18 @@ export default class RoomContainer extends React.Component {
       <div className={styles.root}>
         <BackgroundVideo imageUrl={backgroundImageUrl} videoUrl={backgroundVideoUrl} />
         <Flexbox auto className={styles.header}>
-          <img
-            src="//cdn.octoblu.com/images/citrix-logo-reverse.png"
-            alt="Citrix"
-            className={styles.octobluLogo}
-          />
+          <span>
+            <img
+              src="//cdn.octoblu.com/images/citrix-logo-reverse.png"
+              alt="Citrix"
+              className={styles.citrixLogo}
+            />
+            <img
+              src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
+              alt="Octoblu"
+              className={styles.octobluLogo}
+            />
+          </span>
 
           <div>
             Join the Room <strong>{clientUrl}</strong>
