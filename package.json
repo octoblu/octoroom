@@ -1,6 +1,6 @@
 {
   "name": "octoroom",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "octoroom",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,7 @@
   "license": "MIT",
   "dependencies": {
     "amdefine": "^1.0.0",
+    "bluebird": "^3.4.6",
     "browser-meshblu-http": "^5.3.0",
     "debug": "^2.2.0",
     "eventemitter2": "^2.1.0",
