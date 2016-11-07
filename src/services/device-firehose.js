@@ -40,9 +40,17 @@ export default class DeviceFirehose extends EventEmitter2 {
     return (updatedAt < this._lastUpdatedAt)
   }
 
-  _onMessage = (message) => {
-    if (this._isStale(message)) return
+  _isSpeech(message) {
+    const notificationText = _.get(message, 'data.notificationText')
+    if (!_.isEmpty(notificationText)) return true
+    return false
+  }
 
+  _onMessage = (message) => {
+    if (this._isStale(message)) {
+      if (this._isSpeech(message)) return this.emit(`notificationSpeech`, this._parseSpeech(message))
+      return
+    }
     const device = this._parseDevice(message)
     this._updateLastUpdatedAt(message)
     this.emit(`device:${device.uuid}`, device)
@@ -50,6 +58,10 @@ export default class DeviceFirehose extends EventEmitter2 {
 
   _parseDevice(message) {
     return _.get(message, 'data')
+  }
+
+  _parseSpeech(message) {
+    return _.get(message, 'data.notificationText')
   }
 
   _updateLastUpdatedAt(message) {

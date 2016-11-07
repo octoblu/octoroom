@@ -43,7 +43,6 @@ export default class RoomContainer extends React.Component {
     }
 
     this.speechText = ''
-    this.notificationText = ''
 
   }
 
@@ -62,13 +61,19 @@ export default class RoomContainer extends React.Component {
 
     this.meshblu.update(deviceUUID, { online: true }, _.noop)
     this.deviceFirehose.on(`device:${deviceUUID}`, this.onDevice)
+    this.deviceFirehose.on(`notificationSpeech`, this.onNotificationSpeech)
+  }
+
+  onNotificationSpeech = (notificationText) => {
+    const speechText = this.getSpeechText(this.room.getLatestOccupants(this.state.peopleInRoom))
+    this.setState({notificationText, speechText})
   }
 
   onDevice = (device) => {
     log('GENISYS', device.genisys);
 
     const { name, genisys } = device
-    const { currentMeeting, inSkype, meetings, options, peopleInRoom, notificationText } = genisys
+    const { currentMeeting, inSkype, meetings, options, peopleInRoom } = genisys
     const { backgroundImageUrl, backgroundVideoUrl,clientUrl, location } = options
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
@@ -85,7 +90,7 @@ export default class RoomContainer extends React.Component {
       name,
       peopleInRoom,
       speechText,
-      notificationText,
+      notificationText: ''
     })
   }
 
