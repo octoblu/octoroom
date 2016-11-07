@@ -1,0 +1,12 @@
+{
+  "$set": {
+    "schemas.message.default": {
+      "type": "object",
+      "properties": {
+        "notificationText": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
