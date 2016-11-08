@@ -1,6 +1,6 @@
 import MeshbluHTTP from 'browser-meshblu-http'
 import _ from 'lodash'
-import Firehose from 'meshblu-firehose-socket.io/src/firehose-socket-io.coffee'
+import Firehose from 'meshblu-firehose-socket.io'
 import moment from 'moment'
 import EventEmitter2 from 'eventemitter2'
 
@@ -17,9 +17,8 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._firehose.on('message', this._onMessage)
   }
 
-  connect(callback) {
-    const { uuid } = this._meshbluConfig
-    this._firehose.connect({ uuid }, (error) => callback(error))
+  connect(callback) {    
+    this._firehose.connect((error) => callback(error))
   }
 
   close(callback){
