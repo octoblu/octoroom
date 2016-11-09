@@ -6,6 +6,7 @@ const log = debug('models:meetings')
 const getNextMeeting = (meetings, currentTime) => {
   const futureMeetings =  _.filter(meetings, ({subject, startTime, ended}) => {
     const now = moment(currentTime)
+    log('currentTime', currentTime)
 
     if (ended) {
       log(subject, 'not a future meeting cause it ended')

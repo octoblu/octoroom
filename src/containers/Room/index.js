@@ -147,6 +147,7 @@ export default class RoomContainer extends React.Component {
           meetings={meetings}
           speechText={speechText}
           notificationText={notificationText}
+          currentTime={currentTime}
         />
 
         <BookingQRCode clientUrl={clientUrl}/>
