@@ -32,6 +32,7 @@ export default class RoomContainer extends React.Component {
     this.state = {
       currentMeeting: null,
       clientUrl: '',
+      currentTime: null,
       error: null,
       inSkype: false,
       location: '',
@@ -73,7 +74,7 @@ export default class RoomContainer extends React.Component {
     log('GENISYS', device.genisys);
 
     const { name, genisys } = device
-    const { currentMeeting, inSkype, meetings, options, peopleInRoom } = genisys
+    const { currentMeeting, inSkype, meetings, options, peopleInRoom, updatedAt } = genisys
     const { backgroundImageUrl, backgroundVideoUrl,clientUrl, location } = options
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
@@ -84,6 +85,7 @@ export default class RoomContainer extends React.Component {
       backgroundVideoUrl,
       clientUrl,
       currentMeeting,
+      currentTime: updatedAt,
       inSkype,
       location,
       meetings,
@@ -107,6 +109,7 @@ export default class RoomContainer extends React.Component {
     const {
       clientUrl,
       currentMeeting,
+      currentTime,
       location,
       meetings,
       name,
@@ -151,6 +154,7 @@ export default class RoomContainer extends React.Component {
         <div className={styles.footer}>
           <RoomInfo
             clientUrl={clientUrl}
+            currentTime={currentTime}
             location={location}
             name={name}
           />

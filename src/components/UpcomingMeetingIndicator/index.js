@@ -7,15 +7,16 @@ import { getNextMeeting } from '../../models/meetings/'
 import styles from './styles.css'
 
 const propTypes = {
-  meetings: PropTypes.object
+  meetings: PropTypes.object,
+  currentTime: PropTypes.string,
 }
 
 const defaultProps = {
   meetings: {}
 }
 
-const UpcomingMeetingIndicator = ({ meetings }) => {
-  const nextMeeting = getNextMeeting(meetings)
+const UpcomingMeetingIndicator = ({ meetings, currentTime }) => {
+  const nextMeeting = getNextMeeting(meetings, currentTime)
 
   if (_.isEmpty(nextMeeting)) return null
 

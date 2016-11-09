@@ -3,9 +3,9 @@ import _ from 'lodash'
 import moment from 'moment'
 const log = debug('models:meetings')
 
-const getNextMeeting = (meetings) => {
+const getNextMeeting = (meetings, currentTime) => {
   const futureMeetings =  _.filter(meetings, ({subject, startTime, ended}) => {
-    const now = moment()
+    const now = moment(currentTime)
 
     if (ended) {
       log(subject, 'not a future meeting cause it ended')

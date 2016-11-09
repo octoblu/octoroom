@@ -12,6 +12,7 @@ const propTypes = {
   meetings: PropTypes.object,
   notificationText: PropTypes.string,
   speechText: PropTypes.string,
+  currentTime: PropTypes.string,
 }
 
 const defaultProps = {
@@ -21,10 +22,10 @@ const defaultProps = {
   speechText: '',
 }
 
-const RoomState = ({ currentMeeting, meetings, notificationText, speechText }) => {
+const RoomState = ({ currentMeeting, currentTime, meetings, notificationText, speechText }) => {
   return (
     <div className={styles.root}>
-      {(_.isEmpty(currentMeeting)) && <Welcome meetings={meetings} />}
+      {(_.isEmpty(currentMeeting)) && <Welcome meetings={meetings} currentTime={currentTime} />}
       <CurrentMeetingIndicator currentMeeting={currentMeeting} />
 
       <div className={styles.speechContainer}>
