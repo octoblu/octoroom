@@ -1,6 +1,6 @@
 {
   "name": "octoroom",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "octoroom",
   "main": "index.js",
   "scripts": {

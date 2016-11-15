@@ -74,8 +74,18 @@ export default class RoomContainer extends React.Component {
     log('GENISYS', device.genisys);
 
     const { name, genisys } = device
-    const { currentMeeting, inSkype, meetings, options, peopleInRoom, updatedAt } = genisys
-    const { backgroundImageUrl, backgroundVideoUrl,clientUrl, location } = options
+    const {
+      backgroundImageUrl,
+      backgroundVideoUrl,
+      clientUrl,
+      currentMeeting,
+      inSkype,
+      location,
+      meetings,
+      peopleInRoom,
+      updatedAt,
+    } = genisys
+
     const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
 
     this.room.setOccupants(peopleInRoom)
