@@ -4,15 +4,17 @@ import Flexbox from 'react-flexbox'
 import MeshbluHttp from 'browser-meshblu-http'
 import React from 'react'
 
+import { MESHBLU_HOSTNAME } from 'config'
+
 import BackgroundVideo from '../../components/BackgroundVideo/'
 import BookingQRCode from '../../components/BookingQRCode/'
 import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
 
+import Room from '../../models/room'
+
 import { getCredentials } from '../../services/credentials-service'
 import DeviceFirehose from '../../services/device-firehose'
-
-import Room from '../../models/room'
 
 import styles from './styles.css'
 
@@ -25,7 +27,7 @@ export default class RoomContainer extends React.Component {
     const credentials = getCredentials()
 
     this.room           = new Room([])
-    this.meshblu        = new MeshbluHttp(credentials)
+    this.meshblu        = new MeshbluHttp({ ...credentials, hostname: MESHBLU_HOSTNAME })
     this.deviceFirehose = new DeviceFirehose(credentials)
     this.deviceFirehose.connect(this.handleConnectionError)
 

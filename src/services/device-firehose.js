@@ -4,7 +4,7 @@ import Firehose from 'meshblu-firehose-socket.io'
 import moment from 'moment'
 import EventEmitter2 from 'eventemitter2'
 
-import { FIREHOSE_CONFIG } from 'config'
+import { FIREHOSE_CONFIG, MESHBLU_HOSTNAME } from 'config'
 
 export default class DeviceFirehose extends EventEmitter2 {
   constructor({ uuid, token }) {
@@ -17,7 +17,7 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._firehose.on('message', this._onMessage)
   }
 
-  connect(callback) {    
+  connect(callback) {
     this._firehose.connect((error) => callback(error))
   }
 
@@ -28,7 +28,7 @@ export default class DeviceFirehose extends EventEmitter2 {
   refresh(targetUUID, callback) {
     if (_.isEmpty(targetUUID)) return callback(new Error('Invalid Device UUID'))
     const { uuid, token } = this._meshbluConfig
-    const meshblu = new MeshbluHTTP({ uuid, token })
+    const meshblu = new MeshbluHTTP({ uuid, token, hostname: MESHBLU_HOSTNAME })
     meshblu.update(targetUUID, {refresh: Date.now()}, (error) => callback(error))
   }
 
