@@ -5,7 +5,7 @@ const log = debug('models:meetings')
 
 const getNextMeeting = (meetings, currentTime) => {
   const futureMeetings =  _.filter(meetings, ({subject, startTime, ended}) => {
-    const now = moment(currentTime)
+    const now = moment(currentTime).subtract(2, 'minutes') // Creating a two minute overlap to prevent 'Available' flash
     log('currentTime', currentTime)
 
     if (ended) {
