@@ -62,9 +62,9 @@ export default class RoomContainer extends React.Component {
   componentDidMount() {
     const deviceUUID = getCredentials().uuid
 
-    this.meshblu.update(deviceUUID, { online: true }, _.noop)
     this.deviceFirehose.on(`device:${deviceUUID}`, this.onDevice)
     this.deviceFirehose.on(`notificationSpeech`, this.onNotificationSpeech)
+    this.meshblu.update(deviceUUID, { online: true }, _.noop)
   }
 
   onNotificationSpeech = (notificationText) => {
