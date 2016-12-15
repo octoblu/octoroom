@@ -16,7 +16,7 @@ const RoomInfo = ({ currentTime, name }) => {
   return (
     <div className={styles.root}>
       <div className={styles.metadata}>
-        <div>{formattedTime}</div>
+        <div className={styles.time}>{formattedTime}</div>
         <div><strong>{name}</strong></div>
       </div>
     </div>
