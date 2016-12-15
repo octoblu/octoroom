@@ -1,12 +1,12 @@
 import debug from 'debug'
 import _ from 'lodash'
-import Flexbox from 'react-flexbox'
 import MeshbluHttp from 'browser-meshblu-http'
 import React from 'react'
 
 import { MESHBLU_HOSTNAME } from 'config'
 
 import BackgroundVideo from '../../components/BackgroundVideo/'
+import DashboardHeader from '../../components/DashboardHeader/'
 import BookingQRCode from '../../components/BookingQRCode/'
 import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
@@ -37,7 +37,6 @@ export default class RoomContainer extends React.Component {
       currentTime: null,
       error: null,
       inSkype: false,
-      location: '',
       meetings: null,
       name: '',
       peopleInRoom: [],
@@ -82,7 +81,6 @@ export default class RoomContainer extends React.Component {
       clientUrl,
       currentMeeting,
       inSkype,
-      location,
       meetings,
       peopleInRoom,
       updatedAt,
@@ -99,7 +97,6 @@ export default class RoomContainer extends React.Component {
       currentMeeting,
       currentTime: updatedAt,
       inSkype,
-      location,
       meetings,
       name,
       peopleInRoom,
@@ -122,7 +119,6 @@ export default class RoomContainer extends React.Component {
       clientUrl,
       currentMeeting,
       currentTime,
-      location,
       meetings,
       name,
       speechText,
@@ -134,25 +130,9 @@ export default class RoomContainer extends React.Component {
 
     return (
       <div className={styles.root}>
-        <BackgroundVideo imageUrl={backgroundImageUrl} videoUrl={backgroundVideoUrl} />
-        <Flexbox auto className={styles.header}>
-          <span>
-            <img
-              src="//cdn.octoblu.com/images/citrix-logo-reverse.png"
-              alt="Citrix"
-              className={styles.citrixLogo}
-            />
-            <img
-              src="//d2zw6j512x6z0x.cloudfront.net/master/d48dc0bf063ecc1477d1163831ee8ff17efbbfae/assets/images/octoblu_logo.png"
-              alt="Octoblu"
-              className={styles.octobluLogo}
-            />
-          </span>
+        <DashboardHeader clientUrl={clientUrl} />
 
-          <div>
-            Join the Room <strong>{clientUrl}</strong>
-          </div>
-        </Flexbox>
+        <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
 
         <RoomState
           currentMeeting={currentMeeting}
@@ -162,13 +142,12 @@ export default class RoomContainer extends React.Component {
           currentTime={currentTime}
         />
 
-        <BookingQRCode clientUrl={clientUrl}/>
+        <BookingQRCode clientUrl={clientUrl} />
 
         <div className={styles.footer}>
           <RoomInfo
             clientUrl={clientUrl}
             currentTime={currentTime}
-            location={location}
             name={name}
           />
         </div>

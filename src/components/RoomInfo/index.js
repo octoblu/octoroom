@@ -6,15 +6,10 @@ import styles from './styles.css'
 const propTypes = {
   currentTime: PropTypes.string,
   clientUrl: PropTypes.string,
-  location: PropTypes.string,
   name: PropTypes.string.isRequired,
 }
 
-const defaultProps = {
-  location: 'Tempe, Arizona',
-}
-
-const RoomInfo = ({ currentTime, name, location }) => {
+const RoomInfo = ({ currentTime, name }) => {
   let formattedTime = ''
   if (currentTime) formattedTime = moment(currentTime).format('h:mm')
 
@@ -23,13 +18,11 @@ const RoomInfo = ({ currentTime, name, location }) => {
       <div className={styles.metadata}>
         <div>{formattedTime}</div>
         <div><strong>{name}</strong></div>
-        <div>{location}</div>
       </div>
     </div>
   )
 }
 
 RoomInfo.propTypes    = propTypes
-RoomInfo.defaultProps = defaultProps
 
 export default RoomInfo

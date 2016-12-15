@@ -1,20 +1,19 @@
-import _ from 'lodash'
 import React, { PropTypes } from 'react'
 import QRCode from 'rc-qrcode'
 import styles from './styles.css'
 
 const propTypes = {
-  clientUrl: PropTypes.string,
+  meetingUrl: PropTypes.string,
 }
 
-const BookingQRCode = ({ clientUrl }) => {
-  if (_.isEmpty(clientUrl)) return null
+const defaultProps = {}
 
+const JoinMeetingQRCode = ({ meetingUrl }) => {
   return (
     <div className={styles.root}>
       <QRCode
         renderer="auto"
-        content={clientUrl}
+        content={meetingUrl}
         scale="5"
         margin="10"
         background="white"
@@ -24,6 +23,7 @@ const BookingQRCode = ({ clientUrl }) => {
   )
 }
 
-BookingQRCode.propTypes = propTypes
+JoinMeetingQRCode.propTypes    = propTypes
+JoinMeetingQRCode.defaultProps = defaultProps
 
-export default BookingQRCode
+export default JoinMeetingQRCode

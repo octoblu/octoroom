@@ -38,34 +38,6 @@
   text-transform: uppercase;
 }
 
-.header {
-  background: rgba(0,0,0,0.7);
-  height: 52px;
-  width: 100%;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 0 24px;
-}
-
-.headerText {
-  font-size: 21px;
-  padding-left: 18px;
-  margin-left: 18px;
-  border-left: 1px solid rgb(0,0,0);
-  line-height: 52px;
-}
-
-.octobluLogo {
-  width: 126px;
-  height: 26px;
-  margin-left: 16px;
-  margin-bottom: 3px;
-}
-
-.citrixLogo {
-  width: 76px;
-  height: 28px;
-}
 
 .footer {
   width: 100%;
