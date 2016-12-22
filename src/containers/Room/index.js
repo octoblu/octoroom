@@ -1,21 +1,13 @@
+import MeshbluHttp from 'browser-meshblu-http'
 import Debug from 'debug'
 import _ from 'lodash'
-import MeshbluHttp from 'browser-meshblu-http'
 import React from 'react'
 
 import { MESHBLU_HOSTNAME } from 'config'
 
-import BackgroundVideo from '../../components/BackgroundVideo/'
-import DashboardFooter from '../../components/DashboardFooter/'
-import DashboardHeader from '../../components/DashboardHeader/'
-import RoomState from '../../components/RoomState/'
-
-import Room from '../../models/room'
-
+import RoomPage from '../../components/RoomPage'
 import { getCredentials } from '../../services/credentials-service'
 import DeviceFirehose from '../../services/device-firehose'
-
-import styles from './styles.css'
 
 const debug = Debug('dashboard:containers:room')
 
@@ -27,10 +19,7 @@ export default class RoomContainer extends React.Component {
     clientUrl: '',
     currentTime: null,
     error: null,
-    inSkype: false,
-    meetings: null,
     name: '',
-    peopleInRoom: [],
   }
 
   constructor(props) {
@@ -38,7 +27,6 @@ export default class RoomContainer extends React.Component {
 
     const credentials = getCredentials()
 
-    this.room           = new Room([])
     this.meshblu        = new MeshbluHttp({ ...credentials, hostname: MESHBLU_HOSTNAME })
     this.deviceFirehose = new DeviceFirehose(credentials)
 
@@ -63,67 +51,42 @@ export default class RoomContainer extends React.Component {
   }
 
   onDevice = (device) => {
-    debug('GENISYS', device.genisys);
-
     const { name, genisys } = device
-    const {
-      backgroundImageUrl,
-      backgroundVideoUrl,
-      clientUrl,
-      currentMeeting,
-      inSkype,
-      meetings,
-      nextMeeting,
-      peopleInRoom,
-      updatedAt,
-    } = genisys
 
-    this.room.setOccupants(peopleInRoom)
+    debug('GENISYS', genisys);
 
     this.setState({
-      backgroundImageUrl,
-      backgroundVideoUrl,
-      clientUrl,
-      currentMeeting,
-      currentTime: updatedAt,
-      inSkype,
-      meetings,
-      nextMeeting,
+      backgroundImageUrl: genisys.backgroundImageUrl,
+      backgroundVideoUrl: genisys.backgroundVideoUrl,
+      clientUrl: genisys.clientUrl,
+      currentMeeting: genisys.currentMeeting,
+      currentTime: genisys.updatedAt,
       name,
-      peopleInRoom,
+      nextMeeting: genisys.nextMeeting,
     })
   }
 
   render() {
-    if (!this.room) return null
-
-    debug('STATE', this.state);
-
     const {
+      backgroundImageUrl,
+      backgroundVideoUrl,
       clientUrl,
       currentMeeting,
       currentTime,
-      nextMeeting,
       name,
+      nextMeeting,
     } = this.state
 
-    const backgroundImageUrl = _.get(this.state, 'backgroundImageUrl', 'https://cdn.octoblu.com/images/iceland.jpg')
-    const backgroundVideoUrl = _.get(this.state, 'backgroundVideoUrl')
-
     return (
-      <div className={styles.root}>
-        <DashboardHeader name={name} />
-
-        <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
-
-        <RoomState
-          clientUrl={clientUrl}
-          currentMeeting={currentMeeting}
-          nextMeeting={nextMeeting}
-        />
-
-        <DashboardFooter currentTime={currentTime} />
-      </div>
+      <RoomPage
+        backgroundImageUrl={backgroundImageUrl}
+        backgroundVideoUrl={backgroundVideoUrl}
+        clientUrl={clientUrl}
+        currentMeeting={currentMeeting}
+        currentTime={currentTime}
+        name={name}
+        nextMeeting={nextMeeting}
+      />
     )
   }
 }

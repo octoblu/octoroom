@@ -3,14 +3,15 @@ import { Route, IndexRoute } from 'react-router'
 
 import App from '../containers/App/'
 import Room from '../containers/Room/'
-import Setup from '../containers/Setup/'
+import Settings from '../containers/Settings/'
 import NotFound from '../components/NotFound/'
 
 export default (
   <Route>
     <Route path="/" component={App}>
       <IndexRoute component={Room} />
-      <Route path="setup" component={Setup} />
+      <Route path="settings" component={Settings} />
+      <Route path="setup" component={Settings} />
     </Route>
     <Route path="*" status={404} component={NotFound} />
   </Route>

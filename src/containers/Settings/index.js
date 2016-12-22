@@ -15,7 +15,7 @@ const contextTypes = {
   router: PropTypes.object,
 }
 
-class Setup extends React.Component {
+class Settings extends React.Component {
   constructor(props) {
     super(props)
 
@@ -57,7 +57,7 @@ class Setup extends React.Component {
   }
 }
 
-Setup.contextTypes = contextTypes
+Settings.contextTypes = contextTypes
 
 
-export default Setup
+export default Settings
