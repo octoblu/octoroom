@@ -18,7 +18,7 @@ const NextMeeting = ({ nextMeeting }) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.next}>Next: {subject} /></div>
+      <div className={styles.next}>Next: {subject}</div>
     </div>
   )
 }
