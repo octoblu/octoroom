@@ -7,29 +7,27 @@ import Heading from '../Heading'
 import styles from './styles.css'
 
 const propTypes = {
-  currentMeeting: PropTypes.object,
+  endTime: PropTypes.string,
+  meetingUrl: PropTypes.string,
+  subject: PropTypes.string,
 }
 
 const defaultProps = {
-  currentMeeting: null,
+  endTime: '',
+  meetingUrl: '',
+  subject: '',
 }
 
-const CurrentMeetingIndicator = ({ currentMeeting}) => {
-  if (_.isEmpty(currentMeeting)) return null
+const CurrentMeetingIndicator = ({ endTime, meetingUrl, subject }) => {
+  if (_.some([endTime, meetingUrl, subject], _.isEmpty)) return null
 
-  const endTime   = _.get(currentMeeting, 'endTime')
-  const meetingId = _.get(currentMeeting, 'meetingId')
-  const subject   = _.get(currentMeeting, 'subject')
-
-  const formattedEndTime = endTime ? `until ${moment(endTime).format('h:mm')}` : null
-  const meetingSubject   = subject ? <div className ={styles.current}>{subject}</div> : null
-  const joinMeetingLink  = null
-  // const joinMeetingLink  = meetingId ? <div className ={styles.current}>{`https://WAT.IS.THIS/meetings/${meetingUrl}`}</div> : null
+  const formattedEndTime = endTime ? `until ${moment(endTime).format('h:mm A')}` : null
+  const meetingSubject   = subject ? <Heading>{subject}</Heading> : null
 
   return <div className={styles.root}>
-    <Heading>Booked {formattedEndTime}</Heading>
+    <div className={styles.booked}>Booked {formattedEndTime}</div>
     {meetingSubject}
-    {joinMeetingLink}
+    <div className={styles.bookingIndicator}><span className={styles.action}>Join:</span> {meetingUrl}</div>
   </div>
 }
 

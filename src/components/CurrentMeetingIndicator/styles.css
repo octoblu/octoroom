@@ -1,13 +1,50 @@
 .root {
   display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+
+  border-color: #FF0000;
+  border-width: 30px;
+  border-left-style: solid;
+  padding-left: 30px;
+  margin-left: 60px;
+  animation: fadein 2s;
+}
+
+
+.bookingIndicator {
+  color: #AAA;
+  font-family: 'citrixsans-regular', sans-serif;
+
+  font-size: 52px;
+  line-height: 1.5;
+}
+
+.action {
+  color: #999;
+  font-family: 'citrixsans-light', sans-serif;
+}
+
+.booked {
+  font-size: 52px;
+  color: #CCC;
+}
+
+
+
+
+
+
+/*.root {
+  display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   flex: 1;
   font-size: 64px;
 
-  animation: fadein 2s;
-}
+}*/
 
 @keyframes fadein {
   from { opacity: 0; }

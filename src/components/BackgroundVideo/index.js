@@ -9,6 +9,7 @@ const propTypes = {
 const defaultProps = {}
 
 const BackgroundVideo = ({ imageUrl, videoUrl }) => {
+  // return null
   if (_.isEmpty(videoUrl)) {
     return <div className={styles.wrapper}><img src={imageUrl} className={styles.image} /></div>
   }

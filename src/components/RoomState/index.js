@@ -1,38 +1,31 @@
 import _ from 'lodash'
 import React, { PropTypes } from 'react'
 
+import Available from '../Available'
 import CurrentMeetingIndicator from '../CurrentMeetingIndicator'
-import Spit from '../Spit/'
-import Welcome from '../Welcome/'
-
-import styles from './styles.css'
 
 const propTypes = {
+  clientUrl: PropTypes.string,
   currentMeeting: PropTypes.object,
-  meetings: PropTypes.object,
-  notificationText: PropTypes.string,
-  speechText: PropTypes.string,
-  currentTime: PropTypes.string,
+  nextMeeting: PropTypes.object,
 }
 
 const defaultProps = {
+  clientUrl: '',
   currentMeeting: null,
-  meetings: null,
-  notificationText: '',
-  speechText: '',
+  nextMeeting: null,
 }
 
-const RoomState = ({ currentMeeting, currentTime, meetings, notificationText, speechText }) => {
-  return (
-    <div className={styles.root}>
-      {(_.isEmpty(currentMeeting)) && <Welcome meetings={meetings} currentTime={currentTime} />}
-      <CurrentMeetingIndicator currentMeeting={currentMeeting} />
+const RoomState = ({ clientUrl, currentMeeting, nextMeeting }) => {
+  if (_.isEmpty(currentMeeting)) return <Available clientUrl={clientUrl} nextMeeting={nextMeeting} />
 
-      <div className={styles.speechContainer}>
-        <Spit autoPlay text={speechText} />
-        <Spit autoPlay text={notificationText} />
-      </div>
-    </div>
+  const {endTime, meetingUrl, subject} = currentMeeting
+  return (
+    <CurrentMeetingIndicator
+      endTime={endTime}
+      meetingUrl={meetingUrl}
+      subject={subject}
+    />
   )
 }
 

@@ -2,24 +2,18 @@ import _ from 'lodash'
 import moment from 'moment'
 import React, { PropTypes } from 'react'
 
-import { getNextMeeting } from '../../models/meetings/'
-
 import styles from './styles.css'
 
 const propTypes = {
-  meetings: PropTypes.object,
-  currentTime: PropTypes.string,
+  nextMeeting: PropTypes.object,
 }
 
 const defaultProps = {
-  meetings: {}
+  nextMeeting: null,
 }
 
-const UpcomingMeetingIndicator = ({ meetings, currentTime }) => {
-  const nextMeeting = getNextMeeting(meetings, currentTime)
-
+const UpcomingMeetingIndicator = ({ nextMeeting }) => {
   if (_.isEmpty(nextMeeting)) return null
-
   const formattedStartTime = moment(nextMeeting.startTime).format('h:mm')
 
   return (

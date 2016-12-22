@@ -10,6 +10,6 @@ const Heading = ({ children }) => {
   return <h1 className={styles.root}>{children}</h1>
 }
 
-Heading.propTypes    = propTypes
+Heading.propTypes = propTypes
 
 export default Heading

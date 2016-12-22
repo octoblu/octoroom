@@ -1,4 +1,4 @@
-import debug from 'debug'
+import Debug from 'debug'
 import _ from 'lodash'
 import MeshbluHttp from 'browser-meshblu-http'
 import React from 'react'
@@ -6,9 +6,8 @@ import React from 'react'
 import { MESHBLU_HOSTNAME } from 'config'
 
 import BackgroundVideo from '../../components/BackgroundVideo/'
+import DashboardFooter from '../../components/DashboardFooter/'
 import DashboardHeader from '../../components/DashboardHeader/'
-import BookingQRCode from '../../components/BookingQRCode/'
-import RoomInfo from '../../components/RoomInfo/'
 import RoomState from '../../components/RoomState/'
 
 import Room from '../../models/room'
@@ -18,9 +17,22 @@ import DeviceFirehose from '../../services/device-firehose'
 
 import styles from './styles.css'
 
-const log = debug('container:room')
+const debug = Debug('dashboard:containers:room')
 
 export default class RoomContainer extends React.Component {
+  state = {
+    backgroundImageUrl: '',
+    backgroundVideoUrl: '',
+    currentMeeting: null,
+    clientUrl: '',
+    currentTime: null,
+    error: null,
+    inSkype: false,
+    meetings: null,
+    name: '',
+    peopleInRoom: [],
+  }
+
   constructor(props) {
     super(props)
 
@@ -29,50 +41,29 @@ export default class RoomContainer extends React.Component {
     this.room           = new Room([])
     this.meshblu        = new MeshbluHttp({ ...credentials, hostname: MESHBLU_HOSTNAME })
     this.deviceFirehose = new DeviceFirehose(credentials)
+
     this.deviceFirehose.connect(this.handleConnectionError)
-
-    this.state = {
-      currentMeeting: null,
-      clientUrl: '',
-      currentTime: null,
-      error: null,
-      inSkype: false,
-      meetings: null,
-      name: '',
-      peopleInRoom: [],
-      speechText: '',
-      notificationText: '',
-    }
-
-    this.speechText = ''
-
-  }
-
-  handleConnectionError = (error) => {
-    if (error) {
-      log('Firehose Connection Error', error)
-      this.setState({ error })
-      return
-    }
-
-    log('Firehose: Connected')
   }
 
   componentDidMount() {
     const deviceUUID = getCredentials().uuid
 
     this.deviceFirehose.on(`device:${deviceUUID}`, this.onDevice)
-    this.deviceFirehose.on(`notificationSpeech`, this.onNotificationSpeech)
     this.meshblu.update(deviceUUID, { online: true }, _.noop)
   }
 
-  onNotificationSpeech = (notificationText) => {
-    const speechText = this.getSpeechText(this.room.getLatestOccupants(this.state.peopleInRoom))
-    this.setState({notificationText, speechText})
+  handleConnectionError = (error) => {
+    if (error) {
+      debug('Firehose Connection Error', error)
+      this.setState({ error })
+      return
+    }
+
+    debug('Firehose: Connected')
   }
 
   onDevice = (device) => {
-    log('GENISYS', device.genisys);
+    debug('GENISYS', device.genisys);
 
     const { name, genisys } = device
     const {
@@ -86,8 +77,6 @@ export default class RoomContainer extends React.Component {
       updatedAt,
     } = genisys
 
-    const speechText = this.getSpeechText(this.room.getLatestOccupants(peopleInRoom))
-
     this.room.setOccupants(peopleInRoom)
 
     this.setState({
@@ -100,29 +89,20 @@ export default class RoomContainer extends React.Component {
       meetings,
       name,
       peopleInRoom,
-      speechText,
-      notificationText: ''
     })
-  }
-
-  getSpeechText(latestOccupants) {
-    if (_.isEmpty(latestOccupants)) return ''
-    if (latestOccupants.length === 1) return `Welcome ${latestOccupants[0].name || 'Guest'}`
-
-    return 'Welcome Guests!'
   }
 
   render() {
     if (!this.room) return null
 
+    debug('STATE', this.state);
+
     const {
       clientUrl,
       currentMeeting,
       currentTime,
-      meetings,
+      nextMeeting,
       name,
-      speechText,
-      notificationText,
     } = this.state
 
     const backgroundImageUrl = _.get(this.state, 'backgroundImageUrl', 'https://cdn.octoblu.com/images/iceland.jpg')
@@ -130,27 +110,17 @@ export default class RoomContainer extends React.Component {
 
     return (
       <div className={styles.root}>
-        <DashboardHeader clientUrl={clientUrl} />
+        <DashboardHeader name={name} />
 
         <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
 
         <RoomState
+          clientUrl={clientUrl}
           currentMeeting={currentMeeting}
-          meetings={meetings}
-          speechText={speechText}
-          notificationText={notificationText}
-          currentTime={currentTime}
+          nextMeeting={nextMeeting}
         />
 
-        <BookingQRCode clientUrl={clientUrl} />
-
-        <div className={styles.footer}>
-          <RoomInfo
-            clientUrl={clientUrl}
-            currentTime={currentTime}
-            name={name}
-          />
-        </div>
+        <DashboardFooter currentTime={currentTime} />
       </div>
     )
   }

@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import Flexbox from 'react-flexbox'
 
-import Heading from '../Heading/'
 import UpcomingMeetingIndicator from'../UpcomingMeetingIndicator/'
 
 import styles from './styles.css'
