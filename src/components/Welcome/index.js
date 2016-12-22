@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Flexbox from 'react-flexbox'
 
-import UpcomingMeetingIndicator from'../UpcomingMeetingIndicator/'
+import NextMeeting from'../NextMeeting/'
 
 import styles from './styles.css'
 
@@ -14,7 +14,7 @@ const Welcome = ({ meetings, currentTime }) => {
   return (
     <Flexbox auto column className={styles.root}>
       <Heading>Available</Heading>
-      <UpcomingMeetingIndicator meetings={meetings} currentTime={currentTime} />
+      <NextMeeting meetings={meetings} currentTime={currentTime} />
     </Flexbox>
   )
 }

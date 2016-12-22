@@ -73,6 +73,7 @@ export default class RoomContainer extends React.Component {
       currentMeeting,
       inSkype,
       meetings,
+      nextMeeting,
       peopleInRoom,
       updatedAt,
     } = genisys
@@ -87,6 +88,7 @@ export default class RoomContainer extends React.Component {
       currentTime: updatedAt,
       inSkype,
       meetings,
+      nextMeeting,
       name,
       peopleInRoom,
     })

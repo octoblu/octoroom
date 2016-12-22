@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
-
+import _ from 'lodash'
 import Heading from '../Heading/'
-import UpcomingMeetingIndicator from'../UpcomingMeetingIndicator/'
+import NextMeeting from '../NextMeeting/'
+import FormattedTime from '../FormattedTime'
 import styles from './styles.css'
 
 const propTypes = {
@@ -15,10 +16,11 @@ const defaultProps = {
 }
 
 const Available = ({ clientUrl, nextMeeting }) => {
+  if(_.isEmpty(clientUrl ) || _.isEmpty(nextMeeting)) return null
   return (
     <div className={styles.root}>
-      <Heading className={styles.state}>Available</Heading>
-      <UpcomingMeetingIndicator nextMeeting={nextMeeting} />
+      <Heading>Available until <FormattedTime timestamp={nextMeeting.startTime} /> </Heading>
+      <NextMeeting nextMeeting={nextMeeting} />
       { clientUrl && <div className={styles.bookingIndicator}><span className={styles.action}>Book Now:</span> {clientUrl}</div>}
     </div>
   )
