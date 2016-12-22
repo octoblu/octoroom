@@ -18,7 +18,7 @@ const defaultProps = {
   subject: '',
 }
 
-const CurrentMeetingIndicator = ({ endTime, meetingUrl, subject }) => {
+const Booked = ({ endTime, meetingUrl, subject }) => {
   if (_.some([endTime, meetingUrl, subject], _.isEmpty)) return null
 
   const formattedEndTime = endTime ? `until ${moment(endTime).format('h:mm A')}` : null
@@ -31,7 +31,7 @@ const CurrentMeetingIndicator = ({ endTime, meetingUrl, subject }) => {
   </div>
 }
 
-CurrentMeetingIndicator.propTypes    = propTypes
-CurrentMeetingIndicator.defaultProps = defaultProps
+Booked.propTypes    = propTypes
+Booked.defaultProps = defaultProps
 
-export default CurrentMeetingIndicator
+export default Booked

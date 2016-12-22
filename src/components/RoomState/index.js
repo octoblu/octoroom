@@ -2,7 +2,7 @@ import _ from 'lodash'
 import React, { PropTypes } from 'react'
 
 import Available from '../Available'
-import CurrentMeetingIndicator from '../CurrentMeetingIndicator'
+import Booked from '../Booked'
 
 const propTypes = {
   clientUrl: PropTypes.string,
@@ -21,7 +21,7 @@ const RoomState = ({ clientUrl, currentMeeting, nextMeeting }) => {
 
   const {endTime, meetingUrl, subject} = currentMeeting
   return (
-    <CurrentMeetingIndicator
+    <Booked
       endTime={endTime}
       meetingUrl={meetingUrl}
       subject={subject}

@@ -1,8 +1,0 @@
-.root {
-  position: fixed;
-  top: 64px;
-  right: 24px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
