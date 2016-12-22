@@ -1,10 +1,11 @@
 import _ from 'lodash'
-import moment from 'moment'
 import React, { PropTypes } from 'react'
 
-import Heading from '../Heading'
-
-import styles from './styles.css'
+import FormattedTime from '../FormattedTime'
+import StateHeading from '../StateHeading'
+import StateLink from '../StateLink'
+import StateSubHeading from '../StateSubHeading'
+import StateWrapper from '../StateWrapper'
 
 const propTypes = {
   endTime: PropTypes.string,
@@ -21,14 +22,13 @@ const defaultProps = {
 const Booked = ({ endTime, meetingUrl, subject }) => {
   if (_.some([endTime, meetingUrl, subject], _.isEmpty)) return null
 
-  const formattedEndTime = endTime ? `until ${moment(endTime).format('h:mm A')}` : null
-  const meetingSubject   = subject ? <Heading>{subject}</Heading> : null
-
-  return <div className={styles.root}>
-    <div className={styles.booked}>Booked {formattedEndTime}</div>
-    {meetingSubject}
-    <div className={styles.bookingIndicator}><span className={styles.action}>Join:</span> {meetingUrl}</div>
-  </div>
+  return (
+    <StateWrapper booked>
+      <StateSubHeading>Booked until&nbsp;<FormattedTime timestamp={endTime} /></StateSubHeading>
+      <StateHeading>{subject}</StateHeading>
+      <StateLink><span>Join:</span> {meetingUrl}</StateLink>
+    </StateWrapper>
+  )
 }
 
 Booked.propTypes    = propTypes

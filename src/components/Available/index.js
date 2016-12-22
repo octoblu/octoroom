@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react'
 import _ from 'lodash'
-import Heading from '../Heading/'
-import NextMeeting from '../NextMeeting/'
+
+import StateHeading from '../StateHeading/'
+import StateLink from '../StateLink/'
+import StateSubHeading from '../StateSubHeading/'
+import StateWrapper from '../StateWrapper/'
 import FormattedTime from '../FormattedTime'
-import styles from './styles.css'
 
 const propTypes = {
   clientUrl: PropTypes.string,
@@ -16,13 +18,21 @@ const defaultProps = {
 }
 
 const Available = ({ clientUrl, nextMeeting }) => {
-  if(_.isEmpty(clientUrl ) || _.isEmpty(nextMeeting)) return null
+  if (_.isEmpty(nextMeeting)) {
+    return (
+      <StateWrapper>
+        <StateHeading>Available</StateHeading>
+        { clientUrl && <StateLink><span>Book Now:</span> {clientUrl}</StateLink>}
+      </StateWrapper>
+    )
+  }
+
   return (
-    <div className={styles.root}>
-      <Heading>Available until <FormattedTime timestamp={nextMeeting.startTime} /> </Heading>
-      <NextMeeting nextMeeting={nextMeeting} />
-      { clientUrl && <div className={styles.bookingIndicator}><span className={styles.action}>Book Now:</span> {clientUrl}</div>}
-    </div>
+    <StateWrapper>
+      <StateHeading>Available until <FormattedTime timestamp={nextMeeting.startTime} /></StateHeading>
+      <StateSubHeading>Next: {nextMeeting.subject}</StateSubHeading>
+      { clientUrl && <StateLink><span>Book Now:</span> {clientUrl}</StateLink>}
+    </StateWrapper>
   )
 }
 

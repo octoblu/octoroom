@@ -6,10 +6,10 @@ const propTypes = {
   children: PropTypes.node,
 }
 
-const Heading = ({ children }) => {
+const StateHeading = ({ children }) => {
   return <h1 className={styles.root}>{children}</h1>
 }
 
-Heading.propTypes = propTypes
+StateHeading.propTypes = propTypes
 
-export default Heading
+export default StateHeading
