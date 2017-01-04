@@ -45,7 +45,7 @@ const RoomPage = (props) => {
         nextMeeting={nextMeeting}
       />
 
-      <DashboardFooter currentTime={currentTime} />
+      <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')}/>
     </div>
   )
 }
