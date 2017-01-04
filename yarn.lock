@@ -1708,6 +1708,10 @@ component-emitter@1.2.1, component-emitter@^1.2.0, component-emitter@~1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
 
+component-ie@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/component-ie/-/component-ie-1.0.0.tgz#0f9582ccb078a687592cc29eb46b3186e6fe637f"
+
 component-inherit@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
@@ -6091,6 +6095,12 @@ style-loader@0.13.1, style-loader@^0.13.1:
   dependencies:
     loader-utils "^0.2.7"
 
+superagent-no-cache@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/superagent-no-cache/-/superagent-no-cache-0.1.0.tgz#f603e5cfb13b916ebdb8e6ec777a512da9eb0ae9"
+  dependencies:
+    component-ie "^1.0.0"
+
 superagent@^1.8.0:
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/superagent/-/superagent-1.8.5.tgz#1c0ddc3af30e80eb84ebc05cb2122da8fe940b55"
@@ -6107,7 +6117,7 @@ superagent@^1.8.0:
     readable-stream "1.0.27-1"
     reduce-component "1.0.1"
 
-superagent@^3.1.0:
+superagent@^3.1.0, superagent@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/superagent/-/superagent-3.3.1.tgz#b171b974f0a76da65e1f00430c8cb7a8b52a404c"
   dependencies:

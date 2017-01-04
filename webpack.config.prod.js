@@ -33,7 +33,8 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
     alias: {
-      config: path.join(__dirname, 'src', 'config', 'production')
+      config: path.join(__dirname, 'src', 'config', 'production'),
+      'ie': 'component-ie'
     }
   },
   plugins: [

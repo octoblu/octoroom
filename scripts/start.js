@@ -6,6 +6,7 @@ var path               = require('path')
 var webpack            = require('webpack')
 var WebpackDevServer   = require('webpack-dev-server')
 var config             = require('../webpack.config.dev')
+var fs                 = require('fs')
 
 var compiler
 var DEFAULT_PORT             = process.env.PORT || 80
@@ -45,6 +46,14 @@ function clearConsole() {
 
 
 function addMiddleware(devServer) {
+  devServer.use('/version', function (req, res, next) {
+    fs.readFile('package.json', 'utf8', function (err, data) {
+        if (err) throw err
+        var version = JSON.parse(data).version
+        res.send({'version':version})
+    })
+  })
+
   devServer.use(historyApiFallback({
     // Allow paths with dots in them to be loaded, reference issue #387
     disableDotRule: true,
