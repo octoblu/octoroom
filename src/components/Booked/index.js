@@ -22,9 +22,11 @@ const defaultProps = {
 const Booked = ({ endTime, meetingUrl, subject }) => {
   if (_.some([endTime, meetingUrl], _.isEmpty)) return null
 
+  if (_.isEmpty(subject)) subject = 'Meeting'
+
   return (
     <StateWrapper booked>
-      { subject || <StateHeading>Meeting</StateHeading>}
+      <StateHeading>{subject}</StateHeading>
       <StateSubHeading>Booked until&nbsp;<FormattedTime timestamp={endTime} /></StateSubHeading>
       <StateLink><span>Join:</span> {meetingUrl}</StateLink>
     </StateWrapper>
