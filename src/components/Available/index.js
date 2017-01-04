@@ -21,7 +21,7 @@ const Available = ({ clientUrl, nextMeeting }) => {
   if (_.isEmpty(nextMeeting)) {
     return (
       <StateWrapper>
-        <StateHeading>Available</StateHeading>
+        <StateHeading>Available all day</StateHeading>
         { clientUrl && <StateLink><span>Book Now:</span> {clientUrl}</StateLink>}
       </StateWrapper>
     )

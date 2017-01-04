@@ -1,7 +1,7 @@
 import MeshbluHttp from 'browser-meshblu-http'
 import Debug from 'debug'
 import _ from 'lodash'
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import { MESHBLU_HOSTNAME } from 'config'
 
@@ -11,7 +11,11 @@ import DeviceFirehose from '../../services/device-firehose'
 
 const debug = Debug('dashboard:containers:room')
 
-export default class RoomContainer extends React.Component {
+const contextTypes = {
+  router: PropTypes.object,
+}
+
+class RoomContainer extends React.Component {
   state = {
     backgroundImageUrl: '',
     backgroundVideoUrl: '',
@@ -24,20 +28,20 @@ export default class RoomContainer extends React.Component {
 
   constructor(props) {
     super(props)
+  }
 
+  componentDidMount() {
     const credentials = getCredentials()
+    const { uuid, token } = credentials
+
+    if (_.some([ uuid, token ], _.isEmpty)) return this.context.router.push('/setup')
 
     this.meshblu        = new MeshbluHttp({ ...credentials, hostname: MESHBLU_HOSTNAME })
     this.deviceFirehose = new DeviceFirehose(credentials)
 
     this.deviceFirehose.connect(this.handleConnectionError)
-  }
-
-  componentDidMount() {
-    const deviceUUID = getCredentials().uuid
-
-    this.deviceFirehose.on(`device:${deviceUUID}`, this.onDevice)
-    this.meshblu.update(deviceUUID, { online: true }, _.noop)
+    this.deviceFirehose.on(`device:${uuid}`, this.onDevice)
+    this.meshblu.update(uuid, { online: true }, _.noop)
   }
 
   handleConnectionError = (error) => {
@@ -90,3 +94,7 @@ export default class RoomContainer extends React.Component {
     )
   }
 }
+
+RoomContainer.contextTypes = contextTypes
+
+export default RoomContainer
