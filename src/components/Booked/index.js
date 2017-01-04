@@ -22,8 +22,6 @@ const defaultProps = {
 const Booked = ({ endTime, meetingUrl, subject }) => {
   if (_.some([endTime, meetingUrl], _.isEmpty)) return null
 
-  if (_.isEmpty(subject)) subject = 'Meeting'
-
   return (
     <StateWrapper booked>
       <StateHeading>{subject}</StateHeading>

@@ -27,10 +27,13 @@ const Available = ({ clientUrl, nextMeeting }) => {
     )
   }
 
+  let { startTime, subject } = nextMeeting
+  if (_.isEmpty(subject)) subject = 'Meeting'
+
   return (
     <StateWrapper>
-      <StateHeading>Available until <FormattedTime timestamp={nextMeeting.startTime} /></StateHeading>
-      <StateSubHeading>Next: {nextMeeting.subject}</StateSubHeading>
+      <StateHeading>Available until <FormattedTime timestamp={startTime} /></StateHeading>
+      <StateSubHeading>Next: {subject}</StateSubHeading>
       { clientUrl && <StateLink><span>Book Now:</span> {clientUrl}</StateLink>}
     </StateWrapper>
   )

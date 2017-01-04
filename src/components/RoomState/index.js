@@ -20,6 +20,8 @@ const RoomState = ({ clientUrl, currentMeeting, nextMeeting }) => {
   if (_.isEmpty(currentMeeting)) return <Available clientUrl={clientUrl} nextMeeting={nextMeeting} />
 
   const {endTime, meetingUrl, subject} = currentMeeting
+  if (_.isEmpty(subject)) subject = 'Meeting'
+
   return (
     <Booked
       endTime={endTime}
