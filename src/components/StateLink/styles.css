@@ -1,12 +1,14 @@
 .root {
-  color: #AAA;
+  color: #FFF;
   font-family: 'citrixsans-regular', sans-serif;
   font-size: 52px;
   line-height: 1.25;
+  margin-top: 0.25em;
+  text-align: left;
 }
 
 .root > span {
-  color: #7F7F7F;
+  color: #7B7A7A;
   font-family: 'citrixsans-light', sans-serif;
   font-size: 52px;
   font-style: normal;

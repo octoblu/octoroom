@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react'
 import _ from 'lodash'
+import React, { PropTypes } from 'react'
 
 import StateHeading from '../StateHeading/'
 import StateLink from '../StateLink/'

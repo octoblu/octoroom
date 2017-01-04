@@ -2,6 +2,8 @@
   display: flex;
   font-size: 52px;
   align-self: flex-start;
-  color: #AAA;
+  text-align: left;
+  color: #CACACA;
   line-height: 1.25;
+  margin-bottom: 0.25em;
 }

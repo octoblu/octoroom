@@ -24,9 +24,9 @@ const Booked = ({ endTime, meetingUrl, subject }) => {
 
   return (
     <StateWrapper booked>
+      <StateSubHeading>In session until&nbsp;<FormattedTime timestamp={endTime} /></StateSubHeading>
       <StateHeading>{subject}</StateHeading>
-      <StateSubHeading>Booked until&nbsp;<FormattedTime timestamp={endTime} /></StateSubHeading>
-      <StateLink><span>Join:</span> {meetingUrl}</StateLink>
+      <StateLink><span>Join this meeting at</span> {meetingUrl}</StateLink>
     </StateWrapper>
   )
 }
