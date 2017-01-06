@@ -22,7 +22,7 @@ const Available = ({ clientUrl, nextMeeting }) => {
     return (
       <StateWrapper>
         <StateHeading>Available all day</StateHeading>
-        { clientUrl && <StateLink><span>Book Now:</span> {clientUrl}</StateLink>}
+        <StateSubHeading>Press the button to Book Now</StateSubHeading>
       </StateWrapper>
     )
   }
@@ -34,7 +34,7 @@ const Available = ({ clientUrl, nextMeeting }) => {
     <StateWrapper>
       <StateHeading>Available until <FormattedTime timestamp={startTime} /></StateHeading>
       <StateSubHeading>Next: {subject}</StateSubHeading>
-      { clientUrl && <StateLink><span>Book Now:</span> {clientUrl}</StateLink>}
+      <StateSubHeading>Press the button to Book Now</StateSubHeading>
     </StateWrapper>
   )
 }
