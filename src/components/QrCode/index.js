@@ -10,7 +10,7 @@ const propTypes = {
 const defaultProps = {}
 
 const QRCode = ({ url }) => {
-  if (_.isEmpty(url)) return null
+  if (_.isEmpty(url)) return <span />
 
   return (
     <div className={styles.root}>
