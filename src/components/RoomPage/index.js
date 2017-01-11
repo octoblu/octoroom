@@ -11,7 +11,6 @@ import styles from './styles.css'
 const propTypes = {
   backgroundImageUrl: PropTypes.string,
   backgroundVideoUrl: PropTypes.string,
-  clientUrl: PropTypes.string,
   currentMeeting: PropTypes.object,
   currentTime: PropTypes.string,
   nextMeeting: PropTypes.object,
@@ -24,7 +23,6 @@ const RoomPage = (props) => {
   const {
     backgroundImageUrl,
     backgroundVideoUrl,
-    clientUrl,
     currentMeeting,
     currentTime,
     nextMeeting,
@@ -36,15 +34,8 @@ const RoomPage = (props) => {
   return (
     <div className={styles.root}>
       <DashboardHeader name={name} />
-
       <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
-
-      <RoomState
-        clientUrl={clientUrl}
-        currentMeeting={currentMeeting}
-        nextMeeting={nextMeeting}
-      />
-
+      <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
       <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')}/>
     </div>
   )

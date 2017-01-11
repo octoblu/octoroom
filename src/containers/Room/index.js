@@ -20,7 +20,6 @@ class RoomContainer extends React.Component {
     backgroundImageUrl: '',
     backgroundVideoUrl: '',
     currentMeeting: null,
-    clientUrl: '',
     currentTime: null,
     error: null,
     name: '',
@@ -62,7 +61,6 @@ class RoomContainer extends React.Component {
     this.setState({
       backgroundImageUrl: genisys.backgroundImageUrl,
       backgroundVideoUrl: genisys.backgroundVideoUrl,
-      clientUrl: genisys.clientUrl,
       currentMeeting: genisys.currentMeeting,
       currentTime: genisys.updatedAt,
       name,
@@ -74,7 +72,6 @@ class RoomContainer extends React.Component {
     const {
       backgroundImageUrl,
       backgroundVideoUrl,
-      clientUrl,
       currentMeeting,
       currentTime,
       name,
@@ -85,7 +82,6 @@ class RoomContainer extends React.Component {
       <RoomPage
         backgroundImageUrl={backgroundImageUrl}
         backgroundVideoUrl={backgroundVideoUrl}
-        clientUrl={clientUrl}
         currentMeeting={currentMeeting}
         currentTime={currentTime}
         name={name}

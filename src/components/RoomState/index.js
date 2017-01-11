@@ -5,19 +5,17 @@ import Available from '../Available'
 import Booked from '../Booked'
 
 const propTypes = {
-  clientUrl: PropTypes.string,
   currentMeeting: PropTypes.object,
   nextMeeting: PropTypes.object,
 }
 
 const defaultProps = {
-  clientUrl: '',
   currentMeeting: null,
   nextMeeting: null,
 }
 
-const RoomState = ({ clientUrl, currentMeeting, nextMeeting }) => {
-  if (_.isEmpty(currentMeeting)) return <Available clientUrl={clientUrl} nextMeeting={nextMeeting} />
+const RoomState = ({ currentMeeting, nextMeeting }) => {
+  if (_.isEmpty(currentMeeting)) return <Available nextMeeting={nextMeeting} />
 
   let {endTime, meetingUrl, subject} = currentMeeting
   if (_.isEmpty(subject)) subject = 'Meeting'

@@ -2,22 +2,20 @@ import _ from 'lodash'
 import React, { PropTypes } from 'react'
 
 import StateHeading from '../StateHeading/'
-import StateLink from '../StateLink/'
 import StateSubHeading from '../StateSubHeading/'
 import StateWrapper from '../StateWrapper/'
 import FormattedTime from '../FormattedTime'
 
 const propTypes = {
-  clientUrl: PropTypes.string,
   nextMeeting: PropTypes.object,
 }
 
 const defaultProps = {
-  clientUrl: '',
   nextMeeting: null,
 }
 
-const Available = ({ clientUrl, nextMeeting }) => {
+const Available = ({ nextMeeting }) => {
+
   if (_.isEmpty(nextMeeting)) {
     return (
       <StateWrapper>

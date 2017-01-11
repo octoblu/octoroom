@@ -14,9 +14,8 @@ const defaultProps = {}
 class App extends React.Component {
 
   componentDidMount() {
-
     const versionCheckInterval = 60*1000
-    var lastVersion = undefined
+    var lastVersion            = undefined
 
     setInterval(function() {
       request
@@ -28,7 +27,6 @@ class App extends React.Component {
           if (!lastVersion) {
             lastVersion = result.version
           } else if (lastVersion != result.version) {
-            console.log('version change, reloading!')
             location.reload()
           }
         });
