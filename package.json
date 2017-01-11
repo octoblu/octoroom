@@ -1,6 +1,6 @@
 {
   "name": "octoroom",
-  "version": "6.1.15",
+  "version": "6.2.0",
   "description": "octoroom",
   "main": "index.js",
   "scripts": {
@@ -54,10 +54,12 @@
     "superagent-no-cache": "^0.1.0",
     "uuid": "^2.0.2",
     "zooid-button": "^1.2.1",
+    "zooid-error-state": "^1.3.0",
     "zooid-heading": "^1.0.8",
     "zooid-input": "^2.3.0",
     "zooid-list": "^2.0.2",
-    "zooid-page": "^2.0.0"
+    "zooid-page": "^3.0.1",
+    "zooid-spinner": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",

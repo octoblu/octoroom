@@ -6762,19 +6762,19 @@ zooid-list@^2.0.2:
     classnames "^2.2.5"
     react "^15.0.1"
 
-zooid-page@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/zooid-page/-/zooid-page-2.0.0.tgz#e69a17b4a72e74495eb3a6480083d16540a0e3d7"
+zooid-page@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/zooid-page/-/zooid-page-3.0.1.tgz#ace7a375d887d75bc19abf8171744dfa565317a6"
   dependencies:
     classnames "^2.2.5"
     lodash.iserror "^3.1.1"
     react "^15.0.1"
     zooid-heading "^1.0.5"
-    zooid-spinner "^1.0.1"
+    zooid-spinner "^1.0.2"
 
-zooid-spinner@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/zooid-spinner/-/zooid-spinner-1.0.2.tgz#41ac5729f4d2999891da669e85527c37bd287c17"
+zooid-spinner@^1.0.2, zooid-spinner@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/zooid-spinner/-/zooid-spinner-1.0.3.tgz#0fdc312f4c814aaea7092a72766859a9cfe84437"
   dependencies:
     classnames "^2.2.5"
     react "^15.0.1"

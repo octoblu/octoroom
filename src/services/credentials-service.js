@@ -1,4 +1,6 @@
 import _ from 'lodash'
+import MeshbluHTTP from 'browser-meshblu-http'
+import { FIREHOSE_CONFIG, MESHBLU_HOSTNAME } from 'config'
 
 const DEFAULT_CREDENTIALS = {
   uuid: '',
@@ -22,4 +24,14 @@ export function getCredentials() {
 
 export function setCredentials(credentials) {
   window.localStorage.setItem('credentials', JSON.stringify(credentials))
+}
+
+export function verifyCredentials({ uuid, token }, callback) {
+  if (_.isEmpty(uuid) || _.isEmpty(token)) return callback(new Error('Missing uuid or token'))
+
+  const meshblu = new MeshbluHTTP({ uuid, token, hostname: MESHBLU_HOSTNAME })
+  meshblu.whoami((error, me) => {
+    if (error && error.message === 'Forbidden') return callback(new Error('Invalid uuid or token'))
+    callback(error)
+  })
 }

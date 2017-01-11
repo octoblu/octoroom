@@ -1,0 +1,22 @@
+:local .root {
+  flex: 1;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background: no-repeat center center fixed;
+  background-color: rgba(0,0,0,0.75);
+  transition: background-image 1000ms ease-in 500ms;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+:local .errorstate,
+:local .spinner {
+  color: white;
+}
