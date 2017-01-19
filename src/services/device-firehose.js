@@ -23,11 +23,9 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._firehose.connect((error) => {
       if (error) return callback(error)
       this._meshblu.whoami((error, me) => {
-        console.log({me})
         callback(error)
       })
     })
-    console.log('connecting the hose...')
   }
 
   close(callback){
@@ -52,9 +50,7 @@ export default class DeviceFirehose extends EventEmitter2 {
     return false
   }
 
-  _onMessage = (message) => {
-    const actions = message.data.genisys.actions
-    if (!_.isEmpty(actions)) console.log("doing something!", actions)
+  _onMessage = (message) => {        
     if (this._isStale(message)) {
       if (this._isSpeech(message)) return this.emit(`notificationSpeech`, this._parseSpeech(message))
       return
