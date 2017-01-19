@@ -8,15 +8,9 @@ import StateSubHeading from '../StateSubHeading'
 import StateWrapper from '../StateWrapper'
 
 const propTypes = {
-  endTime: PropTypes.string,
-  meetingUrl: PropTypes.string,
-  subject: PropTypes.string,
-}
-
-const defaultProps = {
-  endTime: '',
-  meetingUrl: '',
-  subject: '',
+  endTime: PropTypes.string.isRequired,
+  meetingUrl: PropTypes.string.isRequired,
+  subject: PropTypes.string.isRequired,
 }
 
 const Booked = ({ endTime, meetingUrl, subject }) => {
@@ -31,7 +25,6 @@ const Booked = ({ endTime, meetingUrl, subject }) => {
   )
 }
 
-Booked.propTypes    = propTypes
-Booked.defaultProps = defaultProps
+Booked.propTypes = propTypes
 
 export default Booked
