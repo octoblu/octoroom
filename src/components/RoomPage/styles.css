@@ -18,3 +18,9 @@
   -o-background-size: cover;
   background-size: cover;
 }
+.spinner {
+  transition: 0.25s all;
+  opacity: 1;
+}
+
+.spinner.hidden { opacity: 0; }

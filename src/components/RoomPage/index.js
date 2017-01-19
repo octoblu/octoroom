@@ -6,6 +6,8 @@ import DashboardFooter from '../../components/DashboardFooter/'
 import DashboardHeader from '../../components/DashboardHeader/'
 import RoomState from '../../components/RoomState/'
 
+import ZooidSpinner from 'zooid-spinner'
+
 import styles from './styles.css'
 
 const propTypes = {
@@ -20,10 +22,11 @@ const propTypes = {
 
 const defaultProps = {}
 
-
 const Loading = ({loading}) => {
-  if(!loading) return null
-  return <h1>Loading (OLU WILL FIX ME)</h1>
+  const classes = [ styles.spinner ]
+  if(!loading) classes.push(styles.hidden)
+  
+  return <ZooidSpinner className={classes.join(' ')} />
 }
 
 const RoomPage = (props) => {
