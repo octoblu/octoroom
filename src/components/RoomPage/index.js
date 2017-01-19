@@ -15,9 +15,16 @@ const propTypes = {
   currentTime: PropTypes.string,
   nextMeeting: PropTypes.object,
   name: PropTypes.string,
+  loading: PropTypes.bool,
 }
 
 const defaultProps = {}
+
+
+const Loading = ({loading}) => {
+  if(!loading) return null
+  return <h1>Loading (OLU WILL FIX ME)</h1>
+}
 
 const RoomPage = (props) => {
   const {
@@ -27,6 +34,7 @@ const RoomPage = (props) => {
     currentTime,
     nextMeeting,
     name,
+    loading,
   } = props
 
   if (_.isEmpty(currentTime)) return null
@@ -36,6 +44,7 @@ const RoomPage = (props) => {
       <DashboardHeader name={name} />
       <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
       <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
+      <Loading loading={loading} />
       <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')}/>
     </div>
   )

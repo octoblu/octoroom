@@ -15,10 +15,19 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._meshbluConfig = _.assign({ uuid, token }, FIREHOSE_CONFIG)
     this._firehose = new Firehose({ meshbluConfig: this._meshbluConfig })
     this._firehose.on('message', this._onMessage)
+
+    this._meshblu = new MeshbluHTTP({ uuid, token, hostname: MESHBLU_HOSTNAME })
   }
 
   connect(callback) {
-    this._firehose.connect((error) => callback(error))
+    this._firehose.connect((error) => {
+      if (error) return callback(error)
+      this._meshblu.whoami((error, me) => {
+        console.log({me})
+        callback(error)
+      })
+    })
+    console.log('connecting the hose...')
   }
 
   close(callback){
@@ -27,9 +36,7 @@ export default class DeviceFirehose extends EventEmitter2 {
 
   refresh(targetUUID, callback) {
     if (_.isEmpty(targetUUID)) return callback(new Error('Invalid Device UUID'))
-    const { uuid, token } = this._meshbluConfig
-    const meshblu = new MeshbluHTTP({ uuid, token, hostname: MESHBLU_HOSTNAME })
-    meshblu.update(targetUUID, {refresh: Date.now()}, (error) => callback(error))
+    this._meshblu.update(targetUUID, {refresh: Date.now()}, (error) => callback(error))
   }
 
   _isStale(message) {
@@ -46,6 +53,8 @@ export default class DeviceFirehose extends EventEmitter2 {
   }
 
   _onMessage = (message) => {
+    const actions = message.data.genisys.actions
+    if (!_.isEmpty(actions)) console.log("doing something!", actions)
     if (this._isStale(message)) {
       if (this._isSpeech(message)) return this.emit(`notificationSpeech`, this._parseSpeech(message))
       return

@@ -65,6 +65,7 @@ class RoomContainer extends React.Component {
       currentTime: genisys.updatedAt,
       name,
       nextMeeting: genisys.nextMeeting,
+      actions: genisys.actions,
     })
   }
 
@@ -76,6 +77,7 @@ class RoomContainer extends React.Component {
       currentTime,
       name,
       nextMeeting,
+      actions,
     } = this.state
 
     return (
@@ -86,6 +88,7 @@ class RoomContainer extends React.Component {
         currentTime={currentTime}
         name={name}
         nextMeeting={nextMeeting}
+        loading={!_.isEmpty(actions)}
       />
     )
   }
