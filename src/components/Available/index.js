@@ -5,7 +5,7 @@ import AvailableAllDay from '../AvailableAllDay/'
 import AvailableUntil from '../AvailableUntil/'
 
 const propTypes = {
-  nextMeeting: PropTypes.object.isRequired,
+  nextMeeting: PropTypes.object,
 }
 
 const Available = ({ nextMeeting }) => {

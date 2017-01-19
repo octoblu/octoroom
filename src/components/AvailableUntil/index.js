@@ -7,7 +7,7 @@ import StateWrapper from '../StateWrapper/'
 import FormattedTime from '../FormattedTime'
 
 const propTypes = {
-  nextMeeting: PropTypes.object.isRequired,
+  nextMeeting: PropTypes.object,
 }
 
 const AvailableUntil = ({ nextMeeting }) => {
