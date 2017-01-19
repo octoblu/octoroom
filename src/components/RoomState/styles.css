@@ -1,0 +1,14 @@
+.roomState {
+  display:flex;
+  flex-direction: column;
+  width:100%;
+
+}
+.spinner {
+  transition: 0.25s all;
+  opacity: 1;
+  margin-top: 1em;
+  align-self: center;
+}
+
+.spinner.hidden { opacity: 0; }

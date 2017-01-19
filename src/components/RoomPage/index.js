@@ -6,8 +6,6 @@ import DashboardFooter from '../../components/DashboardFooter/'
 import DashboardHeader from '../../components/DashboardHeader/'
 import RoomState from '../../components/RoomState/'
 
-import ZooidSpinner from 'zooid-spinner'
-
 import styles from './styles.css'
 
 const propTypes = {
@@ -21,14 +19,6 @@ const propTypes = {
 }
 
 const defaultProps = {}
-
-const Loading = ({loading}) => {
-  const classes = [ styles.spinner ]
-  if(!loading) classes.push(styles.hidden)
-
-  return <ZooidSpinner className={classes.join(' ')} />
-}
-
 const RoomPage = (props) => {
   const {
     backgroundImageUrl,
@@ -46,10 +36,7 @@ const RoomPage = (props) => {
     <div className={styles.root}>
       <DashboardHeader name={name} />
       <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
-      <div>
-        <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
-        <Loading loading={loading} />
-      </div>
+      <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} loading={loading} />
       <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')}/>
     </div>
   )
