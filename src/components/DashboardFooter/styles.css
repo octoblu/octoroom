@@ -7,3 +7,16 @@
   align-items: baseline;
   justify-content: space-between;
 }
+
+.lowerRight {
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  transition: 0.25s all;
+  opacity: 1;
+  align-self: center;
+}
+
+.spinner.hidden { opacity: 0; }

@@ -36,8 +36,8 @@ const RoomPage = (props) => {
     <div className={styles.root}>
       <DashboardHeader name={name} />
       <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
-      <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} loading={loading} />
-      <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')}/>
+      <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
+      <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')} loading={loading}/>
     </div>
   )
 }
