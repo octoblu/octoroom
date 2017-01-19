@@ -25,7 +25,7 @@ const defaultProps = {}
 const Loading = ({loading}) => {
   const classes = [ styles.spinner ]
   if(!loading) classes.push(styles.hidden)
-  
+
   return <ZooidSpinner className={classes.join(' ')} />
 }
 
@@ -46,8 +46,10 @@ const RoomPage = (props) => {
     <div className={styles.root}>
       <DashboardHeader name={name} />
       <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
-      <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
-      <Loading loading={loading} />
+      <div>
+        <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
+        <Loading loading={loading} />
+      </div>
       <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')}/>
     </div>
   )

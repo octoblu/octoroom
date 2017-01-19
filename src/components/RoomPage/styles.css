@@ -21,6 +21,7 @@
 .spinner {
   transition: 0.25s all;
   opacity: 1;
+  margin-top: 1em;
 }
 
 .spinner.hidden { opacity: 0; }
