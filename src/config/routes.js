@@ -6,11 +6,13 @@ import Auth from '../containers/Auth/'
 import Room from '../containers/Room/'
 import Settings from '../containers/Settings/'
 import NotFound from '../components/NotFound/'
+import UnderConstruction from '../components/UnderConstruction/'
 
 export default (
   <Route>
     <Route path="/" component={App}>
-      <IndexRoute component={Room} />
+      <IndexRoute component={UnderConstruction} />
+      <Route path="dashboard" component={Room} />
       <Route path="settings" component={Settings} />
       <Route path="setup" component={Settings} />
       <Route path="auth" component={Auth} />
