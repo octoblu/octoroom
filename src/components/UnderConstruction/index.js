@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React, { PropTypes } from 'react'
 
 import BackgroundVideo from '../../components/BackgroundVideo/'
@@ -13,11 +12,7 @@ import styles from './styles.css'
 const propTypes = {
   backgroundImageUrl: PropTypes.string,
   backgroundVideoUrl: PropTypes.string,
-  currentMeeting: PropTypes.object,
-  currentTime: PropTypes.string,
-  nextMeeting: PropTypes.object,
   name: PropTypes.string,
-  loading: PropTypes.bool,
 }
 
 const defaultProps = {}
@@ -25,11 +20,7 @@ const UnderConstruction = (props) => {
   const {
     backgroundImageUrl,
     backgroundVideoUrl,
-    currentMeeting,
-    currentTime,
-    nextMeeting,
     name,
-    loading,
   } = props
 
   return (

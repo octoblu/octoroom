@@ -23,6 +23,9 @@ const Loading = ({loading}) => {
   return <ZooidSpinner className={classes.join(' ')} />
 }
 
+Loading.propTypes = {
+  loading: PropTypes.bool
+}
 
 const DashboardFooter = ({ currentTime, url, loading}) => {
   return (

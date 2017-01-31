@@ -1,8 +1,7 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { browserHistory } from 'react-router'
 import _ from 'lodash'
 
-import styles from './styles.css'
 import AuthPage from '../../components/AuthPage/'
 import {setCredentials, verifyCredentials} from '../../services/credentials-service'
 

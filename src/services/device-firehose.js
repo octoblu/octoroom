@@ -22,7 +22,7 @@ export default class DeviceFirehose extends EventEmitter2 {
   connect(callback) {
     this._firehose.connect((error) => {
       if (error) return callback(error)
-      this._meshblu.whoami((error, me) => {
+      this._meshblu.whoami((error) => {
         callback(error)
       })
     })
@@ -50,7 +50,7 @@ export default class DeviceFirehose extends EventEmitter2 {
     return false
   }
 
-  _onMessage = (message) => {        
+  _onMessage = (message) => {
     if (this._isStale(message)) {
       if (this._isSpeech(message)) return this.emit(`notificationSpeech`, this._parseSpeech(message))
       return

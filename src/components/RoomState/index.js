@@ -28,8 +28,10 @@ const InnerRoomState = ({ currentMeeting, nextMeeting }) => {
     />
   )
 }
+InnerRoomState.propTypes    = propTypes
+InnerRoomState.defaultProps = defaultProps
 
-const RoomState = ({ currentMeeting, nextMeeting, loading }) => {
+const RoomState = ({ currentMeeting, nextMeeting }) => {
   return <InnerRoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
 }
 
