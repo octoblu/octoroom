@@ -11,8 +11,8 @@ import UnderConstruction from '../components/UnderConstruction/'
 export default (
   <Route>
     <Route path="/" component={App}>
-      <IndexRoute component={UnderConstruction} />
-      <Route path="dashboard" component={Room} />
+      <IndexRoute component={Room} />
+      <Route path="underconstruction" component={UnderConstruction} />
       <Route path="settings" component={Settings} />
       <Route path="setup" component={Settings} />
       <Route path="auth" component={Auth} />
