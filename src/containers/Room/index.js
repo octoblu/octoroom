@@ -7,6 +7,7 @@ import { MESHBLU_HOSTNAME } from 'config'
 
 import RoomPage from '../../components/RoomPage'
 import { getCredentials } from '../../services/credentials-service'
+import { returnMeetingIfToday } from '../../services/meetings-service'
 import DeviceFirehose from '../../services/device-firehose'
 
 const debug = Debug('dashboard:containers:room')
@@ -57,6 +58,7 @@ class RoomContainer extends React.Component {
     const { name, genisys } = device
 
     debug('GENISYS', genisys);
+    const nextMeeting = returnMeetingIfToday(genisys.nextMeeting)
 
     this.setState({
       backgroundImageUrl: genisys.backgroundImageUrl,
@@ -64,7 +66,7 @@ class RoomContainer extends React.Component {
       currentMeeting: genisys.currentMeeting,
       currentTime: genisys.updatedAt,
       name,
-      nextMeeting: genisys.nextMeeting,
+      nextMeeting,
       actions: genisys.actions,
     })
   }
