@@ -14,6 +14,22 @@ download_index() {
 		--output /usr/share/nginx/html/index.html
 }
 
+retry_download_index() {
+	local cdn="$1"
+	local version="$2"
+	local attempt=0
+
+	while [ $attempt -lt 10 ]; do
+		download_index "$cdn" "$version" && return 0
+		echo "$attempt/10 index download failed, waiting 5s, then retry"
+		let "attempt+=1"
+		sleep 5
+	done
+
+	echo 'failed to download index.html'
+	exit 1
+}
+
 start_nginx() {
 	echo "starting nginx"
   nginx -g 'daemon off;'
@@ -30,8 +46,8 @@ main() {
     exit 1
   fi
 	local version="v$(cat $VERSION_PATH)"
-  download_index "$CDN" "$version" && \
-    start_nginx
+  retry_download_index "$CDN" "$version" \
+	&& start_nginx
 }
 
 main "$@"
