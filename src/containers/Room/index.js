@@ -55,8 +55,8 @@ class RoomContainer extends React.Component {
   }
 
   onDevice = (device) => {
-    const { name, genisys } = device
-
+    const { name, genisys, meshblu } = device
+    console.log({device})
     debug('GENISYS', genisys);
     const nextMeeting = returnMeetingIfToday(genisys.nextMeeting)
 
@@ -64,7 +64,7 @@ class RoomContainer extends React.Component {
       backgroundImageUrl: genisys.backgroundImageUrl,
       backgroundVideoUrl: genisys.backgroundVideoUrl,
       currentMeeting: genisys.currentMeeting,
-      currentTime: genisys.updatedAt,
+      currentTime: meshblu.updatedAt,
       name,
       nextMeeting,
       actions: genisys.actions,
