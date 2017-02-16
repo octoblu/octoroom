@@ -3,7 +3,7 @@ import Debug from 'debug'
 import _ from 'lodash'
 import React, { PropTypes } from 'react'
 
-import { MESHBLU_HOSTNAME } from 'config'
+import { meshbluHttpUrlComponents } from '../../services/urls-service'
 
 import RoomPage from '../../components/RoomPage'
 import { getCredentials } from '../../services/credentials-service'
@@ -36,7 +36,7 @@ class RoomContainer extends React.Component {
 
     if (_.some([ uuid, token ], _.isEmpty)) return this.context.router.push('/setup')
 
-    this.meshblu        = new MeshbluHttp({ ...credentials, hostname: MESHBLU_HOSTNAME })
+    this.meshblu        = new MeshbluHttp({ ...credentials, ...meshbluHttpUrlComponents })
     this.deviceFirehose = new DeviceFirehose(credentials)
 
     this.deviceFirehose.connect(this.handleConnectionError)
@@ -51,12 +51,13 @@ class RoomContainer extends React.Component {
       return
     }
 
+    const {uuid} = getCredentials()
+    this.deviceFirehose.refresh(uuid, (error) => this.setState({ error }))
     debug('Firehose: Connected')
   }
 
   onDevice = (device) => {
     const { name, genisys, meshblu } = device
-    console.log({device})
     debug('GENISYS', genisys);
     const nextMeeting = returnMeetingIfToday(genisys.nextMeeting)
 

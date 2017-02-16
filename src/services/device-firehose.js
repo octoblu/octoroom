@@ -4,7 +4,7 @@ import Firehose from 'meshblu-firehose-socket.io'
 import moment from 'moment'
 import EventEmitter2 from 'eventemitter2'
 
-import { FIREHOSE_CONFIG, MESHBLU_HOSTNAME } from 'config'
+import { meshbluFirehoseSocketIOUrlComponents, meshbluHttpUrlComponents } from './urls-service'
 
 export default class DeviceFirehose extends EventEmitter2 {
   constructor({ uuid, token }) {
@@ -12,11 +12,11 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._lastUpdatedAt = 0
     this._onDeviceHandlers = {}
 
-    this._meshbluConfig = _.assign({ uuid, token }, FIREHOSE_CONFIG)
+    this._meshbluConfig = { uuid, token, ...meshbluFirehoseSocketIOUrlComponents()}
     this._firehose = new Firehose({ meshbluConfig: this._meshbluConfig })
     this._firehose.on('message', this._onMessage)
 
-    this._meshblu = new MeshbluHTTP({ uuid, token, hostname: MESHBLU_HOSTNAME })
+    this._meshblu = new MeshbluHTTP({ uuid, token, ...meshbluHttpUrlComponents() })
   }
 
   connect(callback) {
