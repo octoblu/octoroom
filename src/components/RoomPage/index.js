@@ -2,6 +2,7 @@ import _ from 'lodash'
 import React, { PropTypes } from 'react'
 
 import BackgroundVideo from '../../components/BackgroundVideo/'
+import ConnectError from '../../components/ConnectError/'
 import DashboardFooter from '../../components/DashboardFooter/'
 import DashboardHeader from '../../components/DashboardHeader/'
 import RoomState from '../../components/RoomState/'
@@ -11,6 +12,7 @@ import styles from './styles.css'
 const propTypes = {
   backgroundImageUrl: PropTypes.string,
   backgroundVideoUrl: PropTypes.string,
+  connectError: PropTypes.object,
   currentMeeting: PropTypes.object,
   currentTime: PropTypes.string,
   nextMeeting: PropTypes.object,
@@ -23,6 +25,7 @@ const RoomPage = (props) => {
   const {
     backgroundImageUrl,
     backgroundVideoUrl,
+    connectError,
     currentMeeting,
     currentTime,
     nextMeeting,
@@ -30,7 +33,15 @@ const RoomPage = (props) => {
     loading,
   } = props
 
-  if (_.isEmpty(currentTime)) return null
+  if (connectError) {
+    return (
+      <div className={styles.root}>
+        <DashboardHeader name={name} />
+        <ConnectError />
+        <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')} loading={loading}/>
+      </div>
+    )
+  }
 
   return (
     <div className={styles.root}>

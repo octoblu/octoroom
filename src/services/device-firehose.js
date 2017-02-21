@@ -16,6 +16,8 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._firehose = new Firehose({ meshbluConfig: this._meshbluConfig, reconnectionAttempts: 20})
     this._firehose.on('message', this._onMessage)
     this._firehose.on('reconnect_failed', () => window.location.reload(true))
+    this._firehose.on('reconnect_error', this._onConnectError)
+    this._firehose.on('connect_error', this._onConnectError)
 
     this._meshblu = new MeshbluHTTP({ uuid, token, ...meshbluHttpUrlComponents() })
   }
@@ -49,6 +51,10 @@ export default class DeviceFirehose extends EventEmitter2 {
     const notificationText = _.get(message, 'data.notificationText')
     if (!_.isEmpty(notificationText)) return true
     return false
+  }
+
+  _onConnectError = (error) => {
+    this.emit('connecterror', error)
   }
 
   _onMessage = (message) => {

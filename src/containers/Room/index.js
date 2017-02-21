@@ -20,6 +20,7 @@ class RoomContainer extends React.Component {
   state = {
     backgroundImageUrl: '',
     backgroundVideoUrl: '',
+    connectError: null,
     currentMeeting: null,
     currentTime: null,
     error: null,
@@ -39,12 +40,13 @@ class RoomContainer extends React.Component {
     this.meshblu        = new MeshbluHttp({ ...credentials, ...meshbluHttpUrlComponents })
     this.deviceFirehose = new DeviceFirehose(credentials)
 
-    this.deviceFirehose.connect(this.handleConnectionError)
+    this.deviceFirehose.connect(this.onConnect)
     this.deviceFirehose.on(`device:${uuid}`, this.onDevice)
+    this.deviceFirehose.on('connecterror', this.onConnectError)
     this.meshblu.update(uuid, { online: true }, _.noop)
   }
 
-  handleConnectionError = (error) => {
+  onConnect = (error) => {
     if (error) {
       debug('Firehose Connection Error', error)
       this.setState({ error })
@@ -52,8 +54,12 @@ class RoomContainer extends React.Component {
     }
 
     const {uuid} = getCredentials()
-    this.deviceFirehose.refresh(uuid, (error) => this.setState({ error }))
+    this.deviceFirehose.refresh(uuid, (error) => this.setState({ error, connectError: null }))
     debug('Firehose: Connected')
+  }
+
+  onConnectError = (error) => {
+    this.setState({ connectError: error })
   }
 
   onDevice = (device) => {
@@ -64,6 +70,7 @@ class RoomContainer extends React.Component {
     this.setState({
       backgroundImageUrl: genisys.backgroundImageUrl,
       backgroundVideoUrl: genisys.backgroundVideoUrl,
+      connectError: null,
       currentMeeting: genisys.currentMeeting,
       currentTime: meshblu.updatedAt,
       name,
@@ -76,6 +83,7 @@ class RoomContainer extends React.Component {
     const {
       backgroundImageUrl,
       backgroundVideoUrl,
+      connectError,
       currentMeeting,
       currentTime,
       name,
@@ -87,6 +95,7 @@ class RoomContainer extends React.Component {
       <RoomPage
         backgroundImageUrl={backgroundImageUrl}
         backgroundVideoUrl={backgroundVideoUrl}
+        connectError={connectError}
         currentMeeting={currentMeeting}
         currentTime={currentTime}
         name={name}

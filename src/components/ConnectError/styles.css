@@ -1,0 +1,9 @@
+:local .header {
+  margin-bottom: 30px;
+}
+
+:local .description {
+  width: 800px;
+  margin-top: 0;
+  margin-bottom: 30px;
+}

@@ -4,6 +4,10 @@ import url from 'url'
 export function meshbluFirehoseSocketIOUrlComponents() {
   const { hostname } = getUrlParts()
 
+  if ('localhost' === url.parse(window.location.href).hostname) {
+    return { protocol: 'http', hostname: 'localhost', port: 8000 }
+  }
+
   return { resolveSrv: true, domain: removeSubdomain(hostname) }
 }
 
