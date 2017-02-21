@@ -27,7 +27,7 @@ class App extends React.Component {
           if (!lastVersion) {
             lastVersion = result.version
           } else if (lastVersion != result.version) {
-            location.reload()
+            location.reload(true)
           }
         });
     }, versionCheckInterval)

@@ -13,8 +13,9 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._onDeviceHandlers = {}
 
     this._meshbluConfig = { uuid, token, ...meshbluFirehoseSocketIOUrlComponents()}
-    this._firehose = new Firehose({ meshbluConfig: this._meshbluConfig })
+    this._firehose = new Firehose({ meshbluConfig: this._meshbluConfig, reconnectionAttempts: 20})
     this._firehose.on('message', this._onMessage)
+    this._firehose.on('reconnect_failed', () => window.location.reload(true))
 
     this._meshblu = new MeshbluHTTP({ uuid, token, ...meshbluHttpUrlComponents() })
   }
