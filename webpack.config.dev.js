@@ -2,7 +2,6 @@ var autoprefixer      = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path              = require('path');
 var webpack           = require('webpack');
-var NpmInstallPlugin  = require('npm-install-webpack-plugin')
 
 module.exports = {
   devtool: 'eval',
@@ -36,7 +35,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
       config: path.join(__dirname, 'src', 'config', 'development'),
       'ie': 'component-ie'
@@ -49,32 +48,24 @@ module.exports = {
       template: path.join(__dirname, 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new NpmInstallPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.coffee$/,
         loader: "coffee-loader",
-        include: [
-          path.join(__dirname, 'node_modules')
-        ],
+        include: path.join(__dirname, 'node_modules')
       },
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel-loader',
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.css$/,
-        include: path.join(__dirname, 'node_modules'),
-        loader: 'style-loader!css-loader!postcss-loader'
-      },
-      {
-        test:   /\.css$/,
         include: path.join(__dirname, 'src'),
-        loader: 'style-loader!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&importLoaders=1!postcss-loader'
+        loader: 'style-loader!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&importLoaders=1'
       },
       {
         test: /\.json$/,
@@ -82,7 +73,7 @@ module.exports = {
           path.join(__dirname, 'src'),
           path.join(__dirname, 'node_modules')
         ],
-        loader: 'json'
+        loader: 'json-loader'
       },
       {
         test: /\.(ico|jpg|png|gif|eot|otf|svg|ttf|woff|woff2)(\?.*)?$/,
@@ -91,7 +82,7 @@ module.exports = {
           path.join(__dirname, 'node_modules')
         ],
         exclude: /\/favicon.ico$/,
-        loader: 'file',
+        loader: 'file-loader',
         query: {
           name: 'static/[name].[hash:8].[ext]'
         }
@@ -100,7 +91,7 @@ module.exports = {
       {
         test: /\/favicon.ico$/,
         include: [path.join(__dirname, 'src')],
-        loader: 'file',
+        loader: 'file-loader',
         query: {
          name: 'favicon.ico?[hash:8]'
         }
@@ -109,24 +100,11 @@ module.exports = {
       // resources linked with <link href="./relative/path"> HTML tags.
       {
         test: /\.html$/,
-        loader: 'html',
+        loader: 'html-loader',
         query: {
           attrs: ['link:href'],
         }
       }
     ]
-  },
-  // We use PostCSS for autoprefixing only.
-  postcss: function() {
-    return [
-      autoprefixer({
-        browsers: [
-          '>1%',
-          'last 4 versions',
-          'Firefox ESR',
-          'not ie < 9', // React doesn't support IE8 anyway
-        ]
-      }),
-    ];
   }
 };

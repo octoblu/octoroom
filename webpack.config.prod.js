@@ -31,7 +31,7 @@ module.exports = {
     publicPath: process.env.CDN + '/v' + PKG_VERSION
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
       config: path.join(__dirname, 'src', 'config', 'production'),
       'ie': 'component-ie'
@@ -80,24 +80,19 @@ module.exports = {
     }),
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.coffee$/,
         loader: "coffee-loader"
       },
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel-loader',
         include: path.join(__dirname, 'src')
       },
       {
-        test: /\.css$/,
-        include: path.join(__dirname, 'node_modules'),
-        loader: 'style-loader!css-loader!postcss-loader'
-      },
-      {
         test:   /\.css$/,
-        loader: 'style-loader!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&importLoaders=1!postcss-loader',
+        loader: 'style-loader!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&importLoaders=1',
         include: path.join(__dirname, 'src')
       },
       {
@@ -106,7 +101,7 @@ module.exports = {
           path.join(__dirname, 'src'),
           path.join(__dirname, 'node_modules')
         ],
-        loader: 'json'
+        loader: 'json-loader'
       },
       {
         test: /\.(ico|jpg|png|gif|eot|otf|svg|ttf|woff|woff2)(\?.*)?$/,
@@ -115,7 +110,7 @@ module.exports = {
           path.join(__dirname, 'src'),
           path.join(__dirname, 'node_modules')
         ],
-        loader: 'file',
+        loader: 'file-loader',
         query: {
           name: '/files/[name].[ext]'
         }
@@ -124,7 +119,7 @@ module.exports = {
       {
         test: /\/favicon.ico$/,
         include: [ path.join(__dirname, 'src') ],
-        loader: 'file',
+        loader: 'file-loader',
         query: {
           name: '/favicon.ico'
         }
@@ -133,23 +128,11 @@ module.exports = {
       // resources linked with <link href="./relative/path"> HTML tags.
       {
         test: /\.html$/,
-        loader: 'html',
+        loader: 'html-loader',
         query: {
           attrs: ['link:href'],
         }
       }
     ]
-  },
-  postcss: function() {
-    return [
-     autoprefixer({
-       browsers: [
-         '>1%',
-         'last 4 versions',
-         'Firefox ESR',
-         'not ie < 9', // React doesn't support IE8 anyway
-       ]
-     }),
-    ];
   }
 };
