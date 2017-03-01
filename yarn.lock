@@ -1219,6 +1219,10 @@ backo2@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
 
+backo@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/backo/-/backo-1.1.0.tgz#a36c4468923f2d265c9e8a709ea56ecdaff807e6"
+
 balanced-match@^0.4.1, balanced-match@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
@@ -1310,14 +1314,14 @@ brorand@^1.0.1:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.0.6.tgz#4028706b915f91f7b349a2e0bf3c376039d216e5"
 
-browser-meshblu-http@^6.3.2:
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/browser-meshblu-http/-/browser-meshblu-http-6.3.2.tgz#fff1aaecfbde6c7a19f411267e560e92e9416255"
+browser-meshblu-http@^6.4.3:
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/browser-meshblu-http/-/browser-meshblu-http-6.4.3.tgz#2140feb1985030caf3588812ed0d734a0c7c4cf4"
   dependencies:
     btoa "^1.1.2"
-    http-dns "^3.0.1"
     lodash "^4.17.4"
     qs "^6.3.1"
+    srv-failover "^1.0.4"
     superagent "^3.4.3"
     url-parse "^1.0.5"
 
@@ -1634,6 +1638,10 @@ coffee-loader@^0.7.2:
 coffee-script@^1.12.2:
   version "1.12.2"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.2.tgz#0d4cbdee183f650da95419570c4929d08ef91376"
+
+coffee-script@^1.12.4:
+  version "1.12.4"
+  resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.4.tgz#fe1bced97fe1fb3927b998f2b45616e0658be1ff"
 
 collapse-white-space@^1.0.0:
   version "1.0.2"
@@ -4222,15 +4230,16 @@ merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
 
-meshblu-firehose-socket.io@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/meshblu-firehose-socket.io/-/meshblu-firehose-socket.io-2.1.0.tgz#b553deb1cd4a253a99c943c5b4b7e500f96c2e1f"
+meshblu-firehose-socket.io@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/meshblu-firehose-socket.io/-/meshblu-firehose-socket.io-2.2.0.tgz#5f51066462c766830227263b9335a0ab04049c80"
   dependencies:
+    backo "^1.1.0"
     coffee-script "^1.12.2"
     eventemitter2 "^2.2.1"
-    isomorphic-dns "^1.0.4"
     lodash "^4.17.4"
     socket.io-client "^1.7.2"
+    srv-failover "^1.3.0"
 
 methods@^1.1.1, methods@~1.1.2:
   version "1.1.2"
@@ -5989,6 +5998,14 @@ spdx-license-ids@^1.0.2:
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
+
+srv-failover@^1.0.4, srv-failover@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/srv-failover/-/srv-failover-1.3.0.tgz#149cae87d307198ced8c7162a33407935f1c8b31"
+  dependencies:
+    coffee-script "^1.12.4"
+    isomorphic-dns "^1.0.4"
+    lodash "^4.17.4"
 
 sshpk@^1.7.0:
   version "1.10.2"
