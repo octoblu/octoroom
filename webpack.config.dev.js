@@ -4,7 +4,7 @@ var path              = require('path');
 var webpack           = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: [
     // Include WebpackDevServer client. It connects to WebpackDevServer via
     // sockets and waits for recompile notifications. When WebpackDevServer
@@ -61,6 +61,11 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.css$/,
+        include: path.join(__dirname, 'node_modules'),
+        loader: 'style-loader!css-loader'
       },
       {
         test: /\.css$/,
