@@ -609,16 +609,7 @@ babel-helpers@^6.23.0:
     babel-runtime "^6.22.0"
     babel-template "^6.23.0"
 
-babel-loader@^6.2.4:
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.3.2.tgz#18de4566385578c1b4f8ffe6cbc668f5e2a5ef03"
-  dependencies:
-    find-cache-dir "^0.1.1"
-    loader-utils "^0.2.16"
-    mkdirp "^0.5.1"
-    object-assign "^4.0.1"
-
-babel-loader@^6.4.0:
+babel-loader@^6.2.4, babel-loader@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.4.0.tgz#e98c239662a22533b9e7a49594ef216d7635ea28"
   dependencies:
@@ -1402,11 +1393,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.4.7:
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.4.7.tgz#f72d760be09b7f76d08ed8fae98b289a8d05fab3"
-
-bluebird@^3.5.0:
+bluebird@^3.4.7, bluebird@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
@@ -1758,11 +1745,7 @@ coffee-loader@^0.7.3:
   dependencies:
     loader-utils "^1.0.2"
 
-coffee-script@^1.12.2:
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.2.tgz#0d4cbdee183f650da95419570c4929d08ef91376"
-
-coffee-script@^1.12.4:
+coffee-script@^1.12.2, coffee-script@^1.12.4:
   version "1.12.4"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.4.tgz#fe1bced97fe1fb3927b998f2b45616e0658be1ff"
 
@@ -2224,13 +2207,7 @@ debug@2.3.3:
   dependencies:
     ms "0.7.2"
 
-debug@^2.1.1, debug@^2.2.0:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
-  dependencies:
-    ms "0.7.2"
-
-debug@^2.6.2:
+debug@^2.1.1, debug@^2.2.0, debug@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.2.tgz#dfa96a861ee9b8c2f29349b3bcc41aa599a71e0f"
   dependencies:
@@ -4382,9 +4359,9 @@ merge-source-map@^1.0.2:
   dependencies:
     source-map "^0.5.3"
 
-meshblu-firehose-socket.io@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/meshblu-firehose-socket.io/-/meshblu-firehose-socket.io-3.0.0.tgz#23d750faf59b4037f76ec5b4bee1c2f011693e90"
+meshblu-firehose-socket.io@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/meshblu-firehose-socket.io/-/meshblu-firehose-socket.io-3.0.1.tgz#68aa77de2205c364025e0f5524983add9f3989ad"
   dependencies:
     backo "^1.1.0"
     coffee-script "^1.12.2"
