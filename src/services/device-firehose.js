@@ -15,6 +15,7 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._meshbluConfig = { uuid, token, ...meshbluFirehoseSocketIOUrlComponents()}
     this._firehose = new Firehose({ meshbluConfig: this._meshbluConfig, reconnectionAttempts: 20})
     this._firehose.on('message', this._onMessage)
+    this._firehose.on('reconnecting', this._onConnectError)
     this._firehose.on('reconnect_error', this._onConnectError)
     this._firehose.on('connect_error', this._onConnectError)
 
@@ -22,12 +23,12 @@ export default class DeviceFirehose extends EventEmitter2 {
   }
 
   connect(callback) {
-    this._firehose.connect((error) => {
-      if (error) return callback(error)
+    this._firehose.on('connect', () => {
       this._meshblu.whoami((error) => {
         callback(error)
       })
     })
+    this._firehose.connect()
   }
 
   close(callback){
