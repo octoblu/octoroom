@@ -27,12 +27,11 @@ Loading.propTypes = {
   loading: PropTypes.bool
 }
 
-const DashboardFooter = ({ currentTime, url, loading}) => {
+const DashboardFooter = ({ currentTime, url }) => {
   return (
     <div className={styles.root}>
       <QRCode url={url} />
       <div className={styles.lowerRight}>
-        <Loading loading={loading} />
         <FormattedTime timestamp={currentTime} />
       </div>
     </div>
