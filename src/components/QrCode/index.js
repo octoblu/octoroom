@@ -14,14 +14,16 @@ const QRCode = ({ url }) => {
 
   return (
     <div className={styles.root}>
-      <QR
-        renderer="auto"
-        content={url}
-        scale="4"
-        margin="10"
-        background="white"
-        foreground="black"
-      />
+      <svg viewBox="0 0 120 120" className={styles.qr}>
+        <QR
+          renderer="auto"
+          content={url}
+          scale="4"
+          margin="10"
+          background="white"
+          foreground="black"
+        />
+      </svg>
     </div>
   )
 }

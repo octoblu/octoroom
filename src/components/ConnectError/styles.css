@@ -1,9 +1,9 @@
 :local .header {
-  margin-bottom: 30px;
+  margin-bottom: 1.56vw;
 }
 
 :local .description {
-  width: 800px;
+  width: 41.54vw;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 1.56vw;
 }

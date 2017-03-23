@@ -4,10 +4,10 @@
   align-self: flex-start;
   flex-direction: column;
   border-color: #47B350;
-  border-width: 40px;
+  border-width: 2.076vw;
   border-left-style: solid;
-  padding-left: 50px;
-  margin-left: 50px;
+  padding-left: 2.6vw;
+  margin-left: 2.6vw;
   animation: fadeIn 2s;
 }
 
