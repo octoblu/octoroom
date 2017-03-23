@@ -1,7 +1,9 @@
 .root {
   width: 100%;
   padding: 0.83vw 2.6vw;
+  padding: 0.83vmax 2.6vmax;
   font-size: 1.65vw;
+  font-size: 1.65vmax;
   display: flex;
   flex-direction: row;
   align-items: baseline;
