@@ -37,7 +37,7 @@ class RoomContainer extends React.Component {
 
     if (_.some([ uuid, token ], _.isEmpty)) return this.context.router.push('/setup')
 
-    this.meshblu        = new MeshbluHttp({ ...credentials, ...meshbluHttpUrlComponents })
+    this.meshblu        = new MeshbluHttp({ ...credentials, ...meshbluHttpUrlComponents, serviceName: 'octoroom' })
     this.deviceFirehose = new DeviceFirehose(credentials)
 
     this.deviceFirehose.connect(this.onConnect)
