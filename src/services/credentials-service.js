@@ -28,7 +28,7 @@ export function setCredentials(credentials) {
 
 export function verifyCredentials({ uuid, token }, callback) {
   if (_.isEmpty(uuid) || _.isEmpty(token)) return callback(new Error('Missing uuid or token'))
-  const meshblu = new MeshbluHTTP({ uuid, token, ...meshbluHttpUrlComponents })
+  const meshblu = new MeshbluHTTP({ uuid, token, ...meshbluHttpUrlComponents, serviceName: 'octroom' })
   meshblu.whoami((error) => {
     if (error && error.message === 'Forbidden') return callback(new Error('Invalid uuid or token'))
     callback(error)

@@ -19,7 +19,7 @@ export default class DeviceFirehose extends EventEmitter2 {
     this._firehose.on('reconnect_error', this._onConnectError)
     this._firehose.on('connect_error', this._onConnectError)
 
-    this._meshblu = new MeshbluHTTP({ uuid, token, ...meshbluHttpUrlComponents() })
+    this._meshblu = new MeshbluHTTP({ uuid, token, ...meshbluHttpUrlComponents(), serviceName: 'octoroom' })
   }
 
   connect(callback) {
