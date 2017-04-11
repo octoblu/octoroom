@@ -65,6 +65,13 @@ export default class DeviceFirehose extends EventEmitter2 {
     const device = this._parseDevice(message)
     this._updateLastUpdatedAt(message)
     this.emit(`device:${device.uuid}`, device)
+    if (!device.online) this._setOnline(device.uuid)
+  }
+
+  _setOnline = (targetUUID) => {
+    this._meshblu.update(targetUUID, {online: true}, (error) => {
+      if (error) console.log('set online error: ', error)
+    })
   }
 
   _parseDevice(message) {
