@@ -24,7 +24,7 @@ export default class DeviceFirehose extends EventEmitter2 {
       meshbluConfig: this._meshbluConfig,
       reconnectionAttempts: 20,
     })
-    this.updateDevice = _.debounce(this._updateDevice, 2000)
+    this.updateDevice = _.debounce(this._updateDevice, 35000)
     this._firehose.on("message", this._onMessage)
     this._firehose.on("reconnecting", this._onConnectError)
     this._firehose.on("reconnect_error", this._onConnectError)
