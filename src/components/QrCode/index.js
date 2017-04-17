@@ -1,7 +1,7 @@
-import _ from 'lodash'
-import React, { PropTypes } from 'react'
-import QR from 'rc-qrcode'
-import styles from './styles.css'
+import _ from "lodash"
+import React, { PropTypes } from "react"
+import QR from "rc-qrcode"
+import styles from "./styles.css"
 
 const propTypes = {
   url: PropTypes.string,
@@ -28,7 +28,7 @@ const QRCode = ({ url }) => {
   )
 }
 
-QRCode.propTypes    = propTypes
+QRCode.propTypes = propTypes
 QRCode.defaultProps = defaultProps
 
 export default QRCode

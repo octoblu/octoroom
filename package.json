@@ -1,6 +1,6 @@
 {
   "name": "octoroom",
-  "version": "7.0.11",
+  "version": "7.1.0",
   "description": "octoroom",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,14 @@
     "test": "NODE_ENV=test mocha",
     "test:watch": "npm run test -- --watch --reporter mocha-multi --reporter-options spec=-,mocha-osx-reporter=-",
     "coverage": "nyc npm test",
-    "mocha:json": "env NPM_ENV=test mocha --reporter json > coverage/mocha.json"
+    "mocha:json": "env NPM_ENV=test mocha --reporter json > coverage/mocha.json",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --no-semi --trailing-comma es5",
+      "git add"
+    ]
   },
   "keywords": [
     "zooid",
@@ -98,11 +105,14 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
+    "husky": "^0.13.3",
     "jsdom": "^9.11.0",
+    "lint-staged": "^3.4.0",
     "mocha": "^3.0.2",
     "mocha-multi": "^0.10.0",
     "mocha-osx-reporter": "^0.1.2",
     "nyc": "^10.1.2",
+    "prettier": "^1.1.0",
     "react-addons-test-utils": "^15.2.1",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",

@@ -1,13 +1,13 @@
-import _ from 'lodash'
-import React, { PropTypes } from 'react'
+import _ from "lodash"
+import React, { PropTypes } from "react"
 
-import BackgroundVideo from '../../components/BackgroundVideo/'
-import ConnectError from '../../components/ConnectError/'
-import DashboardFooter from '../../components/DashboardFooter/'
-import DashboardHeader from '../../components/DashboardHeader/'
-import RoomState from '../../components/RoomState/'
+import BackgroundVideo from "../../components/BackgroundVideo/"
+import ConnectError from "../../components/ConnectError/"
+import DashboardFooter from "../../components/DashboardFooter/"
+import DashboardHeader from "../../components/DashboardHeader/"
+import RoomState from "../../components/RoomState/"
 
-import styles from './styles.css'
+import styles from "./styles.css"
 
 const propTypes = {
   backgroundImageUrl: PropTypes.string,
@@ -21,7 +21,7 @@ const propTypes = {
 }
 
 const defaultProps = {}
-const RoomPage = (props) => {
+const RoomPage = props => {
   const {
     backgroundImageUrl,
     backgroundVideoUrl,
@@ -38,7 +38,11 @@ const RoomPage = (props) => {
       <div className={styles.root}>
         <DashboardHeader name={name} />
         <ConnectError />
-        <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')} loading={loading}/>
+        <DashboardFooter
+          currentTime={currentTime}
+          url={_.get(currentMeeting, "meetingUrl")}
+          loading={loading}
+        />
       </div>
     )
   }
@@ -46,14 +50,21 @@ const RoomPage = (props) => {
   return (
     <div className={styles.root}>
       <DashboardHeader name={name} />
-      <BackgroundVideo imageUrl={backgroundImageUrl} videourl={backgroundVideoUrl} />
+      <BackgroundVideo
+        imageUrl={backgroundImageUrl}
+        videourl={backgroundVideoUrl}
+      />
       <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
-      <DashboardFooter currentTime={currentTime} url={_.get(currentMeeting, 'meetingUrl')} loading={loading}/>
+      <DashboardFooter
+        currentTime={currentTime}
+        url={_.get(currentMeeting, "meetingUrl")}
+        loading={loading}
+      />
     </div>
   )
 }
 
-RoomPage.propTypes    = propTypes
+RoomPage.propTypes = propTypes
 RoomPage.defaultProps = defaultProps
 
 export default RoomPage

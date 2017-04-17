@@ -1,7 +1,7 @@
-import _ from 'lodash'
-import React, { PropTypes } from 'react'
-import Input from 'zooid-input'
-import Button from 'zooid-button'
+import _ from "lodash"
+import React, { PropTypes } from "react"
+import Input from "zooid-input"
+import Button from "zooid-button"
 
 const propTypes = {
   uuid: PropTypes.string,
@@ -10,8 +10,8 @@ const propTypes = {
 }
 
 const defaultProps = {
-  uuid: '',
-  token: '',
+  uuid: "",
+  token: "",
   onSetup: _.noop,
 }
 
@@ -37,7 +37,7 @@ const SetupForm = ({ uuid, token, onSetup }) => {
   )
 }
 
-SetupForm.propTypes    = propTypes
+SetupForm.propTypes = propTypes
 SetupForm.defaultProps = defaultProps
 
 export default SetupForm

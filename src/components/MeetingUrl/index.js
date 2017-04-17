@@ -1,10 +1,10 @@
-import _ from 'lodash'
-import React, { PropTypes } from 'react'
+import _ from "lodash"
+import React, { PropTypes } from "react"
 
-import StateLink from '../StateLink'
+import StateLink from "../StateLink"
 
 const propTypes = {
-  meetingUrl: PropTypes.string
+  meetingUrl: PropTypes.string,
 }
 
 const MeetingUrl = ({ meetingUrl }) => {

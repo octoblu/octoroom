@@ -1,10 +1,10 @@
-import _ from 'lodash'
-import MeshbluHTTP from 'browser-meshblu-http'
-import { meshbluHttpUrlComponents } from './urls-service'
+import _ from "lodash"
+import MeshbluHTTP from "browser-meshblu-http"
+import { meshbluHttpUrlComponents } from "./urls-service"
 
 const DEFAULT_CREDENTIALS = {
-  uuid: '',
-  token: '',
+  uuid: "",
+  token: "",
 }
 
 function safeParse(str) {
@@ -16,21 +16,28 @@ function safeParse(str) {
 }
 
 export function getCredentials() {
-  const credentials = safeParse(window.localStorage.getItem('credentials'))
+  const credentials = safeParse(window.localStorage.getItem("credentials"))
   if (!_.isEmpty(credentials)) return credentials
 
   return _.cloneDeep(DEFAULT_CREDENTIALS)
 }
 
 export function setCredentials(credentials) {
-  window.localStorage.setItem('credentials', JSON.stringify(credentials))
+  window.localStorage.setItem("credentials", JSON.stringify(credentials))
 }
 
 export function verifyCredentials({ uuid, token }, callback) {
-  if (_.isEmpty(uuid) || _.isEmpty(token)) return callback(new Error('Missing uuid or token'))
-  const meshblu = new MeshbluHTTP({ uuid, token, ...meshbluHttpUrlComponents, serviceName: 'octroom' })
-  meshblu.whoami((error) => {
-    if (error && error.message === 'Forbidden') return callback(new Error('Invalid uuid or token'))
+  if (_.isEmpty(uuid) || _.isEmpty(token))
+    return callback(new Error("Missing uuid or token"))
+  const meshblu = new MeshbluHTTP({
+    uuid,
+    token,
+    ...meshbluHttpUrlComponents,
+    serviceName: "octroom",
+  })
+  meshblu.whoami(error => {
+    if (error && error.message === "Forbidden")
+      return callback(new Error("Invalid uuid or token"))
     callback(error)
   })
 }

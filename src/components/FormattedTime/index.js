@@ -1,8 +1,8 @@
-import _ from 'lodash'
-import moment from 'moment'
-import React, { PropTypes } from 'react'
+import _ from "lodash"
+import moment from "moment"
+import React, { PropTypes } from "react"
 
-import styles from './styles.css'
+import styles from "./styles.css"
 
 const propTypes = {
   timestamp: PropTypes.string,
@@ -12,11 +12,11 @@ const propTypes = {
 const FormattedTime = ({ timestamp }) => {
   if (_.isEmpty(timestamp)) return null
 
-  const formattedTime = moment(timestamp).format('h:mm A')
+  const formattedTime = moment(timestamp).format("h:mm A")
 
   return <span className={styles.root}>{formattedTime}</span>
 }
 
-FormattedTime.propTypes    = propTypes
+FormattedTime.propTypes = propTypes
 
 export default FormattedTime

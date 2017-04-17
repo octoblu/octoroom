@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react'
-import Flexbox from 'react-flexbox'
-import request from 'superagent'
-import nocache from 'superagent-no-cache'
+import React, { PropTypes } from "react"
+import Flexbox from "react-flexbox"
+import request from "superagent"
+import nocache from "superagent-no-cache"
 
-import styles from './styles.css'
+import styles from "./styles.css"
 
 const propTypes = {
   children: PropTypes.element.isRequired,
@@ -12,16 +12,15 @@ const propTypes = {
 const defaultProps = {}
 
 class App extends React.Component {
-
   componentDidMount() {
-    const versionCheckInterval = 60*1000
-    var lastVersion            = undefined
+    const versionCheckInterval = 60 * 1000
+    var lastVersion = undefined
 
     setInterval(function() {
       request
-        .get(window.location.origin + '/version')
+        .get(window.location.origin + "/version")
         .use(nocache)
-        .end(function(err, res){
+        .end(function(err, res) {
           if (err) return
           var result = JSON.parse(res.text)
           if (!lastVersion) {
@@ -29,7 +28,7 @@ class App extends React.Component {
           } else if (lastVersion != result.version) {
             location.reload(true)
           }
-        });
+        })
     }, versionCheckInterval)
   }
 
@@ -42,7 +41,7 @@ class App extends React.Component {
   }
 }
 
-App.propTypes    = propTypes
+App.propTypes = propTypes
 App.defaultProps = defaultProps
 
 export default App

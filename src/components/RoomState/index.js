@@ -1,8 +1,8 @@
-import _ from 'lodash'
-import React, { PropTypes } from 'react'
+import _ from "lodash"
+import React, { PropTypes } from "react"
 
-import Available from '../Available'
-import Booked from '../Booked'
+import Available from "../Available"
+import Booked from "../Booked"
 
 const propTypes = {
   currentMeeting: PropTypes.object,
@@ -17,25 +17,21 @@ const defaultProps = {
 const InnerRoomState = ({ currentMeeting, nextMeeting }) => {
   if (_.isEmpty(currentMeeting)) return <Available nextMeeting={nextMeeting} />
 
-  let {endTime, meetingUrl, subject} = currentMeeting
-  if (_.isEmpty(subject)) subject = 'Meeting'
+  let { endTime, meetingUrl, subject } = currentMeeting
+  if (_.isEmpty(subject)) subject = "Meeting"
 
-  return (
-    <Booked
-      endTime={endTime}
-      meetingUrl={meetingUrl}
-      subject={subject}
-    />
-  )
+  return <Booked endTime={endTime} meetingUrl={meetingUrl} subject={subject} />
 }
-InnerRoomState.propTypes    = propTypes
+InnerRoomState.propTypes = propTypes
 InnerRoomState.defaultProps = defaultProps
 
 const RoomState = ({ currentMeeting, nextMeeting }) => {
-  return <InnerRoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
+  return (
+    <InnerRoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
+  )
 }
 
-RoomState.propTypes    = propTypes
+RoomState.propTypes = propTypes
 RoomState.defaultProps = defaultProps
 
 export default RoomState

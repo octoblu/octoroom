@@ -1,11 +1,11 @@
-import _ from 'lodash'
-import React, { PropTypes } from 'react'
+import _ from "lodash"
+import React, { PropTypes } from "react"
 
-import FormattedTime from '../FormattedTime'
-import StateSubHeading from '../StateSubHeading'
+import FormattedTime from "../FormattedTime"
+import StateSubHeading from "../StateSubHeading"
 
 const propTypes = {
-  endTime: PropTypes.string
+  endTime: PropTypes.string,
 }
 
 const FormattedEndTime = ({ endTime }) => {
@@ -13,7 +13,11 @@ const FormattedEndTime = ({ endTime }) => {
     return <StateSubHeading>Error finding the meeting end time</StateSubHeading>
   }
 
-  return <StateSubHeading>In session until&nbsp;<FormattedTime timestamp={endTime} /></StateSubHeading>
+  return (
+    <StateSubHeading>
+      In session until&nbsp;<FormattedTime timestamp={endTime} />
+    </StateSubHeading>
+  )
 }
 
 FormattedEndTime.propTypes = propTypes

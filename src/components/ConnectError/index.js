@@ -1,6 +1,6 @@
-import React from 'react'
-import LoadingSpinner from 'zooid-spinner'
-import styles from './styles.css'
+import React from "react"
+import LoadingSpinner from "zooid-spinner"
+import styles from "./styles.css"
 
 const DESCRIPTION =
   "We are experiencing a connection error. " +
@@ -20,8 +20,7 @@ const ConnectError = () => {
     </div>
   )
 }
-ConnectError.propTypes    = propTypes
+ConnectError.propTypes = propTypes
 ConnectError.defaultProps = defaultProps
-
 
 export default ConnectError

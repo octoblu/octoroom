@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react'
-import QRCode from '../QrCode'
-import FormattedTime from '../FormattedTime/'
-import styles from './styles.css'
-import ZooidSpinner from 'zooid-spinner'
+import React, { PropTypes } from "react"
+import QRCode from "../QrCode"
+import FormattedTime from "../FormattedTime/"
+import styles from "./styles.css"
+import ZooidSpinner from "zooid-spinner"
 
 const propTypes = {
   currentTime: PropTypes.string,
@@ -11,20 +11,20 @@ const propTypes = {
 }
 
 const defaultProps = {
-  currentTime: '',
-  url: '',
+  currentTime: "",
+  url: "",
   loading: true,
 }
 
-const Loading = ({loading}) => {
-  const classes = [ styles.spinner ]
-  if(!loading) classes.push(styles.hidden)
+const Loading = ({ loading }) => {
+  const classes = [styles.spinner]
+  if (!loading) classes.push(styles.hidden)
 
-  return <ZooidSpinner className={classes.join(' ')} />
+  return <ZooidSpinner className={classes.join(" ")} />
 }
 
 Loading.propTypes = {
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
 }
 
 const DashboardFooter = ({ currentTime, url }) => {
@@ -38,7 +38,7 @@ const DashboardFooter = ({ currentTime, url }) => {
   )
 }
 
-DashboardFooter.propTypes    = propTypes
+DashboardFooter.propTypes = propTypes
 DashboardFooter.defaultProps = defaultProps
 
 export default DashboardFooter
