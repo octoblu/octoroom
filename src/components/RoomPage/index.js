@@ -1,4 +1,4 @@
-import _ from "lodash"
+import get from "lodash/get"
 import React, { PropTypes } from "react"
 
 import BackgroundVideo from "../../components/BackgroundVideo/"
@@ -18,6 +18,7 @@ const propTypes = {
   nextMeeting: PropTypes.object,
   name: PropTypes.string,
   loading: PropTypes.bool,
+  roomId: PropTypes.string,
 }
 
 const defaultProps = {}
@@ -30,6 +31,7 @@ const RoomPage = props => {
     currentTime,
     nextMeeting,
     name,
+    roomId,
     loading,
   } = props
 
@@ -40,7 +42,7 @@ const RoomPage = props => {
         <ConnectError />
         <DashboardFooter
           currentTime={currentTime}
-          url={_.get(currentMeeting, "meetingUrl")}
+          url={get(currentMeeting, "meetingUrl")}
           loading={loading}
         />
       </div>
@@ -54,10 +56,14 @@ const RoomPage = props => {
         imageUrl={backgroundImageUrl}
         videourl={backgroundVideoUrl}
       />
-      <RoomState currentMeeting={currentMeeting} nextMeeting={nextMeeting} />
+      <RoomState
+        roomId={roomId}
+        currentMeeting={currentMeeting}
+        nextMeeting={nextMeeting}
+      />
       <DashboardFooter
         currentTime={currentTime}
-        url={_.get(currentMeeting, "meetingUrl")}
+        url={get(currentMeeting, "meetingUrl")}
         loading={loading}
       />
     </div>

@@ -1,4 +1,5 @@
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
+import get from "lodash/get"
 import React, { PropTypes } from "react"
 
 import StateHeading from "../StateHeading/"
@@ -8,11 +9,13 @@ import FormattedTime from "../FormattedTime"
 
 const propTypes = {
   nextMeeting: PropTypes.object,
+  roomId: PropTypes.string,
 }
 
-const AvailableUntil = ({ nextMeeting }) => {
-  let { startTime, subject } = nextMeeting
-  if (_.isEmpty(subject)) subject = "Meeting"
+const AvailableUntil = ({ roomId, nextMeeting }) => {
+  const meetingRoom = get(nextMeeting, `rooms.${roomId}`)
+  let { startTime, subject } = meetingRoom
+  if (isEmpty(subject)) subject = "Meeting"
 
   return (
     <StateWrapper>

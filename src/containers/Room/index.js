@@ -25,6 +25,7 @@ class RoomContainer extends React.Component {
     currentTime: null,
     error: null,
     name: "",
+    roomId: "",
   }
 
   constructor(props) {
@@ -70,7 +71,7 @@ class RoomContainer extends React.Component {
   }
 
   onDevice = device => {
-    const { name, genisys, meshblu } = device
+    const { uuid, name, genisys, meshblu } = device
     debug("GENISYS", genisys)
     const nextMeeting = returnMeetingIfToday(genisys.nextMeeting)
 
@@ -83,6 +84,7 @@ class RoomContainer extends React.Component {
       name,
       nextMeeting,
       actions: genisys.actions,
+      roomId: uuid,
     })
   }
 
@@ -96,6 +98,7 @@ class RoomContainer extends React.Component {
       name,
       nextMeeting,
       actions,
+      roomId,
     } = this.state
 
     return (
@@ -106,6 +109,7 @@ class RoomContainer extends React.Component {
         currentMeeting={currentMeeting}
         currentTime={currentTime}
         name={name}
+        roomId={roomId}
         nextMeeting={nextMeeting}
         loading={!_.isEmpty(actions)}
       />
