@@ -24,12 +24,9 @@ class RoomContainer extends React.Component {
     currentMeeting: null,
     currentTime: null,
     error: null,
+    inSkype: false,
     name: "",
     roomId: "",
-  }
-
-  constructor(props) {
-    super(props)
   }
 
   componentDidMount() {
@@ -49,6 +46,7 @@ class RoomContainer extends React.Component {
     this.deviceFirehose.connect(this.onConnect)
     this.deviceFirehose.on(`device:${uuid}`, this.onDevice)
     this.deviceFirehose.on("connecterror", this.onConnectError)
+
     this.meshblu.update(uuid, { online: true }, _.noop)
   }
 
@@ -72,32 +70,46 @@ class RoomContainer extends React.Component {
 
   onDevice = device => {
     const { uuid, name, genisys, meshblu } = device
+
     debug("GENISYS", genisys)
+
     const nextMeeting = returnMeetingIfToday(genisys.nextMeeting)
 
+    const {
+      actions,
+      backgroundImageUrl,
+      backgroundVideoUrl,
+      currentMeeting,
+      inSkype,
+    } = genisys
+
+    console.log("inSkype", inSkype)
+
     this.setState({
-      backgroundImageUrl: genisys.backgroundImageUrl,
-      backgroundVideoUrl: genisys.backgroundVideoUrl,
+      actions,
+      backgroundImageUrl,
+      backgroundVideoUrl,
       connectError: null,
-      currentMeeting: genisys.currentMeeting,
+      currentMeeting,
       currentTime: meshblu.updatedAt,
+      inSkype,
       name,
       nextMeeting,
-      actions: genisys.actions,
       roomId: uuid,
     })
   }
 
   render() {
     const {
+      actions,
       backgroundImageUrl,
       backgroundVideoUrl,
       connectError,
       currentMeeting,
       currentTime,
+      inSkype,
       name,
       nextMeeting,
-      actions,
       roomId,
     } = this.state
 
@@ -108,10 +120,11 @@ class RoomContainer extends React.Component {
         connectError={connectError}
         currentMeeting={currentMeeting}
         currentTime={currentTime}
-        name={name}
-        roomId={roomId}
-        nextMeeting={nextMeeting}
+        inSkype={inSkype}
         loading={!_.isEmpty(actions)}
+        name={name}
+        nextMeeting={nextMeeting}
+        roomId={roomId}
       />
     )
   }

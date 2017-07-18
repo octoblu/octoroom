@@ -15,13 +15,13 @@ const propTypes = {
   connectError: PropTypes.object,
   currentMeeting: PropTypes.object,
   currentTime: PropTypes.string,
-  nextMeeting: PropTypes.object,
-  name: PropTypes.string,
+  inSkype: PropTypes.bool,
   loading: PropTypes.bool,
+  name: PropTypes.string,
+  nextMeeting: PropTypes.object,
   roomId: PropTypes.string,
 }
 
-const defaultProps = {}
 const RoomPage = props => {
   const {
     backgroundImageUrl,
@@ -29,11 +29,14 @@ const RoomPage = props => {
     connectError,
     currentMeeting,
     currentTime,
-    nextMeeting,
-    name,
-    roomId,
+    inSkype,
     loading,
+    name,
+    nextMeeting,
+    roomId,
   } = props
+
+  console.log("ROOMPAGE", inSkype)
 
   if (connectError) {
     return (
@@ -60,6 +63,7 @@ const RoomPage = props => {
         roomId={roomId}
         currentMeeting={currentMeeting}
         nextMeeting={nextMeeting}
+        inSkype={inSkype}
       />
       <DashboardFooter
         currentTime={currentTime}
@@ -71,6 +75,5 @@ const RoomPage = props => {
 }
 
 RoomPage.propTypes = propTypes
-RoomPage.defaultProps = defaultProps
 
 export default RoomPage
