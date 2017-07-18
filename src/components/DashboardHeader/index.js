@@ -1,7 +1,8 @@
-import React, { PropTypes } from 'react'
-import Flexbox from 'react-flexbox'
+import PropTypes from "prop-types"
+import React from "react"
+import Flexbox from "react-flexbox"
 
-import styles from './styles.css'
+import styles from "./styles.css"
 
 const propTypes = {
   name: PropTypes.string,

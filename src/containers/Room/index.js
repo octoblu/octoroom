@@ -3,7 +3,8 @@ import Debug from "debug"
 import isEmpty from "lodash/isEmpty"
 import noop from "lodash/noop"
 import some from "lodash/some"
-import React, { PropTypes } from "react"
+import PropTypes from "prop-types"
+import React from "react"
 
 import { meshbluHttpUrlComponents } from "../../services/urls-service"
 

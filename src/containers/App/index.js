@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react"
+import PropTypes from "prop-types"
+import React from "react"
 import Flexbox from "react-flexbox"
 import request from "superagent"
 import nocache from "superagent-no-cache"

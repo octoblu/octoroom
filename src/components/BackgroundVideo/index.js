@@ -1,5 +1,6 @@
 import isEmpty from "lodash/isEmpty"
-import React, { PropTypes } from "react"
+import PropTypes from "prop-types"
+import React from "react"
 
 import styles from "./styles.css"
 

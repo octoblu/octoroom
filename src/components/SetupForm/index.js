@@ -1,5 +1,6 @@
 import noop from "lodash/noop"
-import React, { PropTypes } from "react"
+import PropTypes from "prop-types"
+import React from "react"
 import Input from "zooid-input"
 import Button from "zooid-button"
 

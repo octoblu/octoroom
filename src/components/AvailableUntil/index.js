@@ -1,6 +1,7 @@
 import isEmpty from "lodash/isEmpty"
 import get from "lodash/get"
-import React, { PropTypes } from "react"
+import PropTypes from "prop-types"
+import React from "react"
 
 import StateHeading from "../StateHeading/"
 import StateSubHeading from "../StateSubHeading/"

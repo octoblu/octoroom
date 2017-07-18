@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react"
+import PropTypes from "prop-types"
+import React from "react"
 import ErrorState from "zooid-error-state"
 import Spinner from "zooid-spinner"
 

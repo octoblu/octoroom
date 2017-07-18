@@ -1,5 +1,6 @@
 import get from "lodash/get"
-import React, { PropTypes } from "react"
+import PropTypes from "prop-types"
+import React from "react"
 
 import BackgroundVideo from "../../components/BackgroundVideo/"
 import ConnectError from "../../components/ConnectError/"
