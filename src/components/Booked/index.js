@@ -4,7 +4,6 @@ import FormattedEndTime from "../FormattedEndTime"
 import MeetingUrl from "../MeetingUrl"
 import StateHeading from "../StateHeading"
 import StateWrapper from "../StateWrapper"
-import ActivityPrompt from "../ActivityPrompt"
 
 const propTypes = {
   endTime: PropTypes.string,
@@ -13,13 +12,12 @@ const propTypes = {
   subject: PropTypes.string.isRequired,
 }
 
-const Booked = ({ endTime, inSkype, meetingUrl, subject }) => {
+const Booked = ({ endTime, meetingUrl, subject }) => {
   return (
     <StateWrapper booked>
       <FormattedEndTime endTime={endTime} />
       <StateHeading>{subject}</StateHeading>
       <MeetingUrl meetingUrl={meetingUrl} />
-      <ActivityPrompt inSkype={inSkype} />
     </StateWrapper>
   )
 }
