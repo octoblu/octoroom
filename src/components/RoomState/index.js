@@ -1,4 +1,3 @@
-import Debug from "debug"
 import get from "lodash/get"
 import isEmpty from "lodash/isEmpty"
 import React from "react"
@@ -7,13 +6,11 @@ import PropTypes from "prop-types"
 import Available from "../Available"
 import Booked from "../Booked"
 
-const debug = Debug("dashboard:components:RoomState")
-
 const propTypes = {
   currentMeeting: PropTypes.object,
   inSkype: PropTypes.bool,
-  nextmeeting: PropTypes.object,
-  roomid: PropTypes.string,
+  nextMeeting: PropTypes.object,
+  roomId: PropTypes.string,
 }
 
 const defaultProps = {
@@ -24,14 +21,11 @@ const defaultProps = {
 }
 
 const RoomState = ({ currentMeeting, inSkype, nextMeeting, roomId }) => {
-  debug("props", { currentMeeting, inSkype, nextMeeting, roomId })
-
   if (isEmpty(roomId))
     return <Available roomId={roomId} nextMeeting={nextMeeting} />
   if (isEmpty(currentMeeting))
     return <Available roomId={roomId} nextMeeting={nextMeeting} />
 
-  let { meetingUrl } = currentMeeting
   const currentMeetingRoom = get(currentMeeting, `rooms.${roomId}`)
   let { endTime, subject } = currentMeetingRoom
 
@@ -39,9 +33,9 @@ const RoomState = ({ currentMeeting, inSkype, nextMeeting, roomId }) => {
 
   return (
     <Booked
-      inSkype={inSkype}
       endTime={endTime}
-      meetingUrl={meetingUrl}
+      inSkype={inSkype}
+      meetingUrl={currentMeeting.meetingUrl}
       subject={subject}
     />
   )

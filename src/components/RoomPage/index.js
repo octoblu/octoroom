@@ -36,8 +36,6 @@ const RoomPage = props => {
     roomId,
   } = props
 
-  console.log("ROOMPAGE", inSkype)
-
   if (connectError) {
     return (
       <div className={styles.root}>

@@ -83,8 +83,6 @@ class RoomContainer extends React.Component {
       inSkype,
     } = genisys
 
-    console.log("inSkype", inSkype)
-
     this.setState({
       actions,
       backgroundImageUrl,
