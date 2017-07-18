@@ -1,4 +1,6 @@
-import _ from "lodash"
+import join from "lodash/join"
+import split from "lodash/split"
+import tail from "lodash/tail"
 import url from "url"
 
 export function meshbluFirehoseSocketIOUrlComponents() {
@@ -26,8 +28,8 @@ function getUrlParts() {
 }
 
 function removeSubdomain(hostname) {
-  const parts = _.split(hostname, ".")
-  const partsWithoutSubdomain = _.tail(parts)
+  const parts = split(hostname, ".")
+  const partsWithoutSubdomain = tail(parts)
 
-  return _.join(partsWithoutSubdomain, ".")
+  return join(partsWithoutSubdomain, ".")
 }

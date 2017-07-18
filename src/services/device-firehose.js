@@ -1,5 +1,7 @@
 import MeshbluHTTP from "browser-meshblu-http"
-import _ from "lodash"
+import debounce from "lodash/debounce"
+import get from "lodash/get"
+import isEmpty from "lodash/isEmpty"
 import Firehose from "meshblu-firehose-socket.io"
 import moment from "moment"
 import EventEmitter2 from "eventemitter2"
@@ -24,7 +26,7 @@ export default class DeviceFirehose extends EventEmitter2 {
       meshbluConfig: this._meshbluConfig,
       reconnectionAttempts: 20,
     })
-    this.updateDevice = _.debounce(this._updateDevice, 35000)
+    this.updateDevice = debounce(this._updateDevice, 35000)
     this._firehose.on("message", this._onMessage)
     this._firehose.on("reconnecting", this._onConnectError)
     this._firehose.on("reconnect_error", this._onConnectError)
@@ -52,22 +54,22 @@ export default class DeviceFirehose extends EventEmitter2 {
   }
 
   refresh(targetUUID, callback) {
-    if (_.isEmpty(targetUUID)) return callback(new Error("Invalid Device UUID"))
+    if (isEmpty(targetUUID)) return callback(new Error("Invalid Device UUID"))
     this._meshblu.update(targetUUID, { refresh: Date.now() }, error =>
       callback(error)
     )
   }
 
   _isStale(message) {
-    const updatedAtStr = _.get(message, "data.meshblu.updatedAt")
-    if (_.isEmpty(updatedAtStr)) return true
+    const updatedAtStr = get(message, "data.meshblu.updatedAt")
+    if (isEmpty(updatedAtStr)) return true
     const updatedAt = moment.utc(updatedAtStr).valueOf()
     return updatedAt < this._lastUpdatedAt
   }
 
   _isSpeech(message) {
-    const notificationText = _.get(message, "data.notificationText")
-    if (!_.isEmpty(notificationText)) return true
+    const notificationText = get(message, "data.notificationText")
+    if (!isEmpty(notificationText)) return true
     return false
   }
 
@@ -95,11 +97,11 @@ export default class DeviceFirehose extends EventEmitter2 {
   }
 
   _parseDevice(message) {
-    return _.get(message, "data")
+    return get(message, "data")
   }
 
   _parseSpeech(message) {
-    return _.get(message, "data.notificationText")
+    return get(message, "data.notificationText")
   }
 
   _updateDevice() {
@@ -109,7 +111,7 @@ export default class DeviceFirehose extends EventEmitter2 {
   }
 
   _updateLastUpdatedAt(message) {
-    const updatedAtStr = _.get(message, "data.meshblu.updatedAt")
+    const updatedAtStr = get(message, "data.meshblu.updatedAt")
     this._lastUpdatedAt = moment.utc(updatedAtStr).valueOf()
   }
 }

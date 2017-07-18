@@ -1,4 +1,4 @@
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
 import React, { PropTypes } from "react"
 
 import FormattedTime from "../FormattedTime"
@@ -9,7 +9,7 @@ const propTypes = {
 }
 
 const FormattedEndTime = ({ endTime }) => {
-  if (_.isEmpty(endTime)) {
+  if (isEmpty(endTime)) {
     return <StateSubHeading>Error finding the meeting end time</StateSubHeading>
   }
 

@@ -1,4 +1,4 @@
-import _ from "lodash"
+import noop from "lodash/noop"
 import React, { PropTypes } from "react"
 import Input from "zooid-input"
 import Button from "zooid-button"
@@ -12,7 +12,7 @@ const propTypes = {
 const defaultProps = {
   uuid: "",
   token: "",
-  onSetup: _.noop,
+  onSetup: noop,
 }
 
 const SetupForm = ({ uuid, token, onSetup }) => {

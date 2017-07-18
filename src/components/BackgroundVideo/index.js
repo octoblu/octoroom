@@ -1,16 +1,15 @@
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
 import React, { PropTypes } from "react"
+
 import styles from "./styles.css"
 
 const propTypes = {
   imageUrl: PropTypes.string.isRequired,
   videoUrl: PropTypes.string,
 }
-const defaultProps = {}
 
 const BackgroundVideo = ({ imageUrl, videoUrl }) => {
-  // return null
-  if (_.isEmpty(videoUrl)) {
+  if (isEmpty(videoUrl)) {
     return (
       <div className={styles.wrapper}>
         <img src={imageUrl} className={styles.image} />
@@ -28,6 +27,5 @@ const BackgroundVideo = ({ imageUrl, videoUrl }) => {
 }
 
 BackgroundVideo.propTypes = propTypes
-BackgroundVideo.defaultProps = defaultProps
 
 export default BackgroundVideo

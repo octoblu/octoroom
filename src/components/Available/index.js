@@ -1,4 +1,4 @@
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
 import React, { PropTypes } from "react"
 
 import AvailableAllDay from "../AvailableAllDay/"
@@ -10,7 +10,7 @@ const propTypes = {
 }
 
 const Available = ({ roomId, nextMeeting }) => {
-  if (_.isEmpty(nextMeeting)) return <AvailableAllDay />
+  if (isEmpty(nextMeeting)) return <AvailableAllDay />
 
   return <AvailableUntil roomId={roomId} nextMeeting={nextMeeting} />
 }

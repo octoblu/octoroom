@@ -8,8 +8,6 @@ const propTypes = {
   error: PropTypes.object,
 }
 
-const defaultProps = {}
-
 const RoomPage = ({ error }) => {
   if (error)
     return (
@@ -30,6 +28,5 @@ const RoomPage = ({ error }) => {
 }
 
 RoomPage.propTypes = propTypes
-RoomPage.defaultProps = defaultProps
 
 export default RoomPage

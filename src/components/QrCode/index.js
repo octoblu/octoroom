@@ -1,4 +1,4 @@
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
 import React, { PropTypes } from "react"
 import QR from "rc-qrcode"
 import styles from "./styles.css"
@@ -7,10 +7,8 @@ const propTypes = {
   url: PropTypes.string,
 }
 
-const defaultProps = {}
-
 const QRCode = ({ url }) => {
-  if (_.isEmpty(url)) return <span />
+  if (isEmpty(url)) return <span />
 
   return (
     <div className={styles.root}>
@@ -29,6 +27,5 @@ const QRCode = ({ url }) => {
 }
 
 QRCode.propTypes = propTypes
-QRCode.defaultProps = defaultProps
 
 export default QRCode

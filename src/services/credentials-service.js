@@ -1,4 +1,5 @@
-import _ from "lodash"
+import cloneDeep from "lodash/cloneDeep"
+import isEmpty from "lodash/isEmpty"
 import MeshbluHTTP from "browser-meshblu-http"
 import { meshbluHttpUrlComponents } from "./urls-service"
 
@@ -17,9 +18,9 @@ function safeParse(str) {
 
 export function getCredentials() {
   const credentials = safeParse(window.localStorage.getItem("credentials"))
-  if (!_.isEmpty(credentials)) return credentials
+  if (!isEmpty(credentials)) return credentials
 
-  return _.cloneDeep(DEFAULT_CREDENTIALS)
+  return cloneDeep(DEFAULT_CREDENTIALS)
 }
 
 export function setCredentials(credentials) {
@@ -27,7 +28,7 @@ export function setCredentials(credentials) {
 }
 
 export function verifyCredentials({ uuid, token }, callback) {
-  if (_.isEmpty(uuid) || _.isEmpty(token))
+  if (isEmpty(uuid) || isEmpty(token))
     return callback(new Error("Missing uuid or token"))
   const meshblu = new MeshbluHTTP({
     uuid,

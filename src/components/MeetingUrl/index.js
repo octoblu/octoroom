@@ -1,4 +1,4 @@
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
 import React, { PropTypes } from "react"
 
 import StateLink from "../StateLink"
@@ -8,7 +8,7 @@ const propTypes = {
 }
 
 const MeetingUrl = ({ meetingUrl }) => {
-  if (_.isEmpty(meetingUrl)) {
+  if (isEmpty(meetingUrl)) {
     return <StateLink><span>Error finding the meeting URL</span></StateLink>
   }
 

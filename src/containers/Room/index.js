@@ -1,6 +1,8 @@
 import MeshbluHttp from "browser-meshblu-http"
 import Debug from "debug"
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
+import noop from "lodash/noop"
+import some from "lodash/some"
 import React, { PropTypes } from "react"
 
 import { meshbluHttpUrlComponents } from "../../services/urls-service"
@@ -33,8 +35,7 @@ class RoomContainer extends React.Component {
     const credentials = getCredentials()
     const { uuid, token } = credentials
 
-    if (_.some([uuid, token], _.isEmpty))
-      return this.context.router.push("/setup")
+    if (some([uuid, token], isEmpty)) return this.context.router.push("/setup")
 
     this.meshblu = new MeshbluHttp({
       ...credentials,
@@ -47,7 +48,7 @@ class RoomContainer extends React.Component {
     this.deviceFirehose.on(`device:${uuid}`, this.onDevice)
     this.deviceFirehose.on("connecterror", this.onConnectError)
 
-    this.meshblu.update(uuid, { online: true }, _.noop)
+    this.meshblu.update(uuid, { online: true }, noop)
   }
 
   onConnect = error => {
@@ -119,7 +120,7 @@ class RoomContainer extends React.Component {
         currentMeeting={currentMeeting}
         currentTime={currentTime}
         inSkype={inSkype}
-        loading={!_.isEmpty(actions)}
+        loading={!isEmpty(actions)}
         name={name}
         nextMeeting={nextMeeting}
         roomId={roomId}

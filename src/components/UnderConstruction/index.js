@@ -15,7 +15,6 @@ const propTypes = {
   name: PropTypes.string,
 }
 
-const defaultProps = {}
 const UnderConstruction = props => {
   const { backgroundImageUrl, backgroundVideoUrl, name } = props
 
@@ -37,6 +36,5 @@ const UnderConstruction = props => {
 }
 
 UnderConstruction.propTypes = propTypes
-UnderConstruction.defaultProps = defaultProps
 
 export default UnderConstruction

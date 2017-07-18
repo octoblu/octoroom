@@ -8,9 +8,6 @@ const DESCRIPTION =
   "the connection re-establishes. The browser may " +
   "refresh while attempting to reconnect."
 
-const propTypes = {}
-const defaultProps = {}
-
 const ConnectError = () => {
   return (
     <div>
@@ -20,7 +17,5 @@ const ConnectError = () => {
     </div>
   )
 }
-ConnectError.propTypes = propTypes
-ConnectError.defaultProps = defaultProps
 
 export default ConnectError

@@ -9,8 +9,6 @@ const propTypes = {
   children: PropTypes.element.isRequired,
 }
 
-const defaultProps = {}
-
 class App extends React.Component {
   componentDidMount() {
     const versionCheckInterval = 60 * 1000
@@ -42,6 +40,5 @@ class App extends React.Component {
 }
 
 App.propTypes = propTypes
-App.defaultProps = defaultProps
 
 export default App

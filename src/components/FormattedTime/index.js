@@ -1,4 +1,4 @@
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
 import moment from "moment"
 import React, { PropTypes } from "react"
 
@@ -10,7 +10,7 @@ const propTypes = {
 }
 
 const FormattedTime = ({ timestamp }) => {
-  if (_.isEmpty(timestamp)) return null
+  if (isEmpty(timestamp)) return null
 
   const formattedTime = moment(timestamp).format("h:mm A")
 
