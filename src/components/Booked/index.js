@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react"
 
+import ActivityPrompt from "../ActivityPrompt"
 import FormattedEndTime from "../FormattedEndTime"
 import MeetingUrl from "../MeetingUrl"
 import StateHeading from "../StateHeading"
@@ -12,12 +13,13 @@ const propTypes = {
   subject: PropTypes.string.isRequired,
 }
 
-const Booked = ({ endTime, meetingUrl, subject }) => {
+const Booked = ({ endTime, inSkype, meetingUrl, subject }) => {
   return (
     <StateWrapper booked>
       <FormattedEndTime endTime={endTime} />
       <StateHeading>{subject}</StateHeading>
       <MeetingUrl meetingUrl={meetingUrl} />
+      <ActivityPrompt inSkype={inSkype} />
     </StateWrapper>
   )
 }
