@@ -1,6 +1,5 @@
 import React, { PropTypes } from "react"
 import QRCode from "../QrCode"
-import FormattedTime from "../FormattedTime/"
 import styles from "./styles.css"
 import ZooidSpinner from "zooid-spinner"
 
@@ -27,13 +26,11 @@ Loading.propTypes = {
   loading: PropTypes.bool,
 }
 
-const DashboardFooter = ({ currentTime, url }) => {
+const DashboardFooter = ({ url }) => {
   return (
     <div className={styles.root}>
       <QRCode url={url} />
-      <div className={styles.lowerRight}>
-        <FormattedTime timestamp={currentTime} />
-      </div>
+      <div className={styles.lowerRight} />
     </div>
   )
 }
