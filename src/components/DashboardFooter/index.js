@@ -2,7 +2,6 @@ import styled from "emotion/react"
 import PropTypes from "prop-types"
 import React from "react"
 
-import FormattedTime from "../FormattedTime/"
 import QRCode from "../QrCode"
 
 const Container = styled("div")`
@@ -32,13 +31,11 @@ const defaultProps = {
   url: "",
 }
 
-const DashboardFooter = ({ currentTime, url }) => {
+const DashboardFooter = ({ url }) => {
   return (
     <Container>
       <QRCode url={url} />
-      <TimeWrapper>
-        <FormattedTime timestamp={currentTime} />
-      </TimeWrapper>
+      <TimeWrapper />
     </Container>
   )
 }
