@@ -1,3 +1,4 @@
+import styled from "emotion/react"
 import get from "lodash/get"
 import PropTypes from "prop-types"
 import React from "react"
@@ -8,7 +9,28 @@ import DashboardFooter from "../../components/DashboardFooter/"
 import DashboardHeader from "../../components/DashboardHeader/"
 import RoomState from "../../components/RoomState/"
 
-import styles from "./styles.css"
+const Container = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  flex: 1;
+  color: #FFF;
+  text-shadow: 0.05vw 0.05vw 0.1vw rgba(0,0,0,0.8);
+  text-shadow: 0.05vmax 0.05vmax 0.1vmax rgba(0,0,0,0.8);
+
+  background: no-repeat center center fixed;
+  background-color: rgba(0,0,0,0.75);
+  transition: background-image 1000ms ease-in 500ms;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+`
 
 const propTypes = {
   backgroundImageUrl: PropTypes.string,
@@ -31,7 +53,6 @@ const RoomPage = props => {
     currentMeeting,
     currentTime,
     inSkype,
-    loading,
     name,
     nextMeeting,
     roomId,
@@ -39,20 +60,19 @@ const RoomPage = props => {
 
   if (connectError) {
     return (
-      <div className={styles.root}>
+      <Container>
         <DashboardHeader name={name} />
         <ConnectError />
         <DashboardFooter
           currentTime={currentTime}
           url={get(currentMeeting, "meetingUrl")}
-          loading={loading}
         />
-      </div>
+      </Container>
     )
   }
 
   return (
-    <div className={styles.root}>
+    <Container>
       <DashboardHeader name={name} />
       <BackgroundVideo
         imageUrl={backgroundImageUrl}
@@ -67,9 +87,8 @@ const RoomPage = props => {
       <DashboardFooter
         currentTime={currentTime}
         url={get(currentMeeting, "meetingUrl")}
-        loading={loading}
       />
-    </div>
+    </Container>
   )
 }
 

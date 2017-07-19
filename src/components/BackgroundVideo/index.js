@@ -1,8 +1,40 @@
+import { css } from "emotion"
+import styled from "emotion/react"
 import isEmpty from "lodash/isEmpty"
 import PropTypes from "prop-types"
 import React from "react"
 
-import styles from "./styles.css"
+const Container = styled("div")`
+  bottom: 0;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+`
+
+const media = css`
+  min-width: 100%;
+  min-height: 100%;
+
+  width: auto;
+  height: auto;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  filter: blur(15px);
+`
+
+const Image = styled("img")`
+  composes: ${media};
+`
+
+const Video = styled("video")`
+  composes: ${media};
+`
 
 const propTypes = {
   imageUrl: PropTypes.string.isRequired,
@@ -12,18 +44,18 @@ const propTypes = {
 const BackgroundVideo = ({ imageUrl, videoUrl }) => {
   if (isEmpty(videoUrl)) {
     return (
-      <div className={styles.wrapper}>
-        <img src={imageUrl} className={styles.image} />
-      </div>
+      <Container>
+        <Image src={imageUrl} />
+      </Container>
     )
   }
 
   return (
-    <div key={videoUrl} className={styles.wrapper}>
-      <video className={styles.video} poster={imageUrl} autoPlay loop muted>
+    <Container key={videoUrl}>
+      <Video poster={imageUrl} autoPlay loop muted>
         <source src={videoUrl} type="video/mp4" />
-      </video>
-    </div>
+      </Video>
+    </Container>
   )
 }
 

@@ -1,31 +1,29 @@
-import classNames from "classnames"
-import PropTypes from "prop-types"
-import React from "react"
+import { keyframes } from "emotion"
+import styled from "emotion/react"
 
-import styles from "./styles.css"
+const getBorderColor = props => {
+  if (props.booked) return "#FF0000"
+  if (props.underconstruction) return "#FBF344"
 
-const propTypes = {
-  booked: PropTypes.bool,
-  children: PropTypes.node,
-  underconstruction: PropTypes.bool,
-}
-const defaultProps = {
-  booked: false,
-  underconstruction: false,
-  children: null,
+  return "#47B350"
 }
 
-const StateWrapper = ({ booked, underconstruction, children }) => {
-  if (!children) return null
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to   { opacity: 1; }
+`
 
-  const classes = classNames(styles.root, {
-    [`${styles.booked}`]: booked,
-    [`${styles.underconstruction}`]: underconstruction,
-  })
-  return <div className={classes}>{children}</div>
-}
-
-StateWrapper.propTypes = propTypes
-StateWrapper.defaultProps = defaultProps
+const StateWrapper = styled("div")`
+  display: flex;
+  align-items: flex-start;
+  align-self: flex-start;
+  flex-direction: column;
+  border-color: ${props => getBorderColor(props)};
+  border-width: 2.076vmax;
+  border-left-style: solid;
+  padding-left: 2.6vmax;
+  margin-left: 2.6vmax;
+  animation: ${fadeIn} 2s;
+`
 
 export default StateWrapper

@@ -10,7 +10,6 @@ import {
 } from "../../services/credentials-service"
 
 import SetupForm from "../../components/SetupForm"
-import styles from "./styles.css"
 
 const contextTypes = {
   router: PropTypes.object,
@@ -44,7 +43,7 @@ class Settings extends React.Component {
     const { uuid, token } = this.state
 
     return (
-      <Flexbox className={styles.root}>
+      <Flexbox>
         <Page width="small">
           <Heading level={3}>Setup Room Device</Heading>
           <SetupForm uuid={uuid} token={token} onSetup={this.handleSetup} />

@@ -5,15 +5,15 @@ import Input from "zooid-input"
 import Button from "zooid-button"
 
 const propTypes = {
-  uuid: PropTypes.string,
-  token: PropTypes.string,
   onSetup: PropTypes.func,
+  token: PropTypes.string,
+  uuid: PropTypes.string,
 }
 
 const defaultProps = {
-  uuid: "",
-  token: "",
   onSetup: noop,
+  token: "",
+  uuid: "",
 }
 
 const SetupForm = ({ uuid, token, onSetup }) => {

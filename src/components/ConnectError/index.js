@@ -1,6 +1,19 @@
+import styled from "emotion/react"
 import React from "react"
 import LoadingSpinner from "zooid-spinner"
-import styles from "./styles.css"
+
+const Header = styled("h1")`
+  margin-bottom: 1.56vw;
+  margin-bottom: 1.56vmax;
+`
+
+const Description = styled("h2")`
+  width: 41.54vw;
+  width: 41.54vmax;
+  margin-top: 0;
+  margin-bottom: 1.56vw;
+  margin-bottom: 1.56vmax;
+`
 
 const DESCRIPTION =
   "We are experiencing a connection error. " +
@@ -11,9 +24,9 @@ const DESCRIPTION =
 const ConnectError = () => {
   return (
     <div>
-      <h1 className={styles.header}>Connect Error</h1>
-      <h2 className={styles.description}>{DESCRIPTION}</h2>
-      <LoadingSpinner className={styles.spinner} size="large" />
+      <Header>Connect Error</Header>
+      <Description>{DESCRIPTION}</Description>
+      <LoadingSpinner size="large" />
     </div>
   )
 }

@@ -1,10 +1,15 @@
+import styled from "emotion/react"
 import PropTypes from "prop-types"
 import React from "react"
 import Flexbox from "react-flexbox"
 import request from "superagent"
 import nocache from "superagent-no-cache"
 
-import styles from "./styles.css"
+const Container = styled(Flexbox)`
+  min-height: 100%;
+  justify-content: center;
+  align-items: center;
+`
 
 const propTypes = {
   children: PropTypes.element.isRequired,
@@ -32,11 +37,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <Flexbox className={styles.root}>
-        {this.props.children}
-      </Flexbox>
-    )
+    return <Container>{this.props.children}</Container>
   }
 }
 

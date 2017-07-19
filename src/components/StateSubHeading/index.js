@@ -1,7 +1,17 @@
+import styled from "emotion/react"
 import PropTypes from "prop-types"
 import React from "react"
 
-import styles from "./styles.css"
+const Header = styled("div")`
+  display: flex;
+  font-size: 2.7vw;
+  font-size: 2.7vmax;
+  align-self: flex-start;
+  text-align: left;
+  color: #CACACA;
+  line-height: 1.25;
+  margin-bottom: 0.25em;
+`
 
 const propTypes = {
   children: PropTypes.node,
@@ -10,7 +20,7 @@ const propTypes = {
 const StateSubHeading = ({ children }) => {
   if (!children) return null
 
-  return <div className={styles.root}>{children}</div>
+  return <Header>{children}</Header>
 }
 
 StateSubHeading.propTypes = propTypes

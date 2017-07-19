@@ -1,8 +1,17 @@
+import styled from "emotion/react"
 import PropTypes from "prop-types"
 import React from "react"
 import Flexbox from "react-flexbox"
 
-import styles from "./styles.css"
+const Header = styled(Flexbox)`
+  width: 100%;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0.83vw 2.6vw;
+  padding: 0.83vmax 2.6vmax;
+  font-size: 1.65vw;
+  font-size: 1.65vmax;
+`
 
 const propTypes = {
   name: PropTypes.string,
@@ -10,10 +19,10 @@ const propTypes = {
 
 const DashboardHeader = ({ name }) => {
   return (
-    <Flexbox auto className={styles.header}>
+    <Header auto>
       <span>Citrix Smart Spaces</span>
       <div>{name}</div>
-    </Flexbox>
+    </Header>
   )
 }
 
