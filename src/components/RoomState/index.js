@@ -21,9 +21,7 @@ const defaultProps = {
 }
 
 const RoomState = ({ currentMeeting, inSkype, nextMeeting, roomId }) => {
-  if (isEmpty(roomId))
-    return <Available roomId={roomId} nextMeeting={nextMeeting} />
-  if (isEmpty(currentMeeting))
+  if (isEmpty(roomId) || isEmpty(currentMeeting))
     return <Available roomId={roomId} nextMeeting={nextMeeting} />
 
   const currentMeetingRoom = get(currentMeeting, `rooms.${roomId}`)

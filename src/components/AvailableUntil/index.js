@@ -3,6 +3,7 @@ import get from "lodash/get"
 import PropTypes from "prop-types"
 import React from "react"
 
+import StartMeetingEarlyPrompt from "../StartMeetingEarlyPrompt/"
 import StateHeading from "../StateHeading/"
 import StateSubHeading from "../StateSubHeading/"
 import StateWrapper from "../StateWrapper/"
@@ -18,13 +19,17 @@ const AvailableUntil = ({ roomId, nextMeeting }) => {
   let { startTime, subject } = meetingRoom
   if (isEmpty(subject)) subject = "Meeting"
 
+  const startMeetingEarly = get(nextMeeting, "startEarly", false)
+  let prompt = <StateSubHeading>Press the button to Book Now</StateSubHeading>
+  if (startMeetingEarly) prompt = <StartMeetingEarlyPrompt />
+
   return (
     <StateWrapper>
       <StateHeading>
         Available until <FormattedTime timestamp={startTime} />
       </StateHeading>
       <StateSubHeading>Next: {subject}</StateSubHeading>
-      <StateSubHeading>Press the button to Book Now</StateSubHeading>
+      {prompt}
     </StateWrapper>
   )
 }
