@@ -11,7 +11,6 @@ const ActivityPrompt = ({ inSkype }) => {
   return (
     <StateLink>
       <div>Press the button to {inSkype ? "end" : "start"} Skype</div>
-      <div>Hold the button for 3s to end meeting</div>
     </StateLink>
   )
 }
