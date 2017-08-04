@@ -11,6 +11,7 @@ import { meshbluHttpUrlComponents } from "../../services/urls-service"
 import RoomPage from "../../components/RoomPage"
 import { getCredentials } from "../../services/credentials-service"
 import { returnMeetingIfToday } from "../../services/meetings-service"
+import { returnDashboardClock } from "../../services/dashboard-clock-service"
 import DeviceFirehose from "../../services/device-firehose"
 
 const debug = Debug("dashboard:containers:room")
@@ -29,6 +30,7 @@ class RoomContainer extends React.Component {
     error: null,
     inSkype: false,
     name: "",
+    timezone: "",
     roomId: "",
   }
 
@@ -76,6 +78,7 @@ class RoomContainer extends React.Component {
     debug("GENISYS", genisys)
 
     const nextMeeting = returnMeetingIfToday(genisys.nextMeeting)
+    const dashboardClock = returnDashboardClock(genisys.timezone)
 
     const {
       actions,
@@ -96,6 +99,7 @@ class RoomContainer extends React.Component {
       name,
       nextMeeting,
       roomId: uuid,
+      dashboardClock,
     })
   }
 
@@ -109,6 +113,7 @@ class RoomContainer extends React.Component {
       currentTime,
       inSkype,
       name,
+      dashboardClock,
       nextMeeting,
       roomId,
     } = this.state
@@ -125,6 +130,7 @@ class RoomContainer extends React.Component {
         name={name}
         nextMeeting={nextMeeting}
         roomId={roomId}
+        dashboardClock={dashboardClock}
       />
     )
   }

@@ -42,11 +42,13 @@ const propTypes = {
   loading: PropTypes.bool,
   name: PropTypes.string,
   nextMeeting: PropTypes.object,
+  dashboardClock: PropTypes.string,
   roomId: PropTypes.string,
 }
 
 const RoomPage = props => {
   const {
+    dashboardClock,
     backgroundImageUrl,
     backgroundVideoUrl,
     connectError,
@@ -64,6 +66,8 @@ const RoomPage = props => {
         <DashboardHeader name={name} />
         <ConnectError />
         <DashboardFooter
+          dashboardClock={dashboardClock}
+          name="hello"
           currentTime={currentTime}
           url={get(currentMeeting, "meetingUrl")}
         />
@@ -72,23 +76,27 @@ const RoomPage = props => {
   }
 
   return (
-    <Container>
-      <DashboardHeader name={name} />
-      <BackgroundVideo
-        imageUrl={backgroundImageUrl}
-        videourl={backgroundVideoUrl}
-      />
-      <RoomState
-        roomId={roomId}
-        currentMeeting={currentMeeting}
-        nextMeeting={nextMeeting}
-        inSkype={inSkype}
-      />
-      <DashboardFooter
-        currentTime={currentTime}
-        url={get(currentMeeting, "meetingUrl")}
-      />
-    </Container>
+    // console.log("hello")
+    (
+      <Container>
+        <DashboardHeader name={name} />
+        <BackgroundVideo
+          imageUrl={backgroundImageUrl}
+          videourl={backgroundVideoUrl}
+        />
+        <RoomState
+          roomId={roomId}
+          currentMeeting={currentMeeting}
+          nextMeeting={nextMeeting}
+          inSkype={inSkype}
+        />
+        <DashboardFooter
+          dashboardClock={dashboardClock}
+          currentTime={currentTime}
+          url={get(currentMeeting, "meetingUrl")}
+        />
+      </Container>
+    )
   )
 }
 

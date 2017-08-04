@@ -24,18 +24,21 @@ const TimeWrapper = styled("div")`
 const propTypes = {
   currentTime: PropTypes.string,
   url: PropTypes.string,
+  dashboardClock: PropTypes.string,
 }
 
 const defaultProps = {
   currentTime: "",
   url: "",
+  dashboardClock: "",
 }
 
-const DashboardFooter = ({ url }) => {
+const DashboardFooter = ({ url, dashboardClock }) => {
   return (
     <Container>
       <QRCode url={url} />
       <TimeWrapper />
+      <div>{dashboardClock}</div>
     </Container>
   )
 }
