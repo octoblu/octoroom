@@ -8,12 +8,19 @@ import AvailableUntil from "../AvailableUntil/"
 const propTypes = {
   nextMeeting: PropTypes.object,
   roomId: PropTypes.string,
+  timezone: PropTypes.string,
 }
 
-const Available = ({ roomId, nextMeeting }) => {
+const Available = ({ roomId, nextMeeting, timezone }) => {
   if (isEmpty(nextMeeting)) return <AvailableAllDay />
 
-  return <AvailableUntil roomId={roomId} nextMeeting={nextMeeting} />
+  return (
+    <AvailableUntil
+      roomId={roomId}
+      nextMeeting={nextMeeting}
+      timezone={timezone}
+    />
+  )
 }
 
 Available.propTypes = propTypes

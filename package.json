@@ -60,7 +60,7 @@
     "css-loader": "^0.27.1",
     "css-modules-require-hook": "^4.0.1",
     "debug": "^2.6.2",
-    "emotion": "^6.0.3",
+    "emotion": "^7.0.10",
     "eventemitter2": "^3.0.2",
     "eventsource-polyfill": "^0.9.6",
     "file-loader": "^0.10.1",

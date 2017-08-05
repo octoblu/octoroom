@@ -5,6 +5,7 @@ import noop from "lodash/noop"
 import some from "lodash/some"
 import PropTypes from "prop-types"
 import React from "react"
+import get from "lodash/get"
 
 import { meshbluHttpUrlComponents } from "../../services/urls-service"
 
@@ -77,6 +78,7 @@ class RoomContainer extends React.Component {
 
     debug("GENISYS", genisys)
 
+    const timezone = genisys.timezone
     const nextMeeting = returnMeetingIfToday(genisys.nextMeeting)
     const dashboardClock = returnDashboardClock(genisys.timezone)
 
@@ -100,6 +102,7 @@ class RoomContainer extends React.Component {
       nextMeeting,
       roomId: uuid,
       dashboardClock,
+      timezone,
     })
   }
 
@@ -116,6 +119,7 @@ class RoomContainer extends React.Component {
       dashboardClock,
       nextMeeting,
       roomId,
+      timezone,
     } = this.state
 
     return (
@@ -130,6 +134,7 @@ class RoomContainer extends React.Component {
         name={name}
         nextMeeting={nextMeeting}
         roomId={roomId}
+        timezone={timezone}
         dashboardClock={dashboardClock}
       />
     )

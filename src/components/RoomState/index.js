@@ -11,6 +11,7 @@ const propTypes = {
   inSkype: PropTypes.bool,
   nextMeeting: PropTypes.object,
   roomId: PropTypes.string,
+  timezone: PropTypes.string,
 }
 
 const defaultProps = {
@@ -18,11 +19,24 @@ const defaultProps = {
   inSkype: false,
   nextMeeting: null,
   roomId: null,
+  timezone: null,
 }
 
-const RoomState = ({ currentMeeting, inSkype, nextMeeting, roomId }) => {
+const RoomState = ({
+  currentMeeting,
+  inSkype,
+  nextMeeting,
+  roomId,
+  timezone,
+}) => {
   if (isEmpty(roomId) || isEmpty(currentMeeting))
-    return <Available roomId={roomId} nextMeeting={nextMeeting} />
+    return (
+      <Available
+        roomId={roomId}
+        nextMeeting={nextMeeting}
+        timezone={timezone}
+      />
+    )
 
   const currentMeetingRoom = get(currentMeeting, `rooms.${roomId}`)
   let { endTime, subject } = currentMeetingRoom
@@ -31,6 +45,7 @@ const RoomState = ({ currentMeeting, inSkype, nextMeeting, roomId }) => {
 
   return (
     <Booked
+      timezone={timezone}
       endTime={endTime}
       inSkype={inSkype}
       meetingUrl={currentMeeting.meetingUrl}

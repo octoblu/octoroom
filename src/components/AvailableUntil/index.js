@@ -8,13 +8,15 @@ import StateHeading from "../StateHeading/"
 import StateSubHeading from "../StateSubHeading/"
 import StateWrapper from "../StateWrapper/"
 import FormattedTime from "../FormattedTime"
+import { returnLocalTime } from "../../services/timezone-service"
 
 const propTypes = {
   nextMeeting: PropTypes.object,
   roomId: PropTypes.string,
+  timezone: PropTypes.string,
 }
 
-const AvailableUntil = ({ roomId, nextMeeting }) => {
+const AvailableUntil = ({ roomId, nextMeeting, timezone }) => {
   const meetingRoom = get(nextMeeting, `rooms.${roomId}`)
   let { startTime, subject } = meetingRoom
   if (isEmpty(subject)) subject = "Meeting"
@@ -23,10 +25,12 @@ const AvailableUntil = ({ roomId, nextMeeting }) => {
   let prompt = <StateSubHeading>Press the button to Book Now</StateSubHeading>
   if (startMeetingEarly) prompt = <StartMeetingEarlyPrompt />
 
+  var startTimeTZ = isEmpty(timezone) ? startTime : returnLocalTime(startTime)
+
   return (
     <StateWrapper>
       <StateHeading>
-        Available until <FormattedTime timestamp={startTime} />
+        Available until <startTimeTZ timestamp={startTimeTZ} />
       </StateHeading>
       <StateSubHeading>Next: {subject}</StateSubHeading>
       {prompt}

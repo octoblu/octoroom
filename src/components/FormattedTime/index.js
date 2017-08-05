@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 import React from "react"
 
 const propTypes = {
-  timestamp: PropTypes.string,
   className: PropTypes.string,
 }
 
