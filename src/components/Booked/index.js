@@ -19,8 +19,9 @@ const propTypes = {
 }
 
 const Booked = ({ endTime, inSkype, meetingUrl, subject, timezone }) => {
-  console.log("timezone is", timezone)
-  var endTimeTZ = isEmpty(timezone) ? endTime : returnLocalTime(endTime)
+  var endTimeTZ = isEmpty(timezone)
+    ? endTime
+    : returnLocalTime(timezone, endTime)
 
   return (
     <StateWrapper booked>

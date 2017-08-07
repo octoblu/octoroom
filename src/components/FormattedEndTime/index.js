@@ -6,7 +6,7 @@ import FormattedTime from "../FormattedTime"
 import StateSubHeading from "../StateSubHeading"
 
 const propTypes = {
-  endTime: PropTypes.string,
+  className: PropTypes.string,
 }
 
 const FormattedEndTime = ({ endTime }) => {

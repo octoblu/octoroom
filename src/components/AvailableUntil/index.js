@@ -25,12 +25,13 @@ const AvailableUntil = ({ roomId, nextMeeting, timezone }) => {
   let prompt = <StateSubHeading>Press the button to Book Now</StateSubHeading>
   if (startMeetingEarly) prompt = <StartMeetingEarlyPrompt />
 
-  var startTimeTZ = isEmpty(timezone) ? startTime : returnLocalTime(startTime)
-
+  var startTimeTZ = isEmpty(timezone)
+    ? startTime
+    : returnLocalTime(timezone, startTime)
   return (
     <StateWrapper>
       <StateHeading>
-        Available until <startTimeTZ timestamp={startTimeTZ} />
+        Available until <FormattedTime timestamp={startTimeTZ} />
       </StateHeading>
       <StateSubHeading>Next: {subject}</StateSubHeading>
       {prompt}

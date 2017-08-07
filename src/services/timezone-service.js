@@ -12,6 +12,7 @@ export function returnLocalTime(timezone, timestamp) {
   if (!timezone) return null
 
   let parsedTimezone = returnParsedTimezone(timezone)
-  let result = moment.tz(parsedTimezone, timestamp)
+
+  let result = moment(timestamp).tz(parsedTimezone)
   return result
 }
