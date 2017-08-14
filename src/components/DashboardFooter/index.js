@@ -17,7 +17,7 @@ const Container = styled("div")`
 `
 
 const TimeWrapper = styled("div")`
-  align-items: center;
+  align-items: right;
   display: flex;
 `
 
@@ -36,9 +36,10 @@ const defaultProps = {
 const DashboardFooter = ({ url, dashboardClock }) => {
   return (
     <Container>
+      <TimeWrapper>
+        <div>{dashboardClock}</div>
+      </TimeWrapper>
       <QRCode url={url} />
-      <TimeWrapper />
-      <div>{dashboardClock}</div>
     </Container>
   )
 }

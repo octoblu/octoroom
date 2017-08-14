@@ -69,7 +69,6 @@ const RoomPage = props => {
         <ConnectError />
         <DashboardFooter
           dashboardClock={dashboardClock}
-          name="hello"
           currentTime={currentTime}
           url={get(currentMeeting, "meetingUrl")}
         />
