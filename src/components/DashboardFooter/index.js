@@ -17,8 +17,10 @@ const Container = styled("div")`
 `
 
 const TimeWrapper = styled("div")`
-  align-items: right;
+  align-items: left;
   display: flex;
+  padding: 0.83vmax 2.6vmax;
+  padding: 0.83vw 2.6vw;
 `
 
 const propTypes = {
