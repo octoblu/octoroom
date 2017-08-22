@@ -16,13 +16,6 @@ const Container = styled("div")`
   width: 100%;
 `
 
-const TimeWrapper = styled("div")`
-  align-items: left;
-  display: flex;
-  padding: 0.83vmax 2.6vmax;
-  padding: 0.83vw 2.6vw;
-`
-
 const propTypes = {
   currentTime: PropTypes.string,
   url: PropTypes.string,
@@ -38,10 +31,8 @@ const defaultProps = {
 const DashboardFooter = ({ url, dashboardClock }) => {
   return (
     <Container>
-      <TimeWrapper>
-        <div>{dashboardClock}</div>
-      </TimeWrapper>
       <QRCode url={url} />
+      <div>{dashboardClock}</div>
     </Container>
   )
 }
