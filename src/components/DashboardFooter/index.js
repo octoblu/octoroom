@@ -2,8 +2,6 @@ import styled from "emotion/react"
 import PropTypes from "prop-types"
 import React from "react"
 
-import QRCode from "../QrCode"
-
 const Container = styled("div")`
   align-items: baseline;
   display: flex;
@@ -18,20 +16,17 @@ const Container = styled("div")`
 
 const propTypes = {
   currentTime: PropTypes.string,
-  url: PropTypes.string,
   dashboardClock: PropTypes.string,
 }
 
 const defaultProps = {
   currentTime: "",
-  url: "",
   dashboardClock: "",
 }
 
-const DashboardFooter = ({ url, dashboardClock }) => {
+const DashboardFooter = ({ dashboardClock }) => {
   return (
     <Container>
-      <QRCode url={url} />
       <div>{dashboardClock}</div>
     </Container>
   )

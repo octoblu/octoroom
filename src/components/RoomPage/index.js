@@ -1,5 +1,4 @@
 import styled from "emotion/react"
-import get from "lodash/get"
 import PropTypes from "prop-types"
 import React from "react"
 
@@ -68,9 +67,8 @@ const RoomPage = props => {
         <DashboardHeader name={name} />
         <ConnectError />
         <DashboardFooter
-          dashboardClock={dashboardClock}
           currentTime={currentTime}
-          url={get(currentMeeting, "meetingUrl")}
+          dashboardClock={dashboardClock}
         />
       </Container>
     )
@@ -91,9 +89,8 @@ const RoomPage = props => {
         inSkype={inSkype}
       />
       <DashboardFooter
-        dashboardClock={dashboardClock}
         currentTime={currentTime}
-        url={get(currentMeeting, "meetingUrl")}
+        dashboardClock={dashboardClock}
       />
     </Container>
   )
