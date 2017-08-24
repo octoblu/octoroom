@@ -1,3 +1,4 @@
+import isEmpty from "lodash/isEmpty"
 import PropTypes from "prop-types"
 import React from "react"
 
@@ -7,8 +8,6 @@ import MeetingUrl from "../MeetingUrl"
 import StateHeading from "../StateHeading"
 import StateWrapper from "../StateWrapper"
 import { returnLocalTime } from "../../services/timezone-service"
-import isEmpty from "lodash/isEmpty"
-import moment from "moment"
 
 const propTypes = {
   endTime: PropTypes.string,

@@ -7,6 +7,7 @@ import StateSubHeading from "../StateSubHeading"
 
 const propTypes = {
   className: PropTypes.string,
+  endTime: PropTypes.string,
 }
 
 const FormattedEndTime = ({ endTime }) => {

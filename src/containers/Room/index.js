@@ -5,15 +5,13 @@ import noop from "lodash/noop"
 import some from "lodash/some"
 import PropTypes from "prop-types"
 import React from "react"
-import get from "lodash/get"
-
-import { meshbluHttpUrlComponents } from "../../services/urls-service"
 
 import RoomPage from "../../components/RoomPage"
 import { getCredentials } from "../../services/credentials-service"
-import { returnMeetingIfToday } from "../../services/meetings-service"
 import { returnDashboardClock } from "../../services/dashboard-clock-service"
 import DeviceFirehose from "../../services/device-firehose"
+import { meshbluHttpUrlComponents } from "../../services/urls-service"
+import { returnMeetingIfToday } from "../../services/meetings-service"
 
 const debug = Debug("dashboard:containers:room")
 

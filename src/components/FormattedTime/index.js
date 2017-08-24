@@ -5,6 +5,7 @@ import React from "react"
 
 const propTypes = {
   className: PropTypes.string,
+  timestamp: PropTypes.string,
 }
 
 const FormattedTime = ({ timestamp }) => {
