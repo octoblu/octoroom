@@ -8,7 +8,7 @@ const Container = styled("div")`
   flex-direction: row;
   font-size: 1.65vmax;
   font-size: 1.65vw;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0.83vmax 2.6vmax;
   padding: 0.83vw 2.6vw;
   width: 100%;
