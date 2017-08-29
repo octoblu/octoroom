@@ -15,7 +15,6 @@ const Container = styled("div")`
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
-  flex: 1;
   color: #FFF;
   text-shadow: 0.05vw 0.05vw 0.1vw rgba(0,0,0,0.8);
   text-shadow: 0.05vmax 0.05vmax 0.1vmax rgba(0,0,0,0.8);
@@ -29,6 +28,13 @@ const Container = styled("div")`
   -o-background-size: cover;
   background-size: cover;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
+`
+
+const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
 `
 
 const propTypes = {
@@ -75,24 +81,27 @@ const RoomPage = props => {
   }
 
   return (
-    <Container>
-      <DashboardHeader name={name} />
+    <Wrapper>
+      <Container>
+        <DashboardHeader name={name} />
+        <RoomState
+          timezone={timezone}
+          roomId={roomId}
+          currentMeeting={currentMeeting}
+          nextMeeting={nextMeeting}
+          inSkype={inSkype}
+        />
+        <DashboardFooter
+          currentTime={currentTime}
+          dashboardClock={dashboardClock}
+        />
+      </Container>
+
       <BackgroundVideo
         imageUrl={backgroundImageUrl}
         videourl={backgroundVideoUrl}
       />
-      <RoomState
-        timezone={timezone}
-        roomId={roomId}
-        currentMeeting={currentMeeting}
-        nextMeeting={nextMeeting}
-        inSkype={inSkype}
-      />
-      <DashboardFooter
-        currentTime={currentTime}
-        dashboardClock={dashboardClock}
-      />
-    </Container>
+    </Wrapper>
   )
 }
 

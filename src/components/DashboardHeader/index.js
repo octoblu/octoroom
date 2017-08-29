@@ -1,12 +1,12 @@
 import styled from "emotion/react"
 import PropTypes from "prop-types"
 import React from "react"
-import Flexbox from "react-flexbox"
 
-const Header = styled(Flexbox)`
+const Header = styled.div`
   width: 100%;
-  justify-content: space-between !important;
-  align-items: center !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0.83vw 2.6vw;
   padding: 0.83vmax 2.6vmax;
   font-size: 1.65vw;

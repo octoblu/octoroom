@@ -1,6 +1,6 @@
+import styled from 'emotion/react'
 import PropTypes from "prop-types"
 import React from "react"
-import Flexbox from "react-flexbox"
 import Page from "zooid-page"
 import Heading from "zooid-heading"
 
@@ -10,6 +10,12 @@ import {
 } from "../../services/credentials-service"
 
 import SetupForm from "../../components/SetupForm"
+
+const Flexbox = styled.div`
+  display: flex;
+  flex: 1;
+`
+
 
 const contextTypes = {
   router: PropTypes.object,

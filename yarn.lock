@@ -5875,10 +5875,6 @@ react-element-to-jsx-string@^5.0.0:
     stringify-object "2.4.0"
     traverse "^0.6.6"
 
-react-flexbox@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/react-flexbox/-/react-flexbox-3.1.1.tgz#6326256aaf18a976d436824681d3d22490ce909e"
-
 react-fuzzy@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/react-fuzzy/-/react-fuzzy-0.3.3.tgz#9f6775393cd03bbd3c977651771abe16c8b29a81"
